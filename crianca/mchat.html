@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M-CHAT-R/F - Rastreamento TEA</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .q-block { margin-bottom: 20px; border-bottom: 1px solid #eee; padding-bottom: 15px; }
+        .q-title { font-weight: 700; color: #333; margin-bottom: 12px; display: block; font-size: 0.95rem; line-height: 1.4; }
+        
+        .btn-info-badge {
+            background-color: #F3E5F5; color: #6A1B9A; border: none; padding: 6px 12px; 
+            border-radius: 20px; font-size: 0.85rem; font-weight: 700; cursor: pointer; 
+            display: inline-flex; align-items: center; gap: 5px; float: right;
+        }
+        .btn-info-badge:hover { background-color: #E1BEE7; }
+
+        .res-box { display: none; margin-top: 25px; padding: 20px; border-radius: 12px; text-align: center; border: 2px solid transparent; background: #fff; }
+        .res-score { font-size: 2.5rem; font-weight: 900; line-height: 1; margin-bottom: 5px; }
+        .res-status { font-size: 1.2rem; font-weight: 800; text-transform: uppercase; margin-bottom: 10px; }
+        .res-conduta { font-size: 0.95rem; color: #444; text-align: left; background: #FAFAFA; padding: 15px; border-radius: 8px; margin-top: 15px; border-left: 4px solid #ccc; line-height: 1.5; }
+        
+        .failed-items { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; margin-bottom: 15px; }
+        .failed-badge { background: #FFCDD2; color: #C62828; padding: 4px 10px; border-radius: 6px; font-weight: bold; font-size: 0.85rem; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="crianca.html" class="back-btn" style="text-decoration: none;">⬅</a>
+        <div class="app-title">M-CHAT-R/F 🧩</div>
+    </header>
+
+    <div class="container">
+        <div class="calc-box" style="border-top: 5px solid #9C27B0;">
+            <div style="overflow:hidden; margin-bottom:20px; border-bottom:1px solid #eee; padding-bottom:10px;">
+                <h3 style="float:left; margin:0; border:none; color:#6A1B9A;">Rastreamento TEA</h3>
+                <button class="btn-info-badge" onclick="document.getElementById('modalInfo').style.display='flex'">ℹ️ Informações</button>
+            </div>
+
+            <p style="font-size:0.85rem; color:#666; margin-bottom:25px;">
+                Por favor, responda a estas perguntas sobre a criança. Pense em como a criança se comporta <strong>na maioria das vezes</strong>. Casos raros (1 ou 2 vezes) devem ser marcados como "Não".
+            </p>
+
+            <form id="mchatForm" onsubmit="event.preventDefault(); calcularMchat();">
+                <div id="questions-container">
+                    </div>
+                <button class="btn-calc" style="background:#8E24AA; margin-top:20px;">Calcular Pontuação</button>
+            </form>
+
+            <div id="result-area" class="res-box"></div>
+        </div>
+    </div>
+
+    <div id="modalInfo" class="modal">
+        <div class="modal-content" style="border-top: 5px solid #9C27B0;">
+            <span class="close-modal" onclick="document.getElementById('modalInfo').style.display='none'">&times;</span>
+            <h3 style="margin-top:0; color:#6A1B9A; font-size:1.2rem;">ℹ️ Guia de Aplicação</h3>
+            <div style="font-size:0.9rem; color:#444; line-height:1.5;">
+                <p><strong>Para que serve?</strong><br>O M-CHAT-R/F é uma ferramenta de triagem para avaliar o risco de Transtorno do Espectro Autista (TEA).</p>
+                <p><strong>Quando aplicar?</strong><br>Idealmente em consultas de rotina entre <strong>16 e 30 meses</strong> de idade. Sinais evidentes costumam aparecer entre 18 e 24 meses.</p>
+                <p><strong>Como funciona?</strong></p>
+                <ul style="padding-left:20px; margin-top:5px;">
+                    <li>A maioria das questões pontua risco se a resposta for <strong>"NÃO"</strong>.</li>
+                    <li>Exceção: As questões <strong>2, 5 e 12</strong> pontuam risco se a resposta for <strong>"SIM"</strong>.</li>
+                </ul>
+                <div style="background:#FFF3E0; padding:10px; border-radius:8px; border-left:4px solid #FF9800; font-size:0.85rem; margin-top:15px;">
+                    <strong>Atenção:</strong> O M-CHAT não dá diagnóstico. Ele avalia o risco e indica se a criança precisa de avaliação especializada ou da Entrevista de Seguimento.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer style="text-align:center; padding:20px; color:#888; font-size:0.8rem; border-top:1px solid #eee; margin-top:40px;">
+        Cérebro de Átila (R) 2026. Direitos reservados.
+    </footer>
+
+    <script>
+        const questions = [
+            "Se você apontar para algo do outro lado do cômodo, a sua criança olha para lá? (Ex: aponta para um brinquedo ou animal)",
+            "Você já se perguntou se sua criança poderia ser surda?",
+            "A sua criança brinca de faz-de-conta ou brincadeira de imaginação? (Ex: finge beber em um copo vazio, fala ao telefone de brinquedo)",
+            "A sua criança gosta de subir nas coisas? (Ex: móveis, parquinhos, escadas)",
+            "A sua criança faz movimentos incomuns com os dedos perto dos olhos dela? (Ex: balança os dedos perto dos olhos)",
+            "A sua criança aponta com o dedo para pedir algo ou para pedir ajuda? (Ex: aponta para um biscoito fora do alcance)",
+            "A sua criança aponta com o dedo para mostrar algo interessante a você? (Ex: aponta para um avião no céu)",
+            "A sua criança se interessa por outras crianças? (Ex: olha para as outras crianças, sorri ou vai até elas)",
+            "A sua criança mostra coisas para você trazendo-as ou segurando-as para que você as veja? (Não é para pedir ajuda, apenas para compartilhar)",
+            "A sua criança responde quando você a chama pelo nome? (Ex: olha para você, fala, ou para o que está fazendo)",
+            "Quando você sorri para a sua criança, ela sorri de volta para você?",
+            "A sua criança fica muito incomodada com barulhos do dia-a-dia? (Ex: aspirador de pó, música alta, grita ou chora)",
+            "A sua criança anda?",
+            "A sua criança olha nos seus olhos quando você fala com ela, brinca com ela ou a veste?",
+            "A sua criança tenta imitar o que você faz? (Ex: dar tchauzinho, bater palmas, fazer barulhos engraçados)",
+            "Se você vira a cabeça para olhar para algo, a sua criança olha ao redor para ver o que você está olhando?",
+            "A sua criança tenta fazer com que você olhe para ela? (Ex: olha para você esperando um elogio, ou diz 'olhe para mim')",
+            "A sua criança entende quando você diz a ela para fazer algo? (Ex: sem que você aponte, entende 'coloque o livro na cadeira')",
+            "Se algo novo acontece, a sua criança olha para o seu rosto para ver como você se sente a respeito? (Ex: escuta um barulho estranho e olha para você)",
+            "A sua criança gosta de atividades de movimento? (Ex: ser balançada ou pular nos seus joelhos)"
+        ];
+
+        // Itens Reversos: Resposta "Sim" indica risco.
+        const reversedItems = [2, 5, 12];
+
+        // Renderizar Perguntas no HTML
+        const container = document.getElementById('questions-container');
+        let html = "";
+        questions.forEach((q, index) => {
+            let num = index + 1;
+            html += `
+            <div class="q-block">
+                <span class="q-title">${num}. ${q}</span>
+                <div class="radio-inline-group" style="margin-bottom:0;">
+                    <label class="radio-label"><input type="radio" name="q${num}" value="1" required> Sim</label>
+                    <label class="radio-label"><input type="radio" name="q${num}" value="0"> Não</label>
+                </div>
+            </div>`;
+        });
+        container.innerHTML = html;
+
+        function calcularMchat() {
+            let score = 0;
+            let falhas = [];
+
+            for (let i = 1; i <= 20; i++) {
+                const radios = document.getElementsByName('q' + i);
+                let resposta = null;
+                for (let radio of radios) {
+                    if (radio.checked) resposta = parseInt(radio.value);
+                }
+
+                if (resposta === null) {
+                    alert("Por favor, responda todas as perguntas antes de calcular.");
+                    return;
+                }
+
+                let isRisco = false;
+                if (reversedItems.includes(i)) {
+                    if (resposta === 1) isRisco = true;
+                } else {
+                    if (resposta === 0) isRisco = true;
+                }
+
+                if (isRisco) {
+                    score++;
+                    falhas.push(i);
+                }
+            }
+
+            const resArea = document.getElementById('result-area');
+            let color, status, conduta;
+
+            if (score >= 0 && score <= 2) {
+                color = "#4CAF50"; 
+                status = "Baixo Risco";
+                conduta = `<strong>Conduta:</strong> Acompanhamento de rotina. Se a criança tiver menos de 24 meses, repita a triagem aos 24 meses. Nenhuma medida adicional é necessária neste momento, a menos que a vigilância indique o contrário.`;
+            } else if (score >= 3 && score <= 7) {
+                color = "#FF9800"; 
+                status = "Risco Moderado";
+                
+                let badges = falhas.map(f => `<span class="failed-badge">Item ${f}</span>`).join('');
+                
+                conduta = `<strong>Conduta:</strong> Aplicar a <strong>Entrevista de Seguimento</strong>.<br><br>
+                O questionário de seguimento possui fluxogramas específicos apenas para as perguntas em que a criança pontuou risco. Avalie os seguintes itens no documento oficial:<br>
+                <div class="failed-items">${badges}</div>
+                <a href="mchat.pdf" target="_blank" class="btn-calc" style="background:#F57C00; display:block; text-align:center; text-decoration:none; margin-bottom:15px; padding:12px;">📄 Abrir Seguimento (PDF)</a>
+                <em>Se a pontuação do Seguimento for &ge; 2, rastreamento positivo (encaminhar). Se 0-1, rastreamento negativo.</em>`;
+            } else {
+                color = "#F44336"; 
+                status = "Alto Risco";
+                conduta = `<strong>Conduta:</strong> Evitar a Entrevista de Seguimento e <strong>encaminhar imediatamente</strong> para avaliação diagnóstica especializada e avaliação de intervenção precoce.`;
+            }
+
+            resArea.style.display = 'block';
+            resArea.style.borderColor = color;
+            resArea.innerHTML = `
+                <div class="res-score" style="color:${color}">${score} <span style="font-size:1.2rem; color:#888;">/ 20</span></div>
+                <div class="res-status" style="color:${color}">${status}</div>
+                <div class="res-conduta" style="border-left-color:${color}">
+                    ${conduta}
+                </div>
+            `;
+            
+            resArea.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vacinação - Saúde da Criança</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .filter-container { display: flex; gap: 10px; margin-bottom: 20px; }
+        .filter-btn { flex: 1; padding: 10px; border: 1px solid #ddd; background: #fff; border-radius: 8px; cursor: pointer; font-weight: bold; color: #666; transition: all 0.2s; }
+        .filter-btn.active { box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        .vac-card { border-radius: 12px; margin-bottom: 15px; border-left: 5px solid; overflow: hidden; }
+        .macete-box { border-radius: 12px; padding: 15px; margin-bottom: 20px; border: 2px dashed; }
+        .macete-item { margin-bottom: 8px; font-size: 0.95rem; color: #333; }
+        .macete-tag { color: white; padding: 2px 6px; border-radius: 4px; font-weight: bold; margin-right: 5px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="crianca.html" class="back-btn" style="text-decoration: none;">⬅</a>
+        <div class="app-title">Saúde da Criança 👶</div>
+    </header>
+
+    <div class="container">
+        <div class="calc-box">
+            <h3 style="color:#D81B60;">💉 Calendários de Vacinação</h3>
+            
+            <div class="filter-container">
+                <button class="filter-btn active" id="btn-ms" onclick="setCalendar('MS', this)" style="border-color:#4CAF50; color:#2E7D32;">🟢 PNI / MS (SUS)</button>
+                <button class="filter-btn" id="btn-sbp" onclick="setCalendar('SBP', this)" style="border-color:#2196F3; color:#1565C0;">🔵 SBP (Privada)</button>
+                <button class="filter-btn" style="background:#FFF3E0; color:#E65100; border-color:#FFB74D;" onclick="toggleMacetes()">💡 Macetes</button>
+            </div>
+
+            <div id="macetes-box" class="macete-box" style="background: #FFF8E1; border-color: #FFCA28; display: none;">
+                <h4 style="margin-top:0; color:#E65100;">Mnemônicos de Vacinação (Foco SUS/PNI)</h4>
+                <div class="macete-item"><span class="macete-tag" style="background:#FFB300;">Ao Nascer</span> BB (BCG + Hep B)</div>
+                <div class="macete-item"><span class="macete-tag" style="background:#FFB300;">2 Meses</span> 4 Ps: Penta, Polio (VIP), Pneumo, Piriri (Rota)</div>
+                <div class="macete-item"><span class="macete-tag" style="background:#FFB300;">3 Meses</span> 3 invertido vira M (Meningo C)</div>
+                <div class="macete-item"><span class="macete-tag" style="background:#FFB300;">4 Meses</span> Repete 2º mês (4 Ps)</div>
+                <div class="macete-item"><span class="macete-tag" style="background:#FFB300;">5 Meses</span> Repete 3º mês (Meningo C)</div>
+                <div class="macete-item"><span class="macete-tag" style="background:#FFB300;">6 Meses</span> Cliente VIP (C de COVID-19, VIP de VIP, Influenza e Pentavalente)</div>
+                <div class="macete-item"><span class="macete-tag" style="background:#FFB300;">7 Meses</span> 2ª Dose COVID</div>
+                <div class="macete-item"><span class="macete-tag" style="background:#FFB300;">9 Meses</span> Febre Amarela <small>(+ COVID se for Pfizer)</small></div>
+                <div class="macete-item"><span class="macete-tag" style="background:#FFB300;">12 Meses</span> TPM: Tríplice, Pneumo 10, Meningo C/ACWY</div>
+                <div class="macete-item"><span class="macete-tag" style="background:#FFB300;">15 Meses</span> A Debutante Vira Tequila: Hep A, DTP, VIP, Tetraviral</div>
+                <div class="macete-item"><span class="macete-tag" style="background:#FFB300;">4 Anos</span> Depois FAz Vacina: DTP, Febre Amarela, Varicela</div>
+                <div class="macete-item"><span class="macete-tag" style="background:#FFB300;">9-14 Anos</span> HPV (Meninos e Meninas)</div>
+            </div>
+
+            <div id="vac-list"></div>
+        </div>
+    </div>
+
+    <script>
+        const cronogramaMS = [
+            {
+                idade: "Ao Nascer",
+                vacinas: [
+                    { nome: "BCG (Tuberculose)", desc: "Dose única o mais precocemente possível (ID)." },
+                    { nome: "Hepatite B", desc: "Dose única, preferencialmente nas primeiras 12h." }
+                ]
+            },
+            {
+                idade: "2 Meses",
+                vacinas: [
+                    { nome: "Penta (DTP/Hib/HepB)", desc: "1ª dose. (Tríplice bacteriana celular)." },
+                    { nome: "Poliomielite (VIP)", desc: "1ª dose." },
+                    { nome: "Pneumocócica 10v", desc: "1ª dose." },
+                    { nome: "Rotavírus (VRH)", desc: "1ª dose. (Monovalente)." }
+                ]
+            },
+            {
+                idade: "3 Meses",
+                vacinas: [
+                    { nome: "Meningocócica C", desc: "1ª dose." }
+                ]
+            },
+            {
+                idade: "4 Meses",
+                vacinas: [
+                    { nome: "Penta (DTP/Hib/HepB)", desc: "2ª dose." },
+                    { nome: "Poliomielite (VIP)", desc: "2ª dose." },
+                    { nome: "Pneumocócica 10v", desc: "2ª dose." },
+                    { nome: "Rotavírus (VRH)", desc: "2ª dose. (Encerra o esquema de rotavírus do MS)." }
+                ]
+            },
+            {
+                idade: "5 Meses",
+                vacinas: [
+                    { nome: "Meningocócica C", desc: "2ª dose." }
+                ]
+            },
+            {
+                idade: "6 Meses",
+                vacinas: [
+                    { nome: "Penta (DTP/Hib/HepB)", desc: "3ª dose." },
+                    { nome: "Poliomielite (VIP)", desc: "3ª dose." },
+                    { nome: "COVID-19", desc: "1ª dose. (Esquema aos 6, 7 e 9m para Pfizer; 6 e 7m para Moderna)." }
+                ]
+            },
+            {
+                idade: "7 Meses",
+                vacinas: [
+                    { nome: "COVID-19", desc: "2ª dose." }
+                ]
+            },
+            {
+                idade: "9 Meses",
+                vacinas: [
+                    { nome: "Febre Amarela", desc: "1ª dose." },
+                    { nome: "COVID-19", desc: "3ª dose (Exclusivo se o esquema foi iniciado com vacina Pfizer)." }
+                ]
+            },
+            {
+                idade: "12 Meses (1 Ano)",
+                vacinas: [
+                    { nome: "Tríplice Viral (SCR)", desc: "1ª dose." },
+                    { nome: "Pneumocócica 10v", desc: "Reforço." },
+                    { nome: "Meningocócica ACWY", desc: "Reforço (Substitui o reforço da MenC)." }
+                ]
+            },
+            {
+                idade: "15 Meses",
+                vacinas: [
+                    { nome: "DTP", desc: "1º Reforço." },
+                    { nome: "Poliomielite (VIP)", desc: "1º Reforço." },
+                    { nome: "Hepatite A", desc: "Dose única." },
+                    { nome: "Tetraviral (SCRV)", desc: "Dose única (Corresponde à 2ª dose de SCR e 1ª dose de Varicela)." }
+                ]
+            },
+            {
+                idade: "4 Anos",
+                vacinas: [
+                    { nome: "DTP", desc: "2º Reforço." },
+                    { nome: "Febre Amarela", desc: "Reforço." },
+                    { nome: "Varicela", desc: "2ª dose." }
+                ]
+            },
+            {
+                idade: "Adolescência (MS)",
+                vacinas: [
+                    { nome: "HPV4", desc: "Meninos e Meninas de 9 a 14 anos: Dose Única." },
+                    { nome: "Dengue", desc: "De 10 a 14 anos: 2 doses (Intervalo de 3 meses)." },
+                    { nome: "Meningocócica ACWY", desc: "Aos 11 e 12 anos: Dose Única/Reforço." }
+                ]
+            }
+        ];
+
+        const cronogramaSBP = [
+            {
+                idade: "Ao Nascer",
+                vacinas: [
+                    { nome: "BCG", desc: "Dose única." },
+                    { nome: "Hepatite B", desc: "1ª dose." },
+                    { nome: "Anticorpo Monoclonal VSR (Nirsevimabe)", desc: "Dose única aplicada no recém-nascido (independentemente da sazonalidade, o mais precocemente possível)." }
+                ]
+            },
+            {
+                idade: "2 Meses",
+                vacinas: [
+                    { nome: "Hexavalente (DTPa/Hib/HepB/VIP)", desc: "1ª dose." },
+                    { nome: "Rotavírus", desc: "1ª dose (Preferência pela Pentavalente VR5)." },
+                    { nome: "Pneumocócica Conjugada", desc: "1ª dose (13v, 15v ou 20v)." }
+                ]
+            },
+            {
+                idade: "3 Meses",
+                vacinas: [
+                    { nome: "Meningocócica ACWY", desc: "1ª dose." },
+                    { nome: "Meningocócica B recombinante", desc: "1ª dose." }
+                ]
+            },
+            {
+                idade: "4 Meses",
+                vacinas: [
+                    { nome: "Hexavalente (DTPa/Hib/HepB/VIP)", desc: "2ª dose." },
+                    { nome: "Rotavírus", desc: "2ª dose." },
+                    { nome: "Pneumocócica Conjugada", desc: "2ª dose (13v, 15v ou 20v)." }
+                ]
+            },
+            {
+                idade: "5 Meses",
+                vacinas: [
+                    { nome: "Meningocócica ACWY", desc: "2ª dose." },
+                    { nome: "Meningocócica B recombinante", desc: "2ª dose." }
+                ]
+            },
+            {
+                idade: "6 Meses",
+                vacinas: [
+                    { nome: "Hexavalente (DTPa/Hib/HepB/VIP)", desc: "3ª dose." },
+                    { nome: "Rotavírus", desc: "3ª dose (Caso uso da vacina Pentavalente VR5)." },
+                    { nome: "Pneumocócica Conjugada", desc: "3ª dose (13v, 15v ou 20v)." },
+                    { nome: "Influenza", desc: "A partir dos 6 meses (Primovacinação: 2 doses com 1 mês de intervalo)." },
+                    { nome: "COVID-19", desc: "A partir dos 6 meses." }
+                ]
+            },
+            {
+                idade: "9 Meses",
+                vacinas: [
+                    { nome: "Febre Amarela", desc: "1ª dose." }
+                ]
+            },
+            {
+                idade: "12 Meses (1 Ano)",
+                vacinas: [
+                    { nome: "Tríplice Viral (SCR)", desc: "1ª dose." },
+                    { nome: "Varicela", desc: "1ª dose." },
+                    { nome: "Pneumocócica", desc: "Reforço." },
+                    { nome: "Meningocócica ACWY", desc: "Reforço." },
+                    { nome: "Meningocócica B recombinante", desc: "Reforço." },
+                    { nome: "Hepatite A", desc: "1ª dose." }
+                ]
+            },
+            {
+                idade: "15 Meses",
+                vacinas: [
+                    { nome: "Pentavalente acelular (DTPa/Hib/VIP)", desc: "Reforço." },
+                    { nome: "Tetraviral (SCRV)", desc: "2ª dose (SCR e Varicela)." }
+                ]
+            },
+            {
+                idade: "18 Meses",
+                vacinas: [
+                    { nome: "Hepatite A", desc: "2ª dose." }
+                ]
+            },
+            {
+                idade: "4 a 6 Anos",
+                vacinas: [
+                    { nome: "DTPa", desc: "Reforço." },
+                    { nome: "Poliomielite (VIP)", desc: "Reforço." },
+                    { nome: "Febre Amarela", desc: "Reforço (aos 4 anos)." },
+                    { nome: "Dengue (Qdenga)", desc: "A partir dos 4 anos: 2 doses (Intervalo de 3 meses)." }
+                ]
+            },
+            {
+                idade: "Adolescência (SBP)",
+                vacinas: [
+                    { nome: "HPV", desc: "9 a 19 anos: 2 doses (Preferencialmente Nonavalente)." },
+                    { nome: "Meningo ACWY e Men B", desc: "11 a 12 anos: Reforço de ambas." },
+                    { nome: "Meningo ACWY", desc: "13 a 15 anos: Reforço (se não vacinado aos 11/12)." }
+                ]
+            }
+        ];
+
+        let currentCal = 'MS'; 
+
+        function setCalendar(type, btn) {
+            currentCal = type;
+            document.querySelectorAll('.filter-btn').forEach(b => {
+                b.classList.remove('active');
+                b.style.background = '#fff';
+            });
+            btn.classList.add('active');
+            btn.style.background = type === 'MS' ? '#E8F5E9' : '#E3F2FD';
+            renderCalendar();
+        }
+
+        function toggleMacetes() {
+            const box = document.getElementById('macetes-box');
+            box.style.display = box.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function renderCalendar() {
+            const container = document.getElementById('vac-list');
+            const data = currentCal === 'MS' ? cronogramaMS : cronogramaSBP;
+            const themeColor = currentCal === 'MS' ? '#4CAF50' : '#2196F3';
+            const bgCard = currentCal === 'MS' ? '#F1F8E9' : '#F5F9FF';
+            let html = "";
+
+            data.forEach(grupo => {
+                let vacinasHTML = "";
+                grupo.vacinas.forEach(vac => {
+                    vacinasHTML += `
+                        <div style="border-bottom: 1px solid #e0e0e0; padding: 10px 0;">
+                            <div style="font-weight: 800; color: #333; font-size: 1rem; margin-bottom: 3px;">${vac.nome}</div>
+                            <div style="font-size: 0.9rem; color: #555; line-height: 1.4;">${vac.desc}</div>
+                        </div>`;
+                });
+                html += `
+                    <div class="vac-card" style="border-left-color: ${themeColor}; background-color: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.06); padding: 0;">
+                        <div style="background-color: ${bgCard}; padding: 12px 15px; border-top-left-radius: 12px; border-top-right-radius: 12px; border-bottom: 1px solid #eaeaea;">
+                            <span style="font-weight: 900; color: ${themeColor}; font-size: 1.1rem;">${grupo.idade}</span>
+                        </div>
+                        <div style="padding: 0 15px 5px 15px;">
+                            ${vacinasHTML}
+                        </div>
+                    </div>`;
+            });
+            container.innerHTML = html;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            setCalendar('MS', document.getElementById('btn-ms'));
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Antropometria (OMS) - Saúde da Criança</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="crianca.html" class="back-btn" style="text-decoration: none;">⬅</a>
+        <div class="app-title">Saúde da Criança 👶</div>
+    </header>
+
+    <div class="container">
+        <div class="calc-box">
+            <h3>Dados Antropométricos (OMS)</h3>
+            <form onsubmit="event.preventDefault(); runCalculoZ();">
+                <div style="background:#FFF8E1; padding:15px; border-radius:12px; margin-bottom:20px; border:1px solid #FFE0B2;">
+                    <div style="display:grid; grid-template-columns: 1fr 1fr; gap:10px;">
+                        <div><label>Nascimento</label><input type="date" id="ped-dob" required></div>
+                        <div><label>Consulta</label><input type="date" id="ped-visit" required></div>
+                    </div>
+                    <div id="ped-age-display" style="text-align:center; font-weight:bold; color:#F57C00; margin-top:5px; font-size:0.95rem;"></div>
+                </div>
+                <label>Sexo</label>
+                <select id="ped-sex">
+                    <option value="BOYS">Masculino</option>
+                    <option value="GIRLS">Feminino</option>
+                </select>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:15px;">
+                    <div><label>Peso (kg)</label><input type="number" id="ped-w" step="0.001" required></div>
+                    <div><label>Estatura (cm)</label><input type="number" id="ped-h" step="0.1" required></div>
+                </div>
+                <label>Perímetro Cefálico (cm)</label><input type="number" id="ped-hc" step="0.1">
+                <button class="btn-calc" style="background:var(--primary);">Calcular e Classificar</button>
+            </form>
+            <div id="ped-res-area" class="result-box" style="display: none;">
+                <h4 style="margin:0 0 15px 0; color:var(--primary);">RESULTADOS</h4>
+                <div id="ped-zscore-results"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dados_oms.js"></script>
+    <script src="antropometria.js"></script>
+
+</body>
+</html>
