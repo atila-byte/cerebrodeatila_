@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Mellitus (SBD 2025)</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* TEMA AZUL (DIABETES) */
+        :root { --theme-dm: #1565C0; } 
+        
+        .resumo-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--theme-dm);
+        }
+
+        .res-header { 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #0D47A1; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #E3F2FD;
+            padding-bottom: 10px;
+        }
+
+        .res-content { font-size: 0.95rem; color: #444; line-height: 1.6; }
+        
+        /* Tabelas */
+        .table-custom { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.85rem; }
+        .table-custom th { background-color: #E3F2FD; color: #0D47A1; padding: 8px; text-align: left; border: 1px solid #BBDEFB; }
+        .table-custom td { padding: 8px; border: 1px solid #eee; }
+        .table-custom tr:nth-child(even) { background-color: #FAFAFA; }
+
+        /* Drugs */
+        .drug-table { width: 100%; font-size: 0.85rem; margin-bottom: 20px; border-collapse: collapse; }
+        .drug-table th { background: #ECEFF1; color: #37474F; text-align: left; padding: 8px; border-bottom: 2px solid #CFD8DC; }
+        .drug-table td { border-bottom: 1px solid #eee; padding: 8px; vertical-align: top; }
+        .drug-name { font-weight: 700; color: #1565C0; display: block; font-size: 0.9rem; }
+        .drug-class-header { background: #E1F5FE; color: #0277BD; padding: 8px; font-weight: bold; border-left: 4px solid #0288D1; margin-top: 15px; }
+
+        /* TAG SUS */
+        .tag-sus { 
+            background-color: #2E7D32; color: white; 
+            padding: 3px 8px; border-radius: 4px; 
+            font-size: 0.75rem; font-weight: bold; 
+            display: inline-block; margin-left: 5px;
+            vertical-align: text-bottom;
+        }
+
+        /* Section Dividers */
+        .section-title { 
+            background: var(--theme-dm); color: white; 
+            padding: 10px 15px; border-radius: 8px; 
+            font-weight: bold; margin: 30px 0 15px 0; 
+            text-align: center; text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(21, 101, 192, 0.2);
+        }
+
+        /* Check lists */
+        .check-list li { margin-bottom: 6px; }
+        .check-list li::before { content: "• "; color: var(--theme-dm); font-weight: bold; }
+
+        /* Risco CV DM2 */
+        .risk-cv-table td { font-weight: 500; vertical-align: top; }
+        .risk-vhigh { border-left: 5px solid #b71c1c; background: #ffebee; }
+        .risk-high { border-left: 5px solid #f57f17; background: #fffde7; }
+        .risk-mod { border-left: 5px solid #2e7d32; background: #e8f5e9; }
+
+        /* CALCULADORA & BOXES */
+        .calc-wrapper { background: #F1F8E9; padding: 20px; border-radius: 10px; border: 1px solid #C5E1A5; margin-top: 20px; text-align: center; }
+        .calc-input { padding: 10px; font-size: 1rem; width: 120px; text-align: center; border: 2px solid #AED581; border-radius: 6px; margin-right: 10px; }
+        .calc-btn { padding: 10px 20px; font-size: 1rem; background: #558B2F; color: white; border: none; border-radius: 6px; cursor: pointer; font-weight: bold; }
+        .calc-btn:hover { background: #33691E; }
+        .calc-result { margin-top: 20px; display: none; text-align: left; background: white; padding: 15px; border-radius: 8px; border: 1px solid #ddd; }
+        .result-row { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #eee; font-size: 0.9rem; }
+        .result-row strong { color: #2E7D32; }
+        
+        .calc-box { background: #F5F5F5; border: 1px dashed #999; padding: 10px; margin-top: 5px; border-radius: 6px; font-family: monospace; font-size: 0.85rem; color: #333; }
+
+        /* Didático */
+        .didactic-card { background: #E3F2FD; border-radius: 8px; padding: 15px; margin-bottom: 15px; border-left: 5px solid #1565C0; }
+        .didactic-title { font-weight: bold; color: #0D47A1; margin-bottom: 5px; display: block; }
+
+        /* Algoritmo Boxes */
+        .algo-step { background: #FAFAFA; border: 1px solid #ddd; border-radius: 8px; padding: 15px; margin-bottom: 15px; }
+        .algo-title { font-weight: 800; color: #1565C0; display: block; margin-bottom: 5px; text-transform: uppercase; font-size: 0.85rem; }
+
+        .ref-section { margin-top: 40px; font-size: 0.75rem; color: #777; border-top: 1px solid #ddd; padding-top: 20px; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <button class="back-btn" onclick="window.location.href='resumos.html'">⬅</button>
+        <div class="app-title">Diabetes Mellitus (SBD 2025)</div>
+    </header>
+
+    <div class="container">
+
+        <div class="resumo-box">
+            <div class="res-header">🤒 Quadro Clínico Típico</div>
+            <div class="res-content">
+                <div style="display:flex; gap:20px; flex-wrap:wrap;">
+                    <div style="flex:1; min-width:250px;">
+                        <strong style="color:#D32F2F;">Diabetes Tipo 1 (DM1)</strong>
+                        <p style="font-size:0.9rem;">Início abrupto, geralmente em crianças/adolescentes. Sintomas clássicos intensos (4 Ps): <strong>Poliúria, Polidipsia, Polifagia e Perda de peso</strong> inexplicada. Comum abertura com Cetoacidose Diabética (CAD).</p>
+                    </div>
+                    <div style="flex:1; min-width:250px;">
+                        <strong style="color:#1565C0;">Diabetes Tipo 2 (DM2)</strong>
+                        <p style="font-size:0.9rem;">Início insidioso e muitas vezes assintomático. Diagnóstico frequentemente por rastreamento. Quando sintomático: poliúria, visão turva, infecções de repetição, cicatrização lenta. Associado a Síndrome Metabólica (Obesidade, HAS).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">📊 Diagnóstico e Metas</div>
+
+        <div class="resumo-box">
+            <div class="res-header">🩸 Critérios Diagnósticos</div>
+            <div class="res-content">
+                <p>Necessária confirmação com segunda dosagem, exceto se sintomas inequívocos + Glicemia &ge; 200.</p>
+                <table class="table-custom">
+                    <tr><th>Categoria</th><th>Jejum</th><th>TOTG 1h (75g)</th><th>TOTG 2h (75g)</th><th>HbA1c</th></tr>
+                    <tr><td><strong>Normoglicemia</strong></td><td>< 100</td><td>< 155</td><td>< 140</td><td>< 5,7%</td></tr>
+                    <tr><td><strong>Pré-Diabetes</strong></td><td>100 – 125</td><td>155 – 208</td><td>140 – 199</td><td>5,7 – 6,4%</td></tr>
+                    <tr><td><strong>Diabetes (Geral)</strong></td><td>&ge; 126</td><td>&ge; 209</td><td>&ge; 200</td><td>&ge; 6,5%</td></tr>
+                    <tr style="background:#FFF8E1;"><td><strong>Diabetes Gestacional</strong></td><td>&ge; 92</td><td>&ge; 180</td><td>&ge; 153</td><td>-</td></tr>
+                </table>
+                <p style="font-size:0.8rem; color:#555;">*Para DMG, basta 1 ponto alterado para diagnóstico.</p>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">🎯 Metas Terapêuticas Completas</div>
+            <div class="res-content">
+                <table class="table-custom">
+                    <tr>
+                        <th width="30%">Perfil</th>
+                        <th>HbA1c</th>
+                        <th>Jejum/Pré-prandial</th>
+                        <th>Pós-prandial (2h)</th>
+                        <th>Tempo no Alvo (TIR)<br><small>(70-180 mg/dL)</small></th>
+                    </tr>
+                    <tr>
+                        <td><strong>Adulto Geral</strong></td>
+                        <td>< 7,0%</td>
+                        <td>80 – 130</td>
+                        <td>< 180</td>
+                        <td>> 70%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jovem / Sem risco</strong></td>
+                        <td>< 6,5%</td>
+                        <td>< 110</td>
+                        <td>< 140</td>
+                        <td>> 70%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Idoso Frágil / Comorbidades</strong></td>
+                        <td>< 8,0 – 8,5%</td>
+                        <td>< 150 (Flexível)</td>
+                        <td>< 200 (Flexível)</td>
+                        <td>> 50%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gestante</strong></td>
+                        <td>< 6,0%</td>
+                        <td>< 95</td>
+                        <td>< 140 (1h) / < 120 (2h)</td>
+                        <td>> 70% (63-140)</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-title">🧬 Diabetes Tipo 1 e Insulinoterapia</div>
+
+        <div class="resumo-box">
+            <div class="res-header">🔍 Rastreamento e Exames</div>
+            <div class="res-content">
+                <table class="table-custom">
+                    <tr><th>Exame</th><th>Significado Clínico</th></tr>
+                    <tr><td><strong>Anti-GAD 65</strong></td><td>Principal marcador em adultos (LADA) e adolescentes. Persiste por longa data.</td></tr>
+                    <tr><td><strong>Anti-IA2 / ZnT8</strong></td><td>Indicam destruição beta rápida. Mais comuns em crianças e início agudo.</td></tr>
+                    <tr><td><strong>Peptídeo C</strong></td><td>Mede a produção residual de insulina. <br>Baixo (< 0,5 ng/mL) confirma DM1. Normal/Alto sugere DM2/MODY.</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">💉 Cálculo de Dose (Método Fisiológico)</div>
+            <div class="res-content">
+                
+                <div class="didactic-card">
+                    <span class="didactic-title">💡 Entendendo o Esquema Basal-Bolus</span>
+                    <p style="margin-bottom:10px;">Imagine a insulina como o combustível do corpo:</p>
+                    <ul style="margin-left:20px;">
+                        <li style="margin-bottom:5px;"><strong>Basal (O Fundo):</strong> É a insulina que mantém o motor ligado 24h. Cobre a produção hepática de glicose. Sem ela, a glicemia sobe mesmo em jejum. Aplica-se 1 ou 2 vezes ao dia.</li>
+                        <li><strong>Bolus (A Refeição):</strong> É a aceleração extra quando você come. Cobre os carboidratos daquela refeição específica. Aplica-se antes do café, almoço e jantar.</li>
+                    </ul>
+                </div>
+
+                <p>Método fisiológico (Basal-Bolus) para DM1 ou DM2 insulinopenico.</p>
+
+                <h4 style="color:#0277BD; margin-bottom:5px;">1. Dose Total Diária (DTD)</h4>
+                <p>DTD Estimada = Peso (kg) x 0,55<br>
+                Exemplo: 70kg x 0,55 = 38 unidades/dia.</p>
+
+                <h4 style="color:#0277BD; margin-bottom:5px; margin-top:15px;">2. Distribuição da Dose</h4>
+                <p><strong>Basal (40-50%):</strong> Mantém glicemia nos jejuns. (Ex: 19u)<br>
+                <strong>Bolus (50-60%):</strong> Cobre refeições. (Ex: 19u divididas nas refeições)</p>
+
+                <h4 style="color:#0277BD; margin-bottom:5px; margin-top:15px;">3. Razão Insulina:Carboidrato (Regra dos 500)</h4>
+                <p>500 ÷ DTD = Gramas de Carboidrato cobertos por 1 unidade.<br>
+                Ex: 500 ÷ 38 ≈ 13g. (1 ui cobre 13g de CHO)</p>
+
+                <h4 style="color:#0277BD; margin-bottom:5px; margin-top:15px;">4. Fator de Sensibilidade (Regra dos 1800)</h4>
+                <p>1800 ÷ DTD = Queda na glicemia (mg/dL) por 1 unidade (Insulina Rápida).<br>
+                Ex: 1800 ÷ 38 ≈ 47 mg/dL. (1 ui baixa a glicemia em 47 mg/dL)</p>
+
+                <div class="calc-wrapper">
+                    <h4 style="color:#33691E; margin-bottom:10px;">🧮 Calculadora Rápida (0,55 UI/kg)</h4>
+                    <input type="number" id="weightInput" class="calc-input" placeholder="Peso (kg)">
+                    <button class="calc-btn" onclick="calculateInsulin()">Calcular</button>
+
+                    <div id="resultArea" class="calc-result">
+                        <div class="result-row"><span>Dose Total Diária (DTD):</span> <strong id="resDTD">-</strong></div>
+                        <div class="result-row"><span>Insulina Basal (50%):</span> <strong id="resBasal">-</strong></div>
+                        <div class="result-row"><span>Insulina Bolus Total (50%):</span> <strong id="resBolus">-</strong></div>
+                        <div class="result-row" style="background:#F1F8E9;"><span>Bolus por Refeição (aprox):</span> <strong id="resMeal">-</strong></div>
+                        <div class="result-row"><span>Relação Insulina:Carboidrato (500/DTD):</span> <strong id="resCarbRatio">-</strong></div>
+                        <div class="result-row"><span>Fator de Sensibilidade (1800/DTD):</span> <strong id="resCorrection">-</strong></div>
+                        <p style="font-size:0.75rem; color:#777; margin-top:10px;">*Valores estimativos iniciais. Ajuste conforme resposta clínica.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">📦 Tipos de Insulina</div>
+            <div class="res-content">
+                <div class="drug-class-header">Insulinas Basais</div>
+                <table class="drug-table">
+                    <tr><th>Insulina</th><th>Duração</th><th>Obs</th></tr>
+                    <tr><td><strong>Glargina U100</strong></td><td>24h</td><td>Pico irrelevante. Padrão ouro.</td></tr>
+                    <tr><td><strong>Glargina U300</strong></td><td>> 24h</td><td>Menor variabilidade.</td></tr>
+                    <tr><td><strong>Degludeca</strong></td><td>> 42h</td><td>Flexibilidade de horário.</td></tr>
+                    <tr><td><strong>NPH</strong> <span class="tag-sus">SUS</span></td><td>10-16h</td><td>Pico pronunciado (4-10h). Requer 2 a 3 doses/dia.</td></tr>
+                </table>
+
+                <div class="drug-class-header">Insulinas Bolus (Rápida/Ultrarrápida)</div>
+                <table class="drug-table">
+                    <tr><th>Insulina</th><th>Início</th><th>Aplicação</th></tr>
+                    <tr><td><strong>Lispro / Asparte / Glulisina</strong></td><td>5-15 min</td><td>15 min antes da refeição.</td></tr>
+                    <tr><td><strong>Fiasp</strong></td><td>2-5 min</td><td>Imediatamente antes ou após refeição.</td></tr>
+                    <tr><td><strong>Regular (R)</strong> <span class="tag-sus">SUS</span></td><td>30-60 min</td><td>30-45 min antes da refeição (Essencial respeitar tempo).</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="section-title">💊 Diabetes Tipo 2 (DM2)</div>
+
+        <div class="resumo-box">
+            <div class="res-header">⚖️ Estratificação de Risco CV (Completa)</div>
+            <div class="res-content">
+                <p>Fundamental para escolha da terapia. (SBD 2025)</p>
+                <table class="table-custom risk-cv-table">
+                    <tr>
+                        <th width="25%">Risco</th>
+                        <th>Critérios</th>
+                    </tr>
+                    <tr class="risk-vhigh">
+                        <td><strong>MUITO ALTO</strong></td>
+                        <td>
+                            <strong>Doença Cardiovascular Estabelecida:</strong><br>
+                            • IAM, AVC, DAOP, Revascularização, Estenose carotídea > 50%, Aneurisma Aorta, HVE grave.<br>
+                            <strong>OU Lesão de Órgão Alvo (LOA) Grave:</strong><br>
+                            • TFG < 45 ml/min.<br>
+                            • TFG 45-60 + Albuminúria (A3 ou A2).<br>
+                            • Retinopatia avançada.<br>
+                            <strong>OU &ge; 3 Fatores de Risco</strong> (Idade, HAS, Tabagismo, Dislipidemia, Obesidade).
+                        </td>
+                    </tr>
+                    <tr class="risk-high">
+                        <td><strong>ALTO</strong></td>
+                        <td>
+                            • DM com duração <strong>> 10 anos</strong> (sem DCV).<br>
+                            • OU Presença de <strong>1 ou 2 Fatores de Risco</strong> adicionais.<br>
+                            • OU LOA incipiente (Albuminúria A2 isolada).
+                        </td>
+                    </tr>
+                    <tr class="risk-mod">
+                        <td><strong>MODERADO</strong></td>
+                        <td>
+                            • DM diagnóstico recente (< 10 anos).<br>
+                            • Idade < 50 anos.<br>
+                            • <strong>SEM</strong> outros fatores de risco ou LOA.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">⚙️ Manejo e Tratamento (SBD 2025)</div>
+            <div class="res-content">
+                
+                <h4 style="color:#0D47A1; margin-bottom:10px;">1. Estratégia Baseada no Perfil Clínico</h4>
+                <div style="background:#FFEBEE; padding:12px; border-radius:8px; border-left:5px solid #D32F2F; margin-bottom:10px;">
+                    <strong>COM DOENÇA CARDIORRENAL (DCV, IC, DRC):</strong><br>
+                    Uso de <strong>iSGLT2</strong> e/ou <strong>GLP-1 RA</strong> com benefício comprovado é MANDATÓRIO, <u>independente da HbA1c</u>.
+                </div>
+                <div style="background:#F3E5F5; padding:12px; border-radius:8px; border-left:5px solid #7B1FA2; margin-bottom:20px;">
+                    <strong>SEM DOENÇA CARDIORRENAL:</strong><br>
+                    <strong>Foco no Peso:</strong> Tirzepatida > Semaglutida > Liraglutida > iSGLT2.<br>
+                    <strong>Foco no Custo (SUS):</strong> Metformina + Sulfonilureia (Gliclazida MR).
+                </div>
+
+                <h4 style="color:#0D47A1; margin-bottom:10px;">2. Definição da Estratégia Inicial</h4>
+                <div class="algo-step">
+                    <span class="algo-title">Monoterapia (HbA1c < 7,5%)</span>
+                    <p>Iniciar com <strong>Metformina</strong> (se tolerada).<br>
+                    Reavaliar em 3 meses.</p>
+                </div>
+                <div class="algo-step">
+                    <span class="algo-title">Terapia Dupla (HbA1c 7,5% a 9,0%)</span>
+                    <p>Iniciar diretamente com <strong>2 fármacos</strong> de classes diferentes.<br>
+                    Ex: Metformina + iSGLT2 ou Metformina + GLP-1 RA.</p>
+                </div>
+                <div class="algo-step" style="border-color:#E57373; background:#FFEBEE;">
+                    <span class="algo-title" style="color:#D32F2F;">Insulinoterapia Inicial (HbA1c > 9,0% + Sintomas)</span>
+                    <p>Se sintomas catabólicos (perda de peso, poliúria) ou glicemia > 300 mg/dL.<br>
+                    Pode-se tentar simplificar para oral após controle da glicotoxicidade.</p>
+                </div>
+
+                <h4 style="color:#0D47A1; margin-bottom:10px; margin-top:20px;">3. Intensificação (Falha Terapêutica)</h4>
+                <ul class="check-list">
+                    <li>Se HbA1c fora da meta após 3 meses: Adicionar fármaco de outra classe.</li>
+                    <li>Preferir <strong>GLP-1 RA injetável</strong> antes de iniciar insulina (maior eficácia, menor hipo, perda de peso).</li>
+                    <li>Se falha com GLP-1 RA ou contraindicação: Iniciar <strong>Insulina Basal</strong> (0,1 a 0,2 UI/kg ao deitar).</li>
+                </ul>
+
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">📚 Farmacologia (Classes)</div>
+            <div class="res-content">
+                
+                <div class="drug-class-header">Biguanidas</div>
+                <table class="drug-table">
+                    <tr><th>Fármaco</th><th>Dose</th><th>Obs</th></tr>
+                    <tr><td><span class="drug-name">Metformina <span class="tag-sus">SUS</span></span></td><td>500 - 2550 mg</td><td>1ª linha geral. Suspender se TFG < 30. Deficiência B12 a longo prazo.</td></tr>
+                </table>
+
+                <div class="drug-class-header">Sulfonilureias (Secretagogos)</div>
+                <table class="drug-table">
+                    <tr><th>Fármaco</th><th>Obs</th></tr>
+                    <tr><td><span class="drug-name">Gliclazida MR <span class="tag-sus">SUS</span></span></td><td>Preferencial (menor risco hipo e CV).</td></tr>
+                    <tr><td><span class="drug-name">Glibenclamida <span class="tag-sus">SUS</span></span></td><td>Evitar (alto risco de hipo grave, especialmente idosos).</td></tr>
+                    <tr><td><span class="drug-name">Glimepirida</span></td><td>Opção alternativa.</td></tr>
+                </table>
+
+                <div class="drug-class-header">Inibidores SGLT2 (Gliflozinas)</div>
+                <table class="drug-table">
+                    <tr><th>Fármaco</th><th>Dose</th><th>Benefícios Extras</th></tr>
+                    <tr><td><span class="drug-name">Dapagliflozina</span></td><td>10 mg</td><td>Proteção IC e Renal (aprovada para não-diabéticos também).</td></tr>
+                    <tr><td><span class="drug-name">Empagliflozina</span></td><td>10 - 25 mg</td><td>Proteção CV, IC e Renal.</td></tr>
+                    <tr><td><span class="drug-name">Canagliflozina</span></td><td>100 - 300 mg</td><td>Proteção Renal e CV.</td></tr>
+                    <tr><td colspan="3"><em>Risco: Infecção genital, cetoacidose euglicêmica.</em></td></tr>
+                </table>
+
+                <div class="drug-class-header">Agonistas GLP-1 (Incretinas)</div>
+                <table class="drug-table">
+                    <tr><th>Fármaco</th><th>Frequência</th><th>Obs</th></tr>
+                    <tr><td><span class="drug-name">Semaglutida</span></td><td>Semanal (SC) / Diário (Oral)</td><td>Maior potência perda peso e HbA1c. Proteção CV.</td></tr>
+                    <tr><td><span class="drug-name">Liraglutida</span></td><td>Diária</td><td>Perda peso. Proteção CV.</td></tr>
+                    <tr><td><span class="drug-name">Dulaglutida</span></td><td>Semanal</td><td>Proteção CV.</td></tr>
+                </table>
+
+                <div class="drug-class-header">Inibidores DPP-4 (Gliptinas)</div>
+                <table class="drug-table">
+                    <tr><th>Fármaco</th><th>Obs</th></tr>
+                    <tr><td><span class="drug-name">Sitagliptina / Vildagliptina</span></td><td>Neutros no peso. Baixo risco hipo. Potência fraca.</td></tr>
+                    <tr><td><span class="drug-name">Linagliptina</span></td><td>Não requer ajuste renal (seguro em diálise).</td></tr>
+                </table>
+
+            </div>
+        </div>
+
+        <div class="ref-section">
+            <strong>Referências Bibliográficas:</strong><br>
+            Diretrizes da Sociedade Brasileira de Diabetes 2025-2026. Disponível em: diretriz.diabetes.org.br.<br>
+            UCSF Diabetes Teaching Center (Calculating Insulin Dose).
+        </div>
+
+    </div>
+
+    <script>
+        function calculateInsulin() {
+            let weight = parseFloat(document.getElementById('weightInput').value);
+            
+            if (!weight || weight <= 0) {
+                alert("Por favor, insira um peso válido.");
+                return;
+            }
+
+            // Fator UCSF: 0.55 u/kg/dia
+            let dtd = weight * 0.55;
+            let basal = dtd * 0.5;
+            let bolusTotal = dtd * 0.5;
+            let mealBolus = bolusTotal / 3; // Média 3 refeições
+            let carbRatio = 500 / dtd;
+            let correctionFactor = 1800 / dtd;
+
+            // Renderizar resultados
+            document.getElementById('resDTD').innerText = dtd.toFixed(0) + " UI";
+            document.getElementById('resBasal').innerText = basal.toFixed(0) + " UI";
+            document.getElementById('resBolus').innerText = bolusTotal.toFixed(0) + " UI";
+            document.getElementById('resMeal').innerText = "~" + mealBolus.toFixed(0) + " UI";
+            document.getElementById('resCarbRatio').innerText = "1 UI para " + carbRatio.toFixed(0) + "g CHO";
+            document.getElementById('resCorrection').innerText = "1 UI reduz " + correctionFactor.toFixed(0) + " mg/dL";
+
+            document.getElementById('resultArea').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

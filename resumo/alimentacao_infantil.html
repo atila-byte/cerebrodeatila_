@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saúde da Criança - Guia de Alimentação</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .guide-card { 
+            background: white; 
+            padding: 20px; 
+            border-radius: 12px; 
+            margin-bottom: 20px; 
+            border-left: 6px solid #F8BBD0; 
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05); 
+        }
+        .guide-title { 
+            font-weight: 800; 
+            color: #37474F; 
+            margin-bottom: 12px; 
+            font-size: 1.1rem; 
+            text-transform: uppercase;
+        }
+        .guide-content { font-size: 0.95rem; color: #444; line-height: 1.6; }
+        .guide-content ul { padding-left: 20px; margin-top: 5px; }
+        .guide-content li { margin-bottom: 8px; }
+        
+        .table-responsive {
+            overflow-x: auto;
+            margin-top: 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        .table-meals { 
+            width: 100%; 
+            min-width: 600px; 
+            border-collapse: collapse; 
+            background: #fff;
+        }
+        .table-meals th, .table-meals td { 
+            border: 1px solid #eee; 
+            padding: 12px; 
+            text-align: center; 
+            font-size: 0.9rem;
+        }
+        .table-meals th { 
+            background-color: #F8BBD0; 
+            color: #333; 
+            font-weight: 800;
+        }
+        .table-meals td:first-child {
+            text-align: left;
+            font-weight: bold;
+            background-color: #fdfdfd;
+        }
+        
+        .alert-text { color: #EF5350; font-weight: bold; }
+        .plate-img { width: 100%; max-width: 400px; height: auto; display: block; margin: 15px auto; border-radius: 8px; }
+        
+        .ref-section { 
+            font-size: 0.8rem; 
+            color: #777; 
+            margin-top: 30px; 
+            margin-bottom: 30px;
+            border-top: 1px solid #ddd; 
+            padding-top: 15px; 
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <header class="app-header">
+        <a href="pediatria.html" class="back-btn" style="text-decoration: none;">⬅</a>
+        <div class="app-title">Saúde da Criança 👶</div>
+    </header>
+
+    <div class="container">
+
+        <h2 style="color:#37474F; margin-bottom:20px;">Guia de Alimentação Infantil</h2>
+
+        <div class="guide-card">
+            <div class="guide-title">1. Aleitamento Materno</div>
+            <div class="guide-content">
+                A amamentação deve ser <strong>exclusiva até os 6 meses</strong> de vida, em livre demanda. Não é necessário (nem recomendado) oferecer água, chás ou sucos neste período. A partir dos 6 meses, inicia-se a introdução alimentar, mas o leite materno deve ser mantido e complementado até os <strong>2 anos de idade ou mais</strong>, conforme o desejo da mãe e da criança.
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="guide-title">2. Início da Introdução Alimentar</div>
+            <div class="guide-content">
+                Ocorre a partir dos <strong>6 meses</strong>, momento em que o sistema digestivo e neurológico da criança está mais maduro.
+                <br><br><strong>Sinais de Prontidão (observar se a criança já apresenta):</strong>
+                <ul>
+                    <li>Senta-se com pouco ou nenhum apoio, com bom controle da cabeça e tronco.</li>
+                    <li>Perde o reflexo de protrusão (para de empurrar a colher/comida para fora com a língua).</li>
+                    <li>Demonstra interesse pela comida dos adultos (tenta pegar, acompanha com o olhar).</li>
+                    <li>Leva objetos à boca de forma intencional.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="guide-title">3. Composição do Prato e Grupos Alimentares</div>
+            <div class="guide-content">
+                Para que a refeição principal (almoço e jantar) seja nutricionalmente completa, ela deve conter <strong>pelo menos um alimento de cada um dos quatro grupos</strong> abaixo. A proporção ideal, ilustrada a seguir, é que metade do prato seja composta por hortaliças, e a outra metade dividida entre os demais grupos.
+
+                <img src="../imagens/pratinho.png" alt="Divisão do Pratinho Infantil" class="plate-img">
+
+                <div class="table-responsive">
+                    <table class="table-meals">
+                        <thead>
+                            <tr>
+                                <th style="background-color: #E1BEE7;">Grupo Alimentar</th>
+                                <th style="background-color: #E1BEE7;">Função Principal</th>
+                                <th style="background-color: #E1BEE7;">Exemplos de Alimentos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Cereais e Tubérculos</strong></td>
+                                <td>Energia (Carboidratos)</td>
+                                <td>Arroz, milho, macarrão, batata, batata-doce, aipim (mandioca/macaxeira), inhame, cará, aveia.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Leguminosas</strong></td>
+                                <td>Ferro e Proteína Vegetal</td>
+                                <td>Feijão (preto, carioca, fradinho, corda), lentilha, grão-de-bico, ervilha, soja.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Proteína Animal</strong></td>
+                                <td>Proteína, Ferro e Zinco</td>
+                                <td>Carne bovina, frango, peixe, porco, vísceras (fígado), ovo (clara e gema).</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Hortaliças</strong></td>
+                                <td>Vitaminas, Minerais e Fibras</td>
+                                <td><strong>Legumes:</strong> Cenoura, abóbora, chuchu, beterraba, abobrinha, quiabo.<br><strong>Verduras:</strong> Brócolis, couve, espinafre, repolho, tomate.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="guide-title">4. O Prato e a Consistência</div>
+            <div class="guide-content">
+                <img src="../imagens/pratosbp.png" alt="Esquema do prato SBP" class="plate-img">
+                <strong>Evolução da Consistência:</strong>
+                <ul>
+                    <li><strong>6 meses:</strong> Amassada com o garfo. Os alimentos devem ser oferecidos separados no prato para a criança reconhecer os sabores. <em>Nunca liquidificar e nunca peneirar.</em></li>
+                    <li><strong>7 a 8 meses:</strong> Amassada mais grosseiramente. Iniciar oferta de alimentos em pedaços macios (cortes seguros) para a criança pegar com as mãos e estimular a mastigação.</li>
+                    <li><strong>9 a 11 meses:</strong> Comida picada, aproximando-se da consistência da família.</li>
+                    <li><strong>A partir de 1 ano:</strong> Mesma consistência da comida da família.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="guide-title">5. Esquema de Refeições por Idade</div>
+            <div class="guide-content">
+                A introdução deve ser gradual e respeitar o apetite da criança. O quadro abaixo foca na introdução da <strong>alimentação complementar</strong>, lembrando que o Leite Materno (LM) deve continuar em <strong>livre demanda</strong>.
+                
+                <div class="table-responsive">
+                    <table class="table-meals">
+                        <thead>
+                            <tr>
+                                <th>Refeição</th>
+                                <th>6 meses<br><small>(3 refeições sólidas)</small></th>
+                                <th>7 a 8 meses<br><small>(4 refeições sólidas)</small></th>
+                                <th>9 a 11 meses<br><small>(4 refeições sólidas)</small></th>
+                                <th>1 a 2 anos<br><small>(5 refeições sólidas)</small></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Desjejum<br><small>(Café da Manhã)</small></td>
+                                <td style="color:#5D7293; font-weight:bold;">Leite Materno</td>
+                                <td style="color:#5D7293; font-weight:bold;">Leite Materno</td>
+                                <td style="color:#5D7293; font-weight:bold;">Leite Materno</td>
+                                <td>Comida da família + LM</td>
+                            </tr>
+                            <tr>
+                                <td>Lanche da Manhã</td>
+                                <td>Fruta<br><small>(raspada/amassada)</small></td>
+                                <td>Fruta<br><small>(amassada)</small></td>
+                                <td>Fruta<br><small>(em pedaços)</small></td>
+                                <td>Fruta</td>
+                            </tr>
+                            <tr>
+                                <td>Almoço</td>
+                                <td>Refeição Principal<br><small>(amassada)</small></td>
+                                <td>Refeição Principal<br><small>(amassada)</small></td>
+                                <td>Comida da família<br><small>(picada)</small></td>
+                                <td>Comida da família</td>
+                            </tr>
+                            <tr>
+                                <td>Lanche da Tarde</td>
+                                <td>Fruta<br><small>(raspada/amassada)</small></td>
+                                <td>Fruta<br><small>(amassada)</small></td>
+                                <td>Fruta<br><small>(em pedaços)</small></td>
+                                <td>Fruta ou lanche saudável</td>
+                            </tr>
+                            <tr>
+                                <td>Jantar</td>
+                                <td style="color:#5D7293; font-weight:bold;">Leite Materno*</td>
+                                <td>Refeição Principal<br><small>(amassada)</small></td>
+                                <td>Comida da família<br><small>(picada)</small></td>
+                                <td>Comida da família</td>
+                            </tr>
+                            <tr>
+                                <td>Ceia / Madrugada</td>
+                                <td style="color:#5D7293; font-weight:bold;">Leite Materno</td>
+                                <td style="color:#5D7293; font-weight:bold;">Leite Materno</td>
+                                <td style="color:#5D7293; font-weight:bold;">Leite Materno</td>
+                                <td style="color:#5D7293; font-weight:bold;">Leite Materno</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p style="font-size:0.85rem; color:#777; margin-top:10px; line-height: 1.5;">
+                    <strong>*Nota sobre o 6º mês:</strong> A recomendação oficial é iniciar o 6º mês com 3 refeições sólidas ao dia (almoço e dois lanches). A segunda refeição principal (jantar) costuma ser introduzida de forma gradual entre o final do 6º mês e o início do 7º mês, conforme a aceitação da criança. A textura "amassada" diz respeito ao preparo manual com o garfo, nunca liquidificada.
+                </p>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="guide-title">6. Oferta de Água</div>
+            <div class="guide-content">
+                <ul>
+                    <li><strong>Até os 6 meses:</strong> Não é necessário oferecer água para crianças em aleitamento materno exclusivo.</li>
+                    <li><strong>A partir dos 6 meses:</strong> A água deve ser oferecida frequentemente ao longo do dia, preferencialmente nos intervalos das refeições. Com a introdução de alimentos sólidos, a água torna-se essencial para evitar a constipação intestinal (prisão de ventre) e manter a hidratação adequada. Ofereça em copos apropriados (evitar biberões/mamadeiras).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="guide-title">7. Prevenção de Engasgos</div>
+            <div class="guide-content">
+                <ul>
+                    <li><strong>Cortes Seguros:</strong> Alimentos redondos (como uvas e tomates-cereja) <strong>nunca</strong> devem ser oferecidos inteiros ou cortados em rodelas. Devem ser cortados ao meio no sentido do comprimento (longitudinal).</li>
+                    <li><strong>Alimentos a Evitar:</strong> Pipoca, amendoim, castanhas inteiras e balas duras apresentam alto risco de asfixia e não devem ser oferecidos.</li>
+                    <li><strong>Gag Reflex vs. Engasgo:</strong> O *gag reflex* (reflexo de ânsia) é uma defesa natural e comum da criança ao aprender a mastigar texturas novas; a criança faz barulho, fica vermelha e cospe o alimento. No <strong>engasgo real</strong>, a criança fica silenciosa (não consegue tossir ou chorar) e pode ficar roxa, exigindo intervenção imediata (Manobra de Heimlich).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="guide-title">8. Ambiente e Alimentação Responsiva</div>
+            <div class="guide-content">
+                <ul>
+                    <li><span class="alert-text">Zero Ecrãs/Telas:</span> Não utilizar telemóveis, tablets ou televisão durante as refeições. A criança precisa de estar atenta ao alimento (cheiro, textura, sabor) para desenvolver uma boa relação com a comida e perceber os sinais de saciedade.</li>
+                    <li><strong>Respeitar a Fome e a Saciedade:</strong> Não force a criança a comer "só mais uma colherada" nem a "limpar o prato". O papel do cuidador é decidir <em>o que</em>, <em>onde</em> e <em>quando</em> a criança come; o papel da criança é decidir <em>o quanto</em> e <em>se</em> vai comer.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="guide-card">
+            <div class="guide-title">9. Alimentos Proibidos e Cuidados</div>
+            <div class="guide-content">
+                <ul>
+                    <li><span class="alert-text">Açúcar e doces:</span> Proibidos até os 2 anos. Isto inclui açúcar branco, mascavado, demerara, mel e produtos industrializados doces. O mel, além do açúcar, apresenta risco de botulismo antes de 1 ano.</li>
+                    <li><span class="alert-text">Sumos/Sucos (mesmo os 100% naturais):</span> Não oferecer antes de 1 ano. A fruta deve ser oferecida in natura. Entre 1 e 3 anos, o limite máximo é de 120 mL/dia.</li>
+                    <li><span class="alert-text">Ultraprocessados:</span> Salsichas, macarrão instantâneo, bolachas (mesmo as "infantis"), salgados e refrigerantes não devem fazer parte da dieta.</li>
+                    <li><span class="alert-text">Leite de vaca integral:</span> Não recomendado antes de 1 ano devido ao risco de alergias, microssangramentos intestinais e anemia ferropriva.</li>
+                    <li><span class="alert-text">Sal e temperos:</span> Usar o mínimo de sal possível. Preferir temperos naturais (alho, cebola, cheiro-verde). Evitar caldos em cubo.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ref-section">
+            <strong>Referências Bibliográficas:</strong><br><br>
+            1. Sociedade Brasileira de Pediatria (SBP). <em>Manual de Alimentação: orientações para alimentação do lactente ao adolescente, na escola, na gestante, na prevenção de doenças e segurança alimentar</em>. 5ª ed. São Paulo: SBP, 2024.<br><br>
+            2. Ministério da Saúde (BR). <em>Guia Alimentar para Crianças Brasileiras Menores de 2 Anos</em>. Brasília, DF: Ministério da Saúde, 2019.<br><br>
+            3. World Health Organization (WHO). <em>WHO Guideline for complementary feeding of infants and young children 6-23 months of age</em>. Geneva: WHO, 2023.<br><br>
+            4. Sociedade Brasileira de Pediatria (SBP). Departamento Científico de Aleitamento Materno e Nutrologia. <em>Nota Especial: Aleitamento e Alimentação Complementar - Análise sobre as recomendações da Organização Mundial de Saúde - 2023</em>. N° 115, Novembro de 2023.
+        </div>
+
+    </div>
+</body>
+</html>
