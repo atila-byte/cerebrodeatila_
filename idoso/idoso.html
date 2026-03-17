@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saúde do Idoso</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* --- ESTILOS GERAIS EXCLUSIVOS IDOSO --- */
+        .calc-group { background: #fff; padding: 20px; border-radius: 12px; margin-bottom: 20px; border: 1px solid #f0f0f0; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+        .group-title { font-weight: 700; display: block; margin-bottom: 12px; font-size: 1.05rem; color: #37474F; line-height: 1.4; }
+        .tag-cat { padding: 4px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 800; margin-bottom: 8px; display: inline-block; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        /* INPUTS */
+        .opt-row { display: flex; flex-direction: column; gap: 12px; } 
+        .chk-label { display: flex; align-items: center; gap: 12px; cursor: pointer; color: #444; font-size: 0.95rem; padding: 5px 0; }
+        .chk-label input { margin: 0; width: 22px; height: 22px; accent-color: var(--primary); cursor: pointer; }
+
+        /* TEMAS */
+        .theme-green { border-left: 5px solid #66BB6A; } .theme-green .tag-cat { background: #E8F5E9; color: #2E7D32; }
+        .theme-purple { border-left: 5px solid #7E57C2; } .theme-purple .tag-cat { background: #EDE7F6; color: #512DA8; }
+        .theme-orange { border-left: 5px solid #FFA726; } .theme-orange .tag-cat { background: #FFF3E0; color: #E65100; }
+        .theme-blue { border-left: 5px solid #42A5F5; } .theme-blue .tag-cat { background: #E3F2FD; color: #1565C0; }
+        .theme-red { border-left: 5px solid #EF5350; } .theme-red .tag-cat { background: #FFEBEE; color: #C62828; }
+        
+        /* OUTROS ESTILOS (MEEM, etc.) */
+        .pentagon-draw { text-align: center; margin: 20px 0; padding: 20px; background: #fff; border: 2px dashed #B39DDB; border-radius: 12px; }
+        .res-box { display: none; margin-top: 25px; padding: 20px; border-radius: 12px; text-align: center; border: 2px solid transparent; }
+        .res-score { font-size: 2.2rem; font-weight: 900; line-height: 1; margin-bottom: 5px; }
+        .res-status { font-size: 1.1rem; font-weight: 700; text-transform: uppercase; margin-bottom: 10px; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <button class="back-btn" onclick="goBack()" id="backBtn">⬅</button>
+        <div class="app-title">Saúde do Idoso 👴</div>
+    </header>
+
+    <div class="container">
+
+        <section id="view-idoso-menu" class="view-section" style="display: block;">
+            <div class="uni-grid">
+                <div class="uni-card" style="--card-color: #66BB6A;" onclick="navigateTo('view-ivcf')">
+                    <div class="uni-icon">📋</div>
+                    <div class="uni-text"><span class="uni-title">IVCF-20</span><span class="uni-sub">Vulnerabilidade Clínico-Funcional</span></div>
+                </div>
+                <div class="uni-card" style="--card-color: #7E57C2;" onclick="navigateTo('view-gds')">
+                    <div class="uni-icon">😞</div>
+                    <div class="uni-text"><span class="uni-title">Depressão (GDS)</span><span class="uni-sub">Escala Geriátrica 15 itens</span></div>
+                </div>
+                <div class="uni-card" style="--card-color: #7E57C2;" onclick="navigateTo('view-meem')">
+                    <div class="uni-icon">🧠</div>
+                    <div class="uni-text"><span class="uni-title">MEEM</span><span class="uni-sub">Exame do Estado Mental</span></div>
+                </div>
+                <div class="uni-card" style="--card-color: #FFA726;" onclick="navigateTo('view-katz')">
+                    <div class="uni-icon">🚿</div>
+                    <div class="uni-text"><span class="uni-title">Katz (AVD)</span><span class="uni-sub">Independência Básica</span></div>
+                </div>
+                <div class="uni-card" style="--card-color: #FFA726;" onclick="navigateTo('view-lawton')">
+                    <div class="uni-icon">🛒</div>
+                    <div class="uni-text"><span class="uni-title">Lawton (AIVD)</span><span class="uni-sub">Atividades Instrumentais</span></div>
+                </div>
+                <div class="uni-card" style="--card-color: #42A5F5;" onclick="navigateTo('view-vacinas')">
+                    <div class="uni-icon">💉</div>
+                    <div class="uni-text"><span class="uni-title">Vacinação</span><span class="uni-sub">Calendário > 60 anos</span></div>
+                </div>
+                <div class="uni-card" style="--card-color: #EF5350;" onclick="navigateTo('view-beers')">
+                    <div class="uni-icon">💊</div>
+                    <div class="uni-text"><span class="uni-title">Critérios de Beers</span><span class="uni-sub">Medicações Inapropriadas</span></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="view-ivcf" class="view-section">
+            <div class="calc-box">
+                <h3>📋 IVCF-20</h3>
+                <form onsubmit="event.preventDefault(); runIVCF();">
+                    <div class="calc-group theme-green"><span class="tag-cat">1. Idade</span><div class="group-title">Qual a faixa etária?</div><select id="ivcf-age" style="width:100%; padding:10px;"><option value="0">60-74 anos (0)</option><option value="1">75-84 anos (1)</option><option value="3">≥ 85 anos (3)</option></select></div>
+                    <div class="calc-group theme-green"><span class="tag-cat">2. Saúde</span><div class="group-title">Autopercepção da saúde</div><select id="ivcf-saude" style="width:100%; padding:10px;"><option value="0">Excelente, Muito boa ou Boa (0)</option><option value="1">Regular ou Ruim (1)</option></select></div>
+                    <div class="calc-group theme-green"><span class="tag-cat">3. AVD</span><div class="group-title">Dificuldade AVD Básica (Banho, vestir, comer...)?</div><div class="opt-row"><label class="chk-label"><input type="radio" name="ivcf_avd" value="0" checked> Não (0)</label> <label class="chk-label"><input type="radio" name="ivcf_avd" value="4"> Sim (4)</label></div></div>
+                    <div class="calc-group theme-green"><span class="tag-cat">4. AIVD</span><div class="group-title">Dificuldade AIVD (Compras, dinheiro, casa...)?</div><div class="opt-row"><label class="chk-label"><input type="radio" name="ivcf_aivd" value="0" checked> Não (0)</label> <label class="chk-label"><input type="radio" name="ivcf_aivd" value="4"> Sim (4)</label></div></div>
+                    <div class="calc-group theme-green"><span class="tag-cat">5. Cognição</span><div class="group-title">Esquecimento recente relevante?</div><div class="opt-row"><label class="chk-label"><input type="radio" name="ivcf_cog" value="0" checked> Não (0)</label> <label class="chk-label"><input type="radio" name="ivcf_cog" value="2"> Sim (2)</label></div></div>
+                    <div class="calc-group theme-green"><span class="tag-cat">6. Humor</span><div class="group-title">Tristeza ou desânimo frequente?</div><div class="opt-row"><label class="chk-label"><input type="radio" name="ivcf_humor" value="0" checked> Não (0)</label> <label class="chk-label"><input type="radio" name="ivcf_humor" value="2"> Sim (2)</label></div></div>
+                    <div class="calc-group theme-green"><span class="tag-cat">7. Mobilidade</span><div class="group-title">Alcance (Braços acima ombro)?</div><div class="opt-row"><label class="chk-label"><input type="radio" name="ivcf_mob1" value="0" checked> Consegue (0)</label> <label class="chk-label"><input type="radio" name="ivcf_mob1" value="1"> Não Consegue (1)</label></div></div>
+                    <div class="calc-group theme-green"><span class="tag-cat">8. Mobilidade</span><div class="group-title">Manuseio (Pequenos objetos)?</div><div class="opt-row"><label class="chk-label"><input type="radio" name="ivcf_mob2" value="0" checked> Consegue (0)</label> <label class="chk-label"><input type="radio" name="ivcf_mob2" value="1"> Não Consegue (1)</label></div></div>
+                    <div class="calc-group theme-green"><span class="tag-cat">9. Comunicação</span><div class="group-title">Perda Visual/Auditiva incapacitante?</div><div class="opt-row"><label class="chk-label"><input type="radio" name="ivcf_com" value="0" checked> Não (0)</label> <label class="chk-label"><input type="radio" name="ivcf_com" value="2"> Sim (2)</label></div></div>
+                    <div class="calc-group theme-green"><span class="tag-cat">10. Múltiplos</span><div class="group-title">Polifarmácia (5+) ou Polipatologia (5+)?</div><div class="opt-row"><label class="chk-label"><input type="radio" name="ivcf_pol" value="0" checked> Não (0)</label> <label class="chk-label"><input type="radio" name="ivcf_pol" value="4"> Sim (4)</label></div></div>
+                    <div class="calc-group theme-green"><span class="tag-cat">11. Internação</span><div class="group-title">Internado últimos 6 meses?</div><div class="opt-row"><label class="chk-label"><input type="radio" name="ivcf_int" value="0" checked> Não (0)</label> <label class="chk-label"><input type="radio" name="ivcf_int" value="4"> Sim (4)</label></div></div>
+                    <div class="calc-group theme-green"><span class="tag-cat">12. Quedas</span><div class="group-title">Queda último ano?</div><div class="opt-row"><label class="chk-label"><input type="radio" name="ivcf_queda" value="0" checked> Não (0)</label> <label class="chk-label"><input type="radio" name="ivcf_queda" value="4"> Sim (4)</label></div></div>
+                    <button class="btn-calc" style="background:#43A047;">Calcular</button>
+                </form>
+                <div id="res-ivcf" class="res-box"></div>
+            </div>
+        </section>
+
+        <section id="view-gds" class="view-section">
+            <div class="calc-box">
+                <h3>😞 Escala de Depressão (GDS-15)</h3>
+                <form onsubmit="event.preventDefault(); runGDS();"><div id="gds-container"></div><button class="btn-calc" style="background:#7E57C2;">Avaliar</button></form>
+                <div id="res-gds" class="res-box"></div>
+            </div>
+        </section>
+
+        <section id="view-meem" class="view-section">
+            <div class="calc-box">
+                <h3>🧠 Mini-Exame do Estado Mental</h3>
+                <div class="calc-group theme-purple">
+                    <span class="tag-cat">Critério Brucki et al. (2003)</span>
+                    <label style="font-weight:700; display:block; margin-bottom:5px;">Escolaridade</label>
+                    <select id="meem-edu" style="width:100%; padding:12px; border-radius:8px; border:1px solid #ddd;">
+                        <option value="analfabeto">Analfabetos (Corte: 20)</option>
+                        <option value="1-4">1 a 4 anos (Corte: 25)</option>
+                        <option value="5-8">5 a 8 anos (Corte: 26)</option>
+                        <option value="9-11">9 a 11 anos (Corte: 28)</option>
+                        <option value="12+">12 anos ou mais (Corte: 29)</option>
+                    </select>
+                </div>
+                <form onsubmit="event.preventDefault(); runMEEM();">
+                    <div class="calc-group theme-purple"><span class="tag-cat">Orientação (10 pts)</span><div class="group-title"><strong>Temporal (0-5):</strong> Ano, Estação, Dia, Mês, Dia da Semana.</div><input type="number" id="m-time" max="5" min="0" placeholder="Acertos (0-5)" style="width:100%; padding:10px;" required><div class="group-title" style="margin-top:15px;"><strong>Espacial (0-5):</strong> País, Estado, Cidade, Hospital/Rua, Andar/Casa.</div><input type="number" id="m-space" max="5" min="0" placeholder="Acertos (0-5)" style="width:100%; padding:10px;" required></div>
+                    <div class="calc-group theme-purple"><span class="tag-cat">Registro (3 pts)</span><div class="group-title">Repetir: "PENTE - RUA - AZUL"</div><input type="number" id="m-reg" max="3" min="0" placeholder="Acertos (0-3)" style="width:100%; padding:10px;" required></div>
+                    <div class="calc-group theme-purple"><span class="tag-cat">Atenção e Cálculo (5 pts)</span><div class="group-title">Subtrair 100 - 7 (5 vezes) <br><small>93, 86, 79, 72, 65</small></div><input type="number" id="m-calc" max="5" min="0" placeholder="Acertos (0-5)" style="width:100%; padding:10px;" required></div>
+                    <div class="calc-group theme-purple"><span class="tag-cat">Evocação (3 pts)</span><div class="group-title">Quais eram as 3 palavras? (Pente, Rua, Azul)</div><input type="number" id="m-recall" max="3" min="0" placeholder="Acertos (0-3)" style="width:100%; padding:10px;" required></div>
+                    <div class="calc-group theme-purple"><span class="tag-cat">Linguagem e Praxia (9 pts)</span><ul style="padding-left:20px; font-size:0.9rem; margin-top:5px; line-height:1.6; color:#444;"><li><strong>Nomear (2):</strong> Lápis e Relógio.</li><li><strong>Repetir (1):</strong> "Nem aqui, nem ali, nem lá".</li><li><strong>Comando (3):</strong> Pegar papel mão direita, dobrar, por no chão.</li><li><strong>Ler (1):</strong> "FECHE OS OLHOS" e executar.</li><li><strong>Escrever (1):</strong> Uma frase completa.</li><li><strong>Copiar (1):</strong> Desenho (interseção obrigatória).</li></ul><div class="pentagon-draw"><span style="font-size:0.8rem; color:#666; display:block; margin-bottom:10px;">Modelo: Deve haver interseção formando um quadrilátero.</span><svg width="160" height="100" viewBox="0 0 160 100" style="margin:0 auto; display:block;"><polygon points="40,20 10,50 25,90 65,90 80,50" style="fill:none;stroke:#333;stroke-width:2.5" /><polygon points="120,20 150,50 135,90 95,90 80,50" style="fill:none;stroke:#333;stroke-width:2.5" /></svg></div><input type="number" id="m-lang" max="9" min="0" placeholder="Total Linguagem (0-9)" style="width:100%; padding:10px;" required></div>
+                    <button class="btn-calc" style="background:#5E35B1;">Calcular MEEM</button>
+                </form>
+                <div id="res-meem" class="res-box"></div>
+            </div>
+        </section>
+
+        <section id="view-vacinas" class="view-section">
+            <div class="calc-box">
+                <h3>💉 Calendário Idoso 2026</h3>
+                <div class="calc-group theme-blue"><span class="tag-cat">Anual</span><div class="group-title">Influenza (Gripe)</div><div style="font-size:0.9rem;">Dose anual (Campanha).</div></div>
+                <div class="calc-group theme-blue"><span class="tag-cat">Pneumonia</span><div class="group-title">Pneumocócica 23 (VPP23)</div><div style="font-size:0.9rem;">Acamados/Institucionalizados: Dose única + Reforço em 5 anos.</div></div>
+                <div class="calc-group theme-blue"><span class="tag-cat">10 Anos</span><div class="group-title">Dupla Adulto (dT)</div><div style="font-size:0.9rem;">Difteria e Tétano. Reforço a cada 10 anos.</div></div>
+                <div class="calc-group theme-blue"><span class="tag-cat">Rotina</span><div class="group-title">Hepatite B</div><div style="font-size:0.9rem;">3 doses (0-1-6 meses) se não vacinado.</div></div>
+                <div class="calc-group theme-blue"><span class="tag-cat">Específico</span><div class="group-title">Herpes Zóster</div><div style="font-size:0.9rem;">Vacina inativada (Shingrix) recomendada (Rede Privada/CRIE).</div></div>
+            </div>
+        </section>
+
+        <section id="view-katz" class="view-section">
+            <div class="calc-box">
+                <h3>🚿 Escala de Katz</h3>
+                <p style="font-size:0.8rem; margin-bottom:15px;">Marque as atividades <strong>INDEPENDENTES</strong>.</p>
+                <form onsubmit="event.preventDefault(); runKatz();">
+                    <div class="calc-group theme-orange">
+                        <label class="chk-label"><input type="checkbox" id="k-banho"> <strong>Banho:</strong> Lava-se sozinho (ou ajuda mínima)</label>
+                        <hr style="border:0; border-top:1px dashed #eee; margin:10px 0;">
+                        <label class="chk-label"><input type="checkbox" id="k-vestir"> <strong>Vestir-se:</strong> Pega roupas e veste-se sozinho</label>
+                        <hr style="border:0; border-top:1px dashed #eee; margin:10px 0;">
+                        <label class="chk-label"><input type="checkbox" id="k-higiene"> <strong>Higiene Pessoal:</strong> Vai ao banheiro e se limpa</label>
+                        <hr style="border:0; border-top:1px dashed #eee; margin:10px 0;">
+                        <label class="chk-label"><input type="checkbox" id="k-transf"> <strong>Transferência:</strong> Sai da cama/cadeira sem ajuda</label>
+                        <hr style="border:0; border-top:1px dashed #eee; margin:10px 0;">
+                        <label class="chk-label"><input type="checkbox" id="k-cont"> <strong>Continência:</strong> Controle completo de esfíncteres</label>
+                        <hr style="border:0; border-top:1px dashed #eee; margin:10px 0;">
+                        <label class="chk-label"><input type="checkbox" id="k-alim"> <strong>Alimentação:</strong> Leva comida à boca sozinho</label>
+                    </div>
+                    <button class="btn-calc" style="background:#FF9800;">Calcular Independência</button>
+                </form>
+                <div id="res-katz" class="res-box"></div>
+            </div>
+        </section>
+
+        <section id="view-lawton" class="view-section">
+            <div class="calc-box">
+                <h3>🛒 Escala de Lawton</h3>
+                <p style="font-size:0.8rem; margin-bottom:20px;">Avaliação Instrumental.</p>
+                <form onsubmit="event.preventDefault(); runLawton();">
+                    <div id="lawton-container"></div>
+                    <button class="btn-calc" style="background:#FB8C00;">Calcular AIVD</button>
+                </form>
+                <div id="res-lawton" class="res-box"></div>
+            </div>
+        </section>
+
+        <section id="view-beers" class="view-section">
+            <div class="calc-box">
+                <h3>💊 Critérios de Beers (AGS 2019/2023)</h3>
+                <p style="font-size:0.85rem; color:#666;">Medicamentos potencialmente inapropriados para idosos.</p>
+                
+                <div class="beers-tabs">
+                    <button class="beers-tab-btn active" onclick="switchBeers('general', this)">📋 Lista Geral</button>
+                    <button class="beers-tab-btn" onclick="switchBeers('condition', this)">⚠️ Por Doença / Rim</button>
+                </div>
+
+                <div id="beers-tab-general">
+                    <input type="text" id="beers-search" class="search-box" style="margin-bottom:15px; width:100%; padding:15px; border:2px solid #ddd; border-radius:10px;" placeholder="🔍 Pesquisar (ex: Omeprazol, Dorflex)..." onkeyup="filterBeers()">
+                    <div id="beers-list-container"></div>
+                </div>
+
+                <div id="beers-tab-condition" style="display:none;">
+                    <div style="background:#FFF3E0; padding:15px; border-radius:10px; margin-bottom:20px; border-left:5px solid #FF9800;">
+                        <strong>Selecione o Diagnóstico:</strong>
+                        <p style="font-size:0.85rem; margin-top:5px; color:#555;">Verifique interações específicas e ajuste renal.</p>
+                    </div>
+                    
+                    <select id="condition-select" class="condition-select" onchange="renderBeersCondition()">
+                        <option value="">Selecione a condição...</option>
+                        <option value="ic">Insuficiência Cardíaca (IC)</option>
+                        <option value="sincope">Síncope / Desmaios</option>
+                        <option value="delirium">Delirium</option>
+                        <option value="demencia">Demência / Déficit Cognitivo</option>
+                        <option value="quedas">História de Quedas / Fraturas</option>
+                        <option value="parkinson">Doença de Parkinson</option>
+                        <option value="ulcera">História de Úlcera / Sangramento GI</option>
+                        <option value="rim">Doença Renal Crônica (Tabela de Ajuste)</option>
+                        <option value="incont">Incontinência Urinária (Mulheres)</option>
+                        <option value="hpb">Hiperplasia Prostática (Homens)</option>
+                    </select>
+
+                    <div id="condition-result"></div>
+                </div>
+
+            </div>
+        </section>
+
+    </div>
+
+    <footer style="text-align:center; padding:20px; color:#888; font-size:0.8rem; border-top:1px solid #eee; margin-top:40px;">
+        Cerebro de Átila (R) 2025. Direitos reservados.<br>
+        Código-fonte criado por Átila Paixão, com assistência do Google Gemini Pro 3.
+    </footer>
+
+    <script>
+        // --- NAVEGAÇÃO ---
+        let stack = ['view-idoso-menu'];
+        function navigateTo(id) {
+            document.querySelectorAll('.view-section').forEach(s => s.style.display = 'none');
+            document.getElementById(id).style.display = 'block';
+            stack.push(id);
+            if(id==='view-gds') renderGDS();
+            if(id==='view-lawton') renderLawton();
+            if(id==='view-beers') renderBeersGeneral();
+            window.scrollTo(0,0);
+        }
+        function goBack() {
+            if(stack.length > 1) {
+                stack.pop();
+                document.querySelectorAll('.view-section').forEach(s => s.style.display = 'none');
+                document.getElementById(stack[stack.length-1]).style.display = 'block';
+            } else window.location.href = '../index.html';
+        }
+
+        // --- IVCF/GDS/KATZ/LAWTON/MEEM (Mesma lógica) ---
+        function runIVCF(){let s=0;s+=parseInt(document.getElementById('ivcf-age').value);s+=parseInt(document.getElementById('ivcf-saude').value);['ivcf_avd','ivcf_aivd','ivcf_cog','ivcf_humor','ivcf_mob1','ivcf_mob2','ivcf_com','ivcf_pol','ivcf_int','ivcf_queda'].forEach(n=>{document.getElementsByName(n).forEach(e=>{if(e.checked)s+=parseInt(e.value)})});const r=document.getElementById('res-ivcf');let st,c,bg;if(s<=6){st="Robusto";c="#388E3C";bg="#E8F5E9";}else if(s<=14){st="Risco de Fragilidade";c="#FBC02D";bg="#FFFDE7";}else{st="Frágil";c="#D32F2F";bg="#FFEBEE";}r.style.display='block';r.style.borderColor=c;r.style.background=bg;r.innerHTML=`<div class="res-score" style="color:${c}">${s}</div><div class="res-status" style="color:${c}">${st}</div>`;}
+        const GDS_DATA=[{q:"1. Está satisfeito(a) com sua vida?",v:0},{q:"2. Interrompeu muitas de suas atividades?",v:1},{q:"3. Acha sua vida vazia?",v:1},{q:"4. Aborrece-se com frequência?",v:1},{q:"5. Sente-se bem com a vida na maior parte do tempo?",v:0},{q:"6. Teme que algo ruim lhe aconteça?",v:1},{q:"7. Sente-se alegre na maior parte do tempo?",v:0},{q:"8. Sente-se desamparado com frequência?",v:1},{q:"9. Prefere ficar em casa a sair e fazer coisas novas?",v:1},{q:"10. Acha que tem mais problemas de memória que outras pessoas?",v:1},{q:"11. Acha que é maravilhoso estar vivo(a)?",v:0},{q:"12. Sente-se inútil?",v:1},{q:"13. Sente-se cheio(a) de energia?",v:0},{q:"14. Sente-se sem esperança?",v:1},{q:"15. Acha que os outros têm mais sorte que você?",v:1}];
+        function renderGDS(){const c=document.getElementById('gds-container');if(c.innerHTML!="")return;let h="";GDS_DATA.forEach((i,idx)=>{h+=`<div class="calc-group theme-purple"><span class="tag-cat">Pergunta ${idx+1}</span><div class="group-title">${i.q}</div><div class="opt-row"><label class="chk-label"><input type="radio" name="gds${idx}" value="${i.v===1?1:0}"> Sim (1)</label><label class="chk-label"><input type="radio" name="gds${idx}" value="${i.v===0?1:0}"> Não (0)</label></div></div>`;});c.innerHTML=h;}
+        function runGDS(){let s=0;for(let i=0;i<15;i++){document.getElementsByName('gds'+i).forEach(e=>{if(e.checked)s+=parseInt(e.value)})}const r=document.getElementById('res-gds');let c=s>=6?"#EF5350":"#66BB6A";r.style.display='block';r.style.borderColor=c;r.style.background=s>=6?"#FFEBEE":"#E8F5E9";r.innerHTML=`<div class="res-score" style="color:${c}">${s}/15</div><div class="res-status" style="color:${c}">${s>=6?"Sugestivo de Depressão":"Sem Sinais"}</div>`;}
+        function runKatz(){let s=0;['k-banho','k-vestir','k-higiene','k-transf','k-cont','k-alim'].forEach(id=>{if(document.getElementById(id).checked)s++});const r=document.getElementById('res-katz');let st=s===6?"Independente":s===4?"Dep. Parcial":s<=2?"Muito Dependente":"Dep. Intermediária";let c=s===6?"#66BB6A":"#FFA726";r.style.display='block';r.style.borderColor=c;r.style.background=s===6?"#E8F5E9":"#FFF3E0";r.innerHTML=`<div class="res-score" style="color:${c}">${s}/6</div><div class="res-status" style="color:${c}">${st}</div>`;}
+        const LAW_QS=["1. Telefone","2. Locais Distantes","3. Compras","4. Preparar Refeições","5. Arrumar Casa","6. Reparos Manuais","7. Lavar Roupa","8. Tomar Remédios","9. Cuidar do Dinheiro"];
+        function renderLawton(){const c=document.getElementById('lawton-container');if(c.innerHTML!="")return;let h="";LAW_QS.forEach((t,i)=>{h+=`<div class="calc-group theme-orange"><span class="tag-cat">Item ${i+1}</span><div class="group-title">${t}</div><div class="lawton-opts"><label class="lawton-opt-btn" onclick="selLaw(this,${i})"><input type="radio" name="law${i}" value="3"> Sem Ajuda</label><label class="lawton-opt-btn" onclick="selLaw(this,${i})"><input type="radio" name="law${i}" value="2"> Parcial</label><label class="lawton-opt-btn" onclick="selLaw(this,${i})"><input type="radio" name="law${i}" value="1"> Incapaz</label></div></div>`;});c.innerHTML=h;}
+        function selLaw(l,i){document.getElementsByName('law'+i).forEach(e=>e.parentElement.classList.remove('l-selected'));l.classList.add('l-selected');l.querySelector('input').checked=true;}
+        function runLawton(){let s=0;for(let i=0;i<9;i++){let v=0;document.getElementsByName('law'+i).forEach(e=>{if(e.checked)v=parseInt(e.value)});if(v===0){alert("Responda todos!");return;}s+=v;}const r=document.getElementById('res-lawton');let c=s===27?"#66BB6A":"#FFA726";r.style.display='block';r.style.borderColor=c;r.style.background=s===27?"#E8F5E9":"#FFF3E0";r.innerHTML=`<div class="res-score" style="color:${c}">${s}/27</div><div class="res-status" style="color:${c}">${s===27?"Independência Total":"Dependência"}</div>`;}
+        function runMEEM(){const f=id=>parseInt(document.getElementById(id).value)||0;let s=f('m-time')+f('m-space')+f('m-reg')+f('m-calc')+f('m-recall')+f('m-lang');const edu=document.getElementById('meem-edu').value;let cut=20;if(edu==='1-4')cut=25;if(edu==='5-8')cut=26;if(edu==='9-11')cut=28;if(edu==='12+')cut=29;const r=document.getElementById('res-meem');let c=s<cut?"#EF5350":"#66BB6A";r.style.display='block';r.style.borderColor=c;r.style.background=s<cut?"#FFEBEE":"#E8F5E9";r.innerHTML=`<div class="res-score" style="color:${c}">${s}</div><div class="res-status" style="color:${c}">${s<cut?"Déficit Cognitivo":"Normal"}</div><div class="res-desc">Corte: ${cut} pts</div>`;}
+
+        // --- BEERS DATABASE (COMPLETO E EXPANDIDO) ---
+        const BEERS_DB = {
+            "1. Anticolinérgicos e Anti-histamínicos": [
+                {n:"Bromofeniramina", b:"Decongex (associado)", r:"Forte anticolinérgico. Risco de confusão, boca seca."},
+                {n:"Carbinoxamina", b:"(Ex: Gripeol)", r:"Forte anticolinérgico. Evitar."},
+                {n:"Clorfeniramina", b:"Resfenol, Coristina", r:"Risco de confusão, sedação. Evitar."},
+                {n:"Clemastina", b:"Emistin", r:"Forte anticolinérgico. Evitar."},
+                {n:"Ciproeptadina", b:"Cobavital, Apevitin", r:"Forte anticolinérgico. Evitar."},
+                {n:"Dexbromofeniramina", b:"(Associações)", r:"Forte anticolinérgico. Evitar."},
+                {n:"Dexclorfeniramina", b:"Polaramine", r:"Forte anticolinérgico. Evitar."},
+                {n:"Dimenidrinato", b:"Dramin", r:"Forte anticolinérgico. Evitar."},
+                {n:"Difenidramina", b:"Difenidrin, Benalet", r:"Risco de confusão/sedação. Evitar uso crônico."},
+                {n:"Doxilamina", b:"Vick Pyrena", r:"Forte anticolinérgico. Evitar."},
+                {n:"Hidroxizina", b:"Hixizine", r:"Forte anticolinérgico. Evitar."},
+                {n:"Meclizina", b:"Meclin", r:"Forte anticolinérgico. Evitar."},
+                {n:"Prometazina", b:"Fenergan", r:"Forte anticolinérgico/sedativo. Evitar."},
+                {n:"Pirilamina", b:"(Associações)", r:"Forte anticolinérgico. Evitar."},
+                {n:"Triprolidina", b:"(Actifed)", r:"Forte anticolinérgico. Evitar."}
+            ],
+            "2. Antiparkinsonianos": [
+                {n:"Benztropina", b:"(Importado)", r:"Não recomendado para prevenção de extrapiramidais."},
+                {n:"Triexifenidil", b:"Artane", r:"Anticolinérgico. Risco de delirium. Evitar."}
+            ],
+            "3. Antiespasmódicos": [
+                {n:"Atropina", b:"Atropion", r:"Anticolinérgico potente. Evitar."},
+                {n:"Alcaloides de Beladona", b:"(Beladona)", r:"Anticolinérgico potente. Evitar."},
+                {n:"Clidínio-Clordiazepóxido", b:"(Librax)", r:"Anticolinérgico potente. Evitar."},
+                {n:"Diciclomina", b:"(Bentyl)", r:"Anticolinérgico potente. Evitar."},
+                {n:"Homatropina", b:"(Espasmo-Luftal)", r:"Anticolinérgico potente. Evitar."},
+                {n:"Hiosciamina", b:"(Tropinal)", r:"Anticolinérgico potente. Evitar."},
+                {n:"Metescopolamina", b:"(Associações)", r:"Anticolinérgico potente. Evitar."},
+                {n:"Propantelina", b:"(Pro-Banthine)", r:"Anticolinérgico potente. Evitar."},
+                {n:"Escopolamina", b:"Buscopan", r:"Altamente anticolinérgico. Evitar."}
+            ],
+            "4. Antitrombóticos": [
+                {n:"Dipiridamol", b:"Persantin", r:"Risco de hipotensão ortostática. Há opções melhores."},
+                {n:"Ticlopidina", b:"Ticlid", r:"Risco hematológico maior que Clopidogrel."}
+            ],
+            "5. Anti-infecciosos": [
+                {n:"Nitrofurantoína", b:"Macrodantina", r:"Evitar se ClCr < 30. Risco de toxicidade pulmonar longo prazo."}
+            ],
+            "6. Cardiovascular": [
+                {n:"Doxazosina", b:"Duomo", r:"Alfa-bloq. Hipotensão ortostática. Evitar como anti-hipertensivo."},
+                {n:"Prazosina", b:"Minipress", r:"Alfa-bloq. Hipotensão ortostática. Evitar."},
+                {n:"Terazosina", b:"(Importado)", r:"Alfa-bloq. Hipotensão ortostática. Evitar."},
+                {n:"Clonidina", b:"Atensina", r:"Alfa-agonista central. Bradicardia/Hipotensão. Evitar 1ª linha."},
+                {n:"Guanfacina", b:"(Intuniv)", r:"Alfa-agonista central. Evitar."},
+                {n:"Metildopa", b:"Aldomet", r:"Bradicardia, depressão SNC. Evitar."},
+                {n:"Digoxina", b:"Digoxina", r:"Evitar dose > 0,125mg/dia. Evitar em FA 1ª linha."},
+                {n:"Nifedipino (Curta)", b:"Adalat (cápsula)", r:"Hipotensão/Isquemia. Evitar."},
+                {n:"Amiodarona", b:"Ancoron", r:"Toxicidade tireoidiana/pulmonar. Evitar 1ª linha em FA."},
+                {n:"Dronedarona", b:"Multaq", r:"Piora desfechos em IC descompensada."},
+                {n:"Disopiramida", b:"(Norpace)", r:"Inotrópico negativo. Evitar em IC."},
+                {n:"Fenoxibenzamina", b:"(Dibenzilina)", r:"Hipotensão ortostática."}
+            ],
+            "7. Sistema Nervoso Central": [
+                {n:"Amitriptilina", b:"Tryptanol", r:"Tricíclico. Anticolinérgico/Sedação. Evitar."},
+                {n:"Amoxapina", b:"(Asendin)", r:"Tricíclico. Evitar."},
+                {n:"Clomipramina", b:"Anafranil", r:"Tricíclico. Evitar."},
+                {n:"Desipramina", b:"(Norpramin)", r:"Tricíclico. Evitar."},
+                {n:"Doxepina", b:"(Sinequan)", r:"Tricíclico. Evitar (>6mg)."},
+                {n:"Imipramina", b:"Tofranil", r:"Tricíclico. Evitar."},
+                {n:"Nortriptilina", b:"Pamelor", r:"Tricíclico. Evitar."},
+                {n:"Paroxetina", b:"Aropax", r:"ISRS anticolinérgico. Evitar."},
+                {n:"Protriptilina", b:"(Vivactil)", r:"Tricíclico. Evitar."},
+                {n:"Trimipramina", b:"(Surmontil)", r:"Tricíclico. Evitar."},
+                {n:"Barbitúricos", b:"Gardenal", r:"Dependência, sedação. Evitar."},
+                {n:"Alprazolam", b:"Frontal", r:"Benzo. Risco quedas/delirium. Evitar."},
+                {n:"Bromazepam", b:"Lexotan", r:"Benzo. Risco quedas/delirium. Evitar."},
+                {n:"Clonazepam", b:"Rivotril", r:"Benzo. Risco quedas/delirium. Evitar."},
+                {n:"Diazepam", b:"Valium", r:"Benzo. Meia-vida longa. Risco alto. Evitar."},
+                {n:"Lorazepam", b:"Lorax", r:"Benzo. Risco quedas/delirium. Evitar."},
+                {n:"Midazolam", b:"Dormonid", r:"Benzo. Risco quedas/delirium. Evitar."},
+                {n:"Nitrazepam", b:"Sonebon", r:"Benzo. Risco quedas/delirium. Evitar."},
+                {n:"Zolpidem", b:"Stilnox", r:"Hipnótico Z. Risco delirium, quedas. Evitar."},
+                {n:"Zopiclona", b:"Imovane", r:"Hipnótico Z. Risco delirium, quedas. Evitar."},
+                {n:"Eszopiclona", b:"Pryzma", r:"Hipnótico Z. Risco delirium, quedas. Evitar."},
+                {n:"Antipsicóticos", b:"Haldol, Risperidona, Quetiapina, Olanzapina", r:"Aumentam AVC/Mortalidade em demência. Evitar."}
+            ],
+            "8. Endócrino": [
+                {n:"Andrógenos", b:"Testosterona", r:"Risco cardíaco. Evitar se próstata intacta."},
+                {n:"Tireoide Dissecada", b:"(Armour)", r:"Risco cardíaco. Preferir Levotiroxina."},
+                {n:"Estrogênios", b:"Premarin", r:"Risco trombose/câncer. Evitar oral/tópico sistêmico."},
+                {n:"Hormônio Crescimento", b:"(Genotropin)", r:"Edema, artralgia. Evitar exceto se deficiência confirmada."},
+                {n:"Insulina (Escala)", b:"Sliding Scale", r:"Risco hipoglicemia. Evitar monoterapia."},
+                {n:"Megestrol", b:"Megestat", r:"Risco trombótico. Efeito mínimo no peso. Evitar."},
+                {n:"Clorpropamida", b:"Diabinese", r:"Sulfoniureia. Hipoglicemia prolongada/SIADH. Evitar."},
+                {n:"Glimepirida", b:"Amaryl", r:"Sulfoniureia. Hipoglicemia. Evitar."},
+                {n:"Glibenclamida", b:"Daonil", r:"Sulfoniureia. Hipoglicemia. Evitar."}
+            ],
+            "9. Dor e Musculoesquelético": [
+                {n:"Aspirina >325mg", b:"AAS", r:"Risco GI sem benefício extra. Evitar."},
+                {n:"Diclofenaco", b:"Cataflam", r:"AINE. Risco GI/Renal/CV. Evitar uso crônico."},
+                {n:"Ibuprofeno", b:"Advil", r:"AINE. Evitar uso crônico."},
+                {n:"Cetoprofeno", b:"Profenid", r:"AINE. Evitar uso crônico."},
+                {n:"Naproxeno", b:"Flanax", r:"AINE. Evitar uso crônico."},
+                {n:"Meloxicam", b:"Melocox", r:"AINE. Evitar uso crônico."},
+                {n:"Piroxicam", b:"Feldene", r:"Alto risco GI. Evitar."},
+                {n:"Indometacina", b:"Indocid", r:"Alto risco SNC/GI. Evitar."},
+                {n:"Cetorolaco", b:"Toragesic", r:"Alto risco Renal/GI. Evitar."},
+                {n:"Etodolaco", b:"Flancox", r:"AINE. Evitar uso crônico."},
+                {n:"Sulindac", b:"(Clinoril)", r:"AINE. Evitar uso crônico."},
+                {n:"Fenoprofeno", b:"(Nalfon)", r:"AINE. Evitar uso crônico."},
+                {n:"Meclofenamato", b:"(Meclomen)", r:"AINE. Evitar uso crônico."},
+                {n:"Ácido Mefenâmico", b:"Ponstan", r:"AINE. Evitar uso crônico."},
+                {n:"Nabumetona", b:"Relifex", r:"AINE. Evitar uso crônico."},
+                {n:"Oxaprozina", b:"Daypro", r:"AINE. Evitar uso crônico."},
+                {n:"Tolmetina", b:"(Tolectin)", r:"AINE. Evitar uso crônico."},
+                {n:"Carisoprodol", b:"Mioflex", r:"Relaxante. Sedação. Evitar."},
+                {n:"Clorzoxazona", b:"(Paraflex)", r:"Relaxante. Evitar."},
+                {n:"Ciclobenzaprina", b:"Miosan", r:"Relaxante. Anticolinérgico. Evitar."},
+                {n:"Metaxalona", b:"(Skelaxin)", r:"Relaxante. Evitar."},
+                {n:"Metocarbamol", b:"(Robaxin)", r:"Relaxante. Evitar."},
+                {n:"Orfenadrina", b:"Dorflex", r:"Relaxante. Anticolinérgico. Evitar."}
+            ],
+            "10. Gastrointestinal": [
+                {n:"Metoclopramida", b:"Plasil", r:"Efeitos extrapiramidais. Evitar > 12 sem."},
+                {n:"Óleo Mineral", b:"Laxante", r:"Risco aspiração. Evitar oral."},
+                {n:"Omeprazol", b:"Peprazol", r:"IBP. Risco C. difficile/fraturas. Evitar > 8 semanas."},
+                {n:"Pantoprazol", b:"Pantozol", r:"IBP. Evitar > 8 semanas."},
+                {n:"Lansoprazol", b:"Prazol", r:"IBP. Evitar > 8 semanas."},
+                {n:"Esomeprazol", b:"Nexium", r:"IBP. Evitar > 8 semanas."},
+                {n:"Rabeprazol", b:"Pariet", r:"IBP. Evitar > 8 semanas."},
+                {n:"Dexlansoprazol", b:"Dexilant", r:"IBP. Evitar > 8 semanas."}
+            ]
+        };
+
+        // --- COND_DB (DOENÇAS + RINS) ---
+        const COND_DB = {
+            "ic": [
+                {d:"AINEs (Todos)", r:"Retenção líquida, piora da IC."},
+                {d:"Diltiazem", r:"Evitar em IC com fração de ejeção reduzida."},
+                {d:"Verapamil", r:"Evitar em IC com fração de ejeção reduzida."},
+                {d:"Glitazonas (Pioglitazona)", r:"Retenção líquida, risco de descompensação."},
+                {d:"Cilostazol", r:"Aumenta mortalidade em IC."},
+                {d:"Dronedarona", r:"Piora desfechos em IC grave/descompensada."}
+            ],
+            "sincope": [
+                {d:"Inibidores da Acetilcolinesterase (Donepezila)", r:"Bradicardia, risco de síncope."},
+                {d:"Doxazosina / Prazosina", r:"Hipotensão ortostática."},
+                {d:"Tricíclicos Terciários (Amitriptilina)", r:"Hipotensão ortostática."},
+                {d:"Antipsicóticos (Clorpromazina, Olanzapina)", r:"Aumentam risco de síncope/quedas."}
+            ],
+            "delirium": [
+                {d:"Anticolinérgicos", r:"Piora do delirium."},
+                {d:"Antipsicóticos", r:"Aumentam risco de AVC/morte. Evitar se possível."},
+                {d:"Benzodiazepínicos", r:"Piora do delirium."},
+                {d:"Corticoides (Sistêmicos)", r:"Podem induzir ou piorar delirium."},
+                {d:"Bloqueadores H2 (Ranitidina)", r:"Podem induzir delirium."},
+                {d:"Meperidina", r:"Neurotoxicidade/Delirium."},
+                {d:"Hipnóticos Z", r:"Piora do delirium."}
+            ],
+            "demencia": [
+                {d:"Anticolinérgicos", r:"Piora cognitiva."},
+                {d:"Benzodiazepínicos", r:"Piora cognitiva, risco de quedas."},
+                {d:"Hipnóticos Z (Zolpidem)", r:"Efeitos adversos SNC."},
+                {d:"Antipsicóticos", r:"Aumento de mortalidade/AVC. Usar só se risco iminente."}
+            ],
+            "quedas": [
+                {d:"Antiepilépticos", r:"Ataxia, sedação."},
+                {d:"Antipsicóticos", r:"Sedação, hipotensão."},
+                {d:"Benzodiazepínicos", r:"Sedação, ataxia."},
+                {d:"Hipnóticos Z", r:"Sedação, ataxia."},
+                {d:"Antidepressivos (Tricíclicos/ISRS)", r:"Ataxia, hiponatremia."},
+                {d:"Opioides", r:"Sedação."}
+            ],
+            "parkinson": [
+                {d:"Metoclopramida (Plasil)", r:"Piora motora (bloqueio dopamina)."},
+                {d:"Antipsicóticos Típicos (Haldol)", r:"Piora motora."},
+                {d:"Prometazina", r:"Piora motora."}
+            ],
+            "ulcera": [
+                {d:"Aspirina (>325mg)", r:"Risco de sangramento."},
+                {d:"AINEs Não-Seletivos", r:"Risco de sangramento. (Se necessário, usar IBP ou Coxibe)."}
+            ],
+            "rim": [
+                {d:"Ciprofloxacino", r:"Reduzir dose se ClCr < 30 (Risco SNC)."},
+                {d:"Sulfametoxazol-Trimetoprima", r:"Reduzir se ClCr 15-29. Evitar se < 15."},
+                {d:"Amilorida", r:"Evitar se ClCr < 30 (Hipercalemia)."},
+                {d:"Apixabana", r:"Evitar se ClCr < 25."},
+                {d:"Dabigatrana", r:"Evitar se ClCr < 30."},
+                {d:"Edoxabana", r:"Ajustar 15-50. Evitar < 15 ou > 95."},
+                {d:"Rivaroxabana", r:"Evitar < 15 (FA) ou < 30 (TEV)."},
+                {d:"Enoxaparina", r:"Reduzir dose se ClCr < 30."},
+                {d:"Fondaparinux", r:"Evitar se ClCr < 30."},
+                {d:"Espironolactona", r:"Evitar se ClCr < 30."},
+                {d:"Triantereno", r:"Evitar se ClCr < 30."},
+                {d:"Duloxetina", r:"Evitar se ClCr < 30 (Náusea)."},
+                {d:"Gabapentina", r:"Reduzir dose se ClCr < 60."},
+                {d:"Pregabalina", r:"Reduzir dose se ClCr < 60."},
+                {d:"Levetiracetam", r:"Reduzir dose conforme função renal."},
+                {d:"Tramadol", r:"RI: Reduzir dose. Lib. Prolongada: Evitar se ClCr < 30."},
+                {d:"Colchicina", r:"Reduzir dose se ClCr < 30."},
+                {d:"Alopurinol", r:"Ajustar dose conforme função renal."},
+                {d:"Probenecida", r:"Evitar se ClCr < 30."},
+                {d:"Cimetidina", r:"Reduzir se ClCr < 50."},
+                {d:"Ranitidina", r:"Reduzir se ClCr < 50."},
+                {d:"Famotidina", r:"Reduzir se ClCr < 50."},
+                {d:"Nizatidina", r:"Reduzir se ClCr < 50."}
+            ],
+            "incont": [
+                {d:"Estrogênio (Oral/Transdérmico)", r:"Piora da incontinência."},
+                {d:"Alfa-bloqueadores Periféricos", r:"Agravam incontinência em mulheres."}
+            ],
+            "hpb": [
+                {d:"Anticolinérgicos Fortes", r:"Risco de retenção urinária. Evitar em homens."}
+            ]
+        };
+
+        // --- LÓGICA DE EXIBIÇÃO BEERS ---
+        function switchBeers(tab, btn) {
+            document.querySelectorAll('.beers-tab-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('beers-tab-general').style.display = tab === 'general' ? 'block' : 'none';
+            document.getElementById('beers-tab-condition').style.display = tab === 'condition' ? 'block' : 'none';
+        }
+
+        function renderBeersGeneral() {
+            const container = document.getElementById('beers-list-container');
+            if(container.innerHTML !== "") return;
+            let html = "";
+            for (const [group, items] of Object.entries(BEERS_DB)) {
+                html += `<div class="beers-group-wrapper">`;
+                html += `<div class="beers-class-header">${group}</div>`;
+                items.forEach(d => {
+                    html += `<div class="drug-item" data-search="${d.n.toLowerCase()} ${d.b.toLowerCase()}">
+                        <div class="drug-name">${d.n}</div>
+                        <span class="drug-brand">Ex: ${d.b}</span>
+                        <div class="drug-reason">${d.r}</div>
+                    </div>`;
+                });
+                html += `</div>`; 
+            }
+            container.innerHTML = html;
+        }
+
+        function filterBeers() {
+            const term = document.getElementById('beers-search').value.toLowerCase().trim();
+            document.querySelectorAll('.beers-group-wrapper').forEach(group => {
+                let hasMatch = false;
+                const items = group.querySelectorAll('.drug-item');
+                items.forEach(item => {
+                    const txt = item.getAttribute('data-search');
+                    if (txt.includes(term)) { item.style.display = 'flex'; hasMatch = true; } 
+                    else { item.style.display = 'none'; }
+                });
+                group.style.display = hasMatch ? 'block' : 'none';
+            });
+        }
+
+        function renderBeersCondition() {
+            const val = document.getElementById('condition-select').value;
+            const res = document.getElementById('condition-result');
+            res.innerHTML = "";
+            if(!val || !COND_DB[val]) return;
+            let html = "";
+            COND_DB[val].forEach(item => {
+                html += `<div class="drug-item" style="border-left-color:#FBC02D;">
+                    <div class="drug-name" style="color:#C62828;">🚫 ${item.d}</div>
+                    <div class="drug-reason" style="border-left:none; padding-left:0; margin-top:5px;">${item.r}</div>
+                </div>`;
+            });
+            res.innerHTML = html;
+        }
+    </script>
+</body>
+</html>
