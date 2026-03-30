@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Mellitus Tipo 1 (SBD 2024-2025)</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* TEMA AZUL CLARO (ENDOCRINOLOGIA - DM1) */
+        :root { --theme-dm1: #1E88E5; } 
+        
+        .resumo-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--theme-dm1);
+        }
+
+        .res-header { 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #1565C0; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #E3F2FD;
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            color: #0D47A1;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 600px;
+        }
+        .table-custom th {
+            background-color: #E3F2FD;
+            color: #0D47A1;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #BBDEFB;
+        }
+        .table-custom td {
+            padding: 10px;
+            border: 1px solid #eee;
+            color: #444;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .table-custom td:first-child {
+            text-align: left;
+            font-weight: 700;
+            background-color: #FAFAFA;
+        }
+        
+        .flux-box { background: #FAFAFA; border: 1px solid #E0E0E0; border-radius: 8px; padding: 15px; margin-bottom: 15px; border-left: 4px solid #1E88E5; }
+        .tag-sus { background: #4CAF50; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; margin-left: 5px; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="../clinica_medica.html" class="back-btn" style="text-decoration: none;">⬅</a>
+        <div class="app-title">Diabetes Mellitus Tipo 1 💉</div>
+    </header>
+
+    <div class="container">
+        
+        <div class="resumo-box">
+            <div class="res-header"><span>1️⃣ Etiopatogenia e Critérios Diagnósticos</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                O DM1 é uma doença crônica autoimune caracterizada pela destruição das células beta pancreáticas produtoras de insulina, resultando em insulinopenia grave.
+            </p>
+            <div class="table-responsive">
+                <table class="table-custom" style="min-width: auto;">
+                    <tr>
+                        <th>Exame</th>
+                        <th style="background-color: #FFEBEE; color: #C62828;">Diagnóstico de Diabetes</th>
+                    </tr>
+                    <tr><td><strong>Glicemia de Jejum (GJ)</strong></td><td><strong>&ge; 126 mg/dL</strong></td></tr>
+                    <tr><td><strong>Glicemia 2 horas no TTGO</strong></td><td><strong>&ge; 200 mg/dL</strong></td></tr>
+                    <tr><td><strong>Hemoglobina Glicada (HbA1c)</strong></td><td><strong>&ge; 6,5%</strong></td></tr>
+                    <tr><td><strong>Glicemia ao Acaso</strong></td><td><strong>&ge; 200 mg/dL</strong> (com sintomas típicos como poliúria, polidipsia, perda de peso)</td></tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>2️⃣ Tipos de Insulina e Farmacocinética</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                A estratégia de eleição para o DM1 é a terapia intensiva basal-bolus, que mimetiza a secreção fisiológica de insulina. O componente basal (50%) é coberto por insulinas de longa duração, e o prandial (50%) por insulinas de ação rápida aplicadas antes das refeições.
+            </p>
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <tr>
+                        <th>Tipo / Classe</th>
+                        <th>Nome Comercial / Fármaco</th>
+                        <th>Início de Ação</th>
+                        <th>Pico de Ação</th>
+                        <th>Duração</th>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="background-color: #E3F2FD; color: #0D47A1; text-align: center; font-weight: 800;">INSULINAS BASAIS</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ação Intermediária</strong></td>
+                        <td>NPH <span class="tag-sus">SUS</span></td>
+                        <td>2 a 4h</td>
+                        <td>4 a 10h</td>
+                        <td>10 a 18h</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Análogo de Ação Longa</strong></td>
+                        <td>Glargina U100 <span class="tag-sus">SUS*</span><br>Detemir</td>
+                        <td>2 a 4h<br>1 a 3h</td>
+                        <td>Sem pico<br>6 a 8h</td>
+                        <td>20 a 24h<br>18 a 22h</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Análogo de Ação Ultralonga</strong></td>
+                        <td>Glargina U300<br>Degludeca</td>
+                        <td>6h<br>< 4h</td>
+                        <td>Sem pico<br>Sem pico</td>
+                        <td>36h<br>42h</td>
+                    </tr>
+                    <tr>
+                        <td colspan="5" style="background-color: #E3F2FD; color: #0D47A1; text-align: center; font-weight: 800;">INSULINAS PRANDIAIS (BOLUS)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ação Rápida</strong></td>
+                        <td>Regular (Humulin R) <span class="tag-sus">SUS</span></td>
+                        <td>30 a 60 min</td>
+                        <td>2 a 3h</td>
+                        <td>5 a 8h</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Análogo de Ação Rápida</strong></td>
+                        <td>Asparte (NovoRapid) <span class="tag-sus">SUS*</span><br>Lispro (Humalog)<br>Glulisina (Apidra)</td>
+                        <td>5 a 15 min</td>
+                        <td>30min a 2h</td>
+                        <td>3 a 5h</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Análogo Ultrarrápido</strong></td>
+                        <td>Fast Aspartate (Fiasp)<br>Inalada (Afrezza)</td>
+                        <td>2 a 5 min<br>Imediato</td>
+                        <td>1 a 3h<br>10 a 20 min</td>
+                        <td>5h<br>1 a 2h</td>
+                    </tr>
+                </table>
+            </div>
+            <p style="font-size: 0.85rem; color: #777; margin-top: 10px;">
+                <em>*Nota: Os análogos rápidos e prolongados são disponibilizados no SUS mediante critérios clínicos rigorosos e preenchimento de LME (ex: hipoglicemias noturnas graves com NPH). A insulina Regular deve ser aplicada 30 minutos antes das refeições; já os análogos rápidos devem ser aplicados 15 a 20 minutos antes.</em>
+            </p>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>3️⃣ Posologia e Cálculo da Dose Total Diária (DTD)</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                A Dose Total Diária (DTD) de insulina em pacientes com DM1 é estimada pelo peso corporal e varia de acordo com a fase da doença, puberdade e ocorrência de intercorrências (infecções, estresse).
+            </p>
+            <div class="table-responsive">
+                <table class="table-custom" style="min-width: auto;">
+                    <tr>
+                        <th>Fase / Faixa Etária</th>
+                        <th>Dose Total Diária de Insulina (UI/Kg/dia)</th>
+                        <th>Fração Basal Sugerida (UI/Kg/dia)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Diagnóstico Recente (Lua de mel)</strong></td>
+                        <td>< 0,5</td>
+                        <td>< 0,25</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Após remissão parcial / Adultos</strong></td>
+                        <td>0,7 a 1,0</td>
+                        <td>0,3 a 0,5</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Lactentes</strong></td>
+                        <td>0,2 a 0,4</td>
+                        <td>0,1 a 0,2</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Pré-púberes</strong></td>
+                        <td>0,5 a 0,8</td>
+                        <td>0,2 a 0,4</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Púberes (Adolescentes)</strong></td>
+                        <td>0,8 a 2,0</td>
+                        <td>0,4 a 1,0</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="flux-box">
+                <strong style="color: #1565C0;">Distribuição da DTD (Regra Geral):</strong><br>
+                <ul style="margin-top: 5px; font-size: 0.9rem; color: #444;">
+                    <li><strong>30% a 50%</strong> da DTD é administrada como Insulina Basal.</li>
+                    <li><strong>50% a 70%</strong> da DTD é reservada para Insulina Bolus (dividida nas refeições).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>4️⃣ Ajuste de Bolus: Fator de Correção e Relação Carboidrato</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                A dose administrada antes das refeições é a soma de duas partes: o <strong>Bolus Prandial</strong> (para cobrir o que será ingerido) e o <strong>Bolus de Correção</strong> (para corrigir a glicemia do momento).
+            </p>
+            
+            <div class="section-title">1. Bolus Prandial (Contagem de Carboidratos)</div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                Baseia-se na Relação Carboidrato/Insulina (R C/I), que estima quantos gramas de carboidrato são cobertos por 1 UI de insulina rápida. 
+                <br><em>Cálculo empírico (Regra dos 500): R C/I = 500 ÷ DTD (ou 400 ÷ DTD para Regular).</em> Em adultos, geralmente 1 UI cobre de 10 a 20g de carboidratos.
+            </p>
+
+            <div class="section-title">2. Bolus de Correção (Fator de Sensibilidade)</div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                Baseia-se no Fator de Correção (FC), que representa quantos mg/dL a glicemia reduzirá após a aplicação de 1 UI de insulina rápida. 
+                <br><em>Cálculo empírico (Regra dos 1800): FC = 1800 ÷ DTD (ou 1500 ÷ DTD para Regular).</em> Em adultos, o FC costuma variar entre 40 e 60 mg/dL por UI.
+            </p>
+
+            <div class="flux-box">
+                <strong style="color: #1E88E5;">Fórmula Completa:</strong><br>
+                <p style="margin-top: 5px; font-size: 0.95rem; color: #333;">
+                    <strong>Dose a aplicar = [ (Carboidratos da Refeição) ÷ R C/I ] + [ (Glicemia Atual - Meta Glicêmica) ÷ FC ]</strong>
+                </p>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>5️⃣ Metas Terapêuticas e Monitorização (SBD)</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5; margin-bottom: 15px;">
+                O controlo da glicemia deve ser rigoroso, mas estritamente individualizado de acordo com a situação clínica, idade e fragilidade do paciente.
+            </p>
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <tr>
+                        <th>Parâmetro</th>
+                        <th>Criança e Adolescente</th>
+                        <th>Adultos (DM1 ou DM2)</th>
+                        <th>Idoso Saudável</th>
+                        <th>Idoso Frágil / Comprometido</th>
+                        <th>Idoso Muito Comprometido</th>
+                    </tr>
+                    <tr>
+                        <td><strong>HbA1c (%)</strong></td>
+                        <td><strong>< 7,0</strong></td>
+                        <td><strong>< 7,0</strong></td>
+                        <td><strong>< 7,5</strong></td>
+                        <td><strong>< 8,0</strong></td>
+                        <td>Evitar sintomas de hiper ou hipoglicemia</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jejum e Pré-Prandial</strong> (mg/dL)</td>
+                        <td>70 a 130</td>
+                        <td>80 a 130</td>
+                        <td>80 a 130</td>
+                        <td>90 a 150</td>
+                        <td>100 a 180</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2h Pós-Prandial</strong> (mg/dL)</td>
+                        <td>< 180</td>
+                        <td>< 180</td>
+                        <td>< 180</td>
+                        <td>< 180</td>
+                        <td>110 a 200</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ao Deitar</strong> (mg/dL)</td>
+                        <td>90 a 150</td>
+                        <td>90 a 150</td>
+                        <td>90 a 150</td>
+                        <td>100 a 180</td>
+                        <td>110 a 200</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tempo no Alvo (TIR)</strong><br><small>70 a 180 mg/dL</small></td>
+                        <td><strong>> 70%</strong></td>
+                        <td><strong>> 70%</strong></td>
+                        <td><strong>> 70%</strong></td>
+                        <td><strong>> 50%</strong></td>
+                        <td>-</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hipoglicemia Nível 1</strong><br><small>< 70 mg/dL</small></td>
+                        <td>< 4%</td>
+                        <td>< 4%</td>
+                        <td>< 4%</td>
+                        <td>< 1%</td>
+                        <td>0%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hipoglicemia Nível 2</strong><br><small>< 54 mg/dL</small></td>
+                        <td>< 1%</td>
+                        <td>< 1%</td>
+                        <td>< 1%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                    </tr>
+                </table>
+            </div>
+            <p style="font-size: 0.85rem; color: #777; margin-top: 10px;">
+                <em>*Idoso Muito Comprometido: Doença terminal, comprometimento funcional ou cognitivo grave. O objetivo central é o conforto e evitar complicações agudas.</em>
+            </p>
+        </div>
+
+        <div class="ref-section" style="font-size: 0.8rem; color: #777; margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px;">
+            <strong>Referências Bibliográficas:</strong><br>
+            • SBD: Insulinoterapia no DM1 (2022).<br>
+            • SBD / PCDT-SUS: Tratamento do diabetes mellitus tipo 1 no SUS (2023).<br>
+            • SBD: Classificação e Diagnóstico do Diabetes Mellitus (2023/2024).<br>
+            • SBD: Metas no tratamento do diabetes.
+        </div>
+
+    </div>
+</body>
+</html>

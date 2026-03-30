@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenvolvimento Neuropsicomotor (DNPM)</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* TEMA CIANO/TEAL (PEDIATRIA - DNPM) */
+        :root { --theme-dnpm: #00ACC1; } 
+        
+        .resumo-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--theme-dnpm);
+        }
+
+        .res-header { 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #00838F; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #B2EBF2;
+            padding-bottom: 10px;
+        }
+
+        .res-content { font-size: 0.95rem; color: #444; line-height: 1.6; }
+        
+        /* Tabelas */
+        .table-custom { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.85rem; text-align: center; }
+        .table-custom th { background-color: #E0F7FA; color: #00838F; padding: 10px 5px; border: 1px solid #B2EBF2; }
+        .table-custom td { padding: 8px 5px; border: 1px solid #eee; vertical-align: middle; }
+        .table-custom tr:nth-child(even) { background-color: #FAFAFA; }
+        .text-left { text-align: left !important; font-weight: bold; color: #37474F; }
+
+        /* Matriz de Reflexos (Cores) */
+        .present { background-color: #4DD0E1; color: white; font-weight: bold; }
+        .fading { background-color: #B2EBF2; color: #00838F; font-size: 0.8rem; }
+        
+        /* Box de Alerta */
+        .alert-box { background: #FFEBEE; border-left: 5px solid #D32F2F; padding: 15px; border-radius: 8px; margin-top: 15px; }
+        .alert-title { color: #C62828; font-weight: bold; margin-bottom: 5px; display: flex; align-items: center; gap: 5px; }
+        
+        /* Section Dividers */
+        .section-title { 
+            background: var(--theme-dnpm); color: white; 
+            padding: 10px 15px; border-radius: 8px; 
+            font-weight: bold; margin: 30px 0 15px 0; 
+            text-align: center; text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(0, 172, 193, 0.2);
+        }
+
+        /* Marcos Grid */
+        .marco-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 15px; }
+        @media (min-width: 600px) { .marco-grid { grid-template-columns: 1fr 1fr; } }
+        .marco-card { background: #F5F5F5; padding: 15px; border-radius: 8px; border-top: 4px solid #00ACC1; }
+        .marco-age { font-size: 1.2rem; font-weight: 900; color: #00838F; margin-bottom: 10px; border-bottom: 2px dashed #ccc; padding-bottom: 5px; }
+        
+        .domain-title { font-weight: bold; color: #37474F; font-size: 0.9rem; margin-top: 10px; display: flex; align-items: center; gap: 5px; }
+        .domain-list { margin: 5px 0 0 0; padding-left: 20px; font-size: 0.85rem; }
+        .domain-list li { margin-bottom: 4px; }
+
+        /* Reflex Images Grid */
+        .reflex-grid { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 15px; }
+        @media (min-width: 600px) { .reflex-grid { grid-template-columns: 1fr 1fr; } }
+        .reflex-card { background: #FAFAFA; border: 1px solid #E0E0E0; border-radius: 8px; padding: 15px; text-align: center; }
+        .reflex-img-container { width: 100%; height: 180px; background: #eee; border-radius: 6px; margin-bottom: 10px; display: flex; align-items: center; justify-content: center; overflow: hidden; border: 1px dashed #ccc; }
+        .reflex-img { max-width: 100%; max-height: 100%; object-fit: cover; }
+        .reflex-name { font-weight: 800; color: #00838F; margin-bottom: 5px; display: block; }
+        .reflex-desc { font-size: 0.8rem; color: #666; text-align: justify; }
+
+        .ref-section { margin-top: 40px; font-size: 0.75rem; color: #777; border-top: 1px solid #ddd; padding-top: 20px; text-align: justify; }
+        .footer-cred { text-align: center; padding: 20px; color: #888; font-size: 0.8rem; border-top: 1px solid #eee; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <button class="back-btn" onclick="window.location.href='pediatria.html'">⬅</button>
+        <div class="app-title">DNPM 🧠</div>
+    </header>
+
+    <div class="container">
+
+        <div class="section-title">👶 Reflexos Primitivos</div>
+
+        <div class="resumo-box">
+            <div class="res-header">⚡ O que são e como testar</div>
+            <div class="res-content">
+                <p>Respostas automáticas mediadas pelo tronco encefálico. A sua presença no recém-nascido demonstra integridade neurológica, e o seu desaparecimento gradual indica a maturação cortical (inibição do reflexo).</p>
+                
+                <div class="reflex-grid">
+                    <div class="reflex-card">
+                        <div class="reflex-img-container">
+                            <img src="../imagens/reflexo_moro.png" alt="Reflexo de Moro" class="reflex-img" onerror="this.outerHTML='<span style=\'color:#999; font-size:0.8rem;\'>[Inserir reflexo_moro.png]</span>'">
+                        </div>
+                        <span class="reflex-name">Moro (Abraço)</span>
+                        <div class="reflex-desc">Queda súbita da cabeça (amparada). Causa abdução/extensão dos braços, seguida de adução/flexão (abraço) e choro.</div>
+                    </div>
+                    
+                    <div class="reflex-card">
+                        <div class="reflex-img-container">
+                            <img src="../imagens/reflexo_busca.png" alt="Reflexo de Busca" class="reflex-img" onerror="this.outerHTML='<span style=\'color:#999; font-size:0.8rem;\'>[Inserir reflexo_busca.png]</span>'">
+                        </div>
+                        <span class="reflex-name">Busca e Sucção</span>
+                        <div class="reflex-desc">Tocar o canto da boca faz o bebê virar a cabeça para o estímulo (Busca) e iniciar movimentos de sucção ao tocar o palato.</div>
+                    </div>
+
+                    <div class="reflex-card">
+                        <div class="reflex-img-container">
+                            <img src="../imagens/reflexo_palmar.png" alt="Reflexo Palmar" class="reflex-img" onerror="this.outerHTML='<span style=\'color:#999; font-size:0.8rem;\'>[Inserir reflexo_palmar.png]</span>'">
+                        </div>
+                        <span class="reflex-name">Preensão Palmar/Plantar</span>
+                        <div class="reflex-desc">Pressão na base dos quirodáctilos ou pododáctilos causa a flexão forte dos dedos. Plantar dura mais tempo.</div>
+                    </div>
+
+                    <div class="reflex-card">
+                        <div class="reflex-img-container">
+                            <img src="../imagens/reflexo_rtca.png" alt="Reflexo RTCA" class="reflex-img" onerror="this.outerHTML='<span style=\'color:#999; font-size:0.8rem;\'>[Inserir reflexo_rtca.png]</span>'">
+                        </div>
+                        <span class="reflex-name">Tônico-Cervical (Esgrimista)</span>
+                        <div class="reflex-desc">Ao virar a cabeça do bebê para um lado, o braço/perna desse lado se estendem, e os do lado oposto se fletem.</div>
+                    </div>
+
+                    <div class="reflex-card">
+                        <div class="reflex-img-container">
+                            <img src="../imagens/reflexo_marcha.png" alt="Reflexo de Marcha" class="reflex-img" onerror="this.outerHTML='<span style=\'color:#999; font-size:0.8rem;\'>[Inserir reflexo_marcha.png]</span>'">
+                        </div>
+                        <span class="reflex-name">Marcha Reflexa</span>
+                        <div class="reflex-desc">Ao segurar o bebê em pé e tocar o dorso do pé na maca, ele eleva a perna simulando passos.</div>
+                    </div>
+
+                    <div class="reflex-card">
+                        <div class="reflex-img-container">
+                            <img src="../imagens/reflexo_galant.png" alt="Reflexo de Galant" class="reflex-img" onerror="this.outerHTML='<span style=\'color:#999; font-size:0.8rem;\'>[Inserir reflexo_galant.png]</span>'">
+                        </div>
+                        <span class="reflex-name">Galant (Incurvação do Tronco)</span>
+                        <div class="reflex-desc">Com bebê em pronação, estimular a região paravertebral faz o quadril fletir em direção ao lado estimulado.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+<div class="resumo-box">
+            <div class="res-header">📅 Tabela de Cronologia dos Reflexos</div>
+            <div class="res-content">
+                <div style="overflow-x:auto;">
+                    <table class="table-custom">
+                        <tr>
+                            <th class="text-left">Reflexo</th>
+                            <th>Nasc.</th>
+                            <th>1m</th>
+                            <th>2m</th>
+                            <th>3m</th>
+                            <th>4m</th>
+                            <th>5m</th>
+                            <th>6m</th>
+                            <th>9m</th>
+                            <th>12m</th>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Preensão Palmar</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="fading">Diminui</td>
+                            <td class="fading">Some</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Busca / Sucção</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="fading" colspan="2">Fica Voluntário</td>
+                            <td>-</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Moro</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="fading">Diminui</td>
+                            <td class="fading">Diminui</td>
+                            <td class="fading">Some</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">RTCA (Esgrimista)</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="fading">Some</td>
+                            <td>-</td>
+                            <td>-</td>
+                        </tr>
+                        <tr>
+                            <td class="text-left">Preensão Plantar</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="present">X</td>
+                            <td class="fading">Diminui</td>
+                            <td class="fading">Some</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">🌟 Principais Marcos do Desenvolvimento</div>
+
+        <div class="resumo-box">
+            <div class="res-header">📈 Progressão por Idade (Domínios)</div>
+            <div class="res-content">
+                <p>O desenvolvimento segue o sentido <strong>Céfalo-Caudal</strong> (sustenta cabeça -> tronco -> pernas) e <strong>Próximo-Distal</strong> (braços -> mãos -> pinça fina).</p>
+
+                <div class="marco-grid">
+                    
+                    <div class="marco-card">
+                        <div class="marco-age">2 Meses</div>
+                        <div class="domain-title">🧸 Social/Emocional</div>
+                        <ul class="domain-list"><li><strong>Sorriso social</strong> (sorri em resposta ao examinador).</li><li>Acalma-se quando pegam no colo.</li></ul>
+                        <div class="domain-title">🗣️ Linguagem</div>
+                        <ul class="domain-list"><li>Faz sons além do choro (murmúrios/arrulhos).</li></ul>
+                        <div class="domain-title">🧩 Cognitivo</div>
+                        <ul class="domain-list"><li>Olha para o rosto de quem fala.</li><li>Acompanha objetos com os olhos.</li></ul>
+                        <div class="domain-title">🏃 Físico/Motor</div>
+                        <ul class="domain-list"><li>Sustenta a cabeça momentaneamente em pronação.</li></ul>
+                    </div>
+
+                    <div class="marco-card">
+                        <div class="marco-age">4 Meses</div>
+                        <div class="domain-title">🧸 Social/Emocional</div>
+                        <ul class="domain-list"><li>Sorri espontaneamente para chamar atenção.</li><li>Imita expressões faciais.</li></ul>
+                        <div class="domain-title">🗣️ Linguagem</div>
+                        <ul class="domain-list"><li>Dá gargalhadas.</li><li>Vocaliza (Ah, eh, oh).</li></ul>
+                        <div class="domain-title">🧩 Cognitivo</div>
+                        <ul class="domain-list"><li>Alcança objetos com as duas mãos.</li><li>Leva objetos à boca.</li></ul>
+                        <div class="domain-title">🏃 Físico/Motor</div>
+                        <ul class="domain-list"><li><strong>Sustentação cefálica completa</strong> (não tomba a cabeça).</li><li>Rola (decúbito ventral para dorsal).</li></ul>
+                    </div>
+
+                    <div class="marco-card">
+                        <div class="marco-age">6 Meses</div>
+                        <div class="domain-title">🧸 Social/Emocional</div>
+                        <ul class="domain-list"><li>Reconhece pessoas familiares.</li><li>Gosta de se olhar no espelho.</li></ul>
+                        <div class="domain-title">🗣️ Linguagem</div>
+                        <ul class="domain-list"><li>Balbucio polissilábico ("ba-ba", "da-da").</li></ul>
+                        <div class="domain-title">🧩 Cognitivo</div>
+                        <ul class="domain-list"><li>Transfere objetos de uma mão para a outra.</li></ul>
+                        <div class="domain-title">🏃 Físico/Motor</div>
+                        <ul class="domain-list"><li><strong>Senta com apoio</strong> (tripé).</li><li>Rola nos dois sentidos.</li></ul>
+                    </div>
+
+                    <div class="marco-card">
+                        <div class="marco-age">9 Meses</div>
+                        <div class="domain-title">🧸 Social/Emocional</div>
+                        <ul class="domain-list"><li>Ansiedade de separação (chora quando a mãe sai).</li><li>Estranha pessoas desconhecidas.</li></ul>
+                        <div class="domain-title">🗣️ Linguagem</div>
+                        <ul class="domain-list"><li>Entende o "Não".</li><li>Faz sons repetitivos ("mamama", "bababa").</li></ul>
+                        <div class="domain-title">🧩 Cognitivo</div>
+                        <ul class="domain-list"><li>Procura objetos escondidos (permanência do objeto).</li><li>Bate dois objetos um no outro.</li></ul>
+                        <div class="domain-title">🏃 Físico/Motor</div>
+                        <ul class="domain-list"><li><strong>Senta sem apoio.</strong></li><li><strong>Pinça inferior</strong> (polegar e borda dos dedos).</li><li>Engatinha (maioria).</li></ul>
+                    </div>
+
+                    <div class="marco-card">
+                        <div class="marco-age">12 Meses (1 Ano)</div>
+                        <div class="domain-title">🧸 Social/Emocional</div>
+                        <ul class="domain-list"><li>Brinca de "esconde-esconde" (cadê o bebê? achou!).</li><li>Entrega um livro quando quer ouvir história.</li></ul>
+                        <div class="domain-title">🗣️ Linguagem</div>
+                        <ul class="domain-list"><li>Fala 1 a 2 palavras com significado ("Mamãe", "Papai").</li><li>Acena para dar "tchau".</li></ul>
+                        <div class="domain-title">🧩 Cognitivo</div>
+                        <ul class="domain-list"><li>Usa objetos corretamente (copo, escova de cabelo).</li><li>Coloca blocos dentro de um recipiente.</li></ul>
+                        <div class="domain-title">🏃 Físico/Motor</div>
+                        <ul class="domain-list"><li><strong>Anda com apoio</strong> (segurando nos móveis).</li><li><strong>Pinça fina</strong> (polegar e indicador).</li></ul>
+                    </div>
+
+                    <div class="marco-card">
+                        <div class="marco-age">18 Meses (1,5 Ano)</div>
+                        <div class="domain-title">🧸 Social/Emocional</div>
+                        <ul class="domain-list"><li>Aponta para mostrar algo interessante.</li><li>Brincar simbólico inicial (dá comida à boneca).</li></ul>
+                        <div class="domain-title">🗣️ Linguagem</div>
+                        <ul class="domain-list"><li>Fala &ge; 3 palavras (além de mamãe/papai).</li><li>Segue comandos simples de 1 etapa ("Senta").</li></ul>
+                        <div class="domain-title">🧩 Cognitivo</div>
+                        <ul class="domain-list"><li>Rabosca espontaneamente.</li><li>Empilha 2 a 3 blocos.</li></ul>
+                        <div class="domain-title">🏃 Físico/Motor</div>
+                        <ul class="domain-list"><li><strong>Anda sozinho</strong> (sem apoio).</li><li>Sobe degraus engatinhando ou com ajuda.</li></ul>
+                    </div>
+
+                    <div class="marco-card">
+                        <div class="marco-age">2 Anos</div>
+                        <div class="domain-title">🧸 Social/Emocional</div>
+                        <ul class="domain-list"><li>Nota outras crianças (brinca *ao lado* delas - brincar paralelo).</li><li>Apresenta comportamento desafiador.</li></ul>
+                        <div class="domain-title">🗣️ Linguagem</div>
+                        <ul class="domain-list"><li>Junta 2 palavras ("Quer água", "Mais leite").</li><li>Conhece partes do corpo.</li></ul>
+                        <div class="domain-title">🧩 Cognitivo</div>
+                        <ul class="domain-list"><li>Segura o giz/lápis com os dedos (não com o punho fechado).</li><li>Empilha &ge; 4 blocos.</li></ul>
+                        <div class="domain-title">🏃 Físico/Motor</div>
+                        <ul class="domain-list"><li><strong>Corre.</strong></li><li>Chuta uma bola.</li><li>Sobe e desce escadas (um degrau por vez).</li></ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">🚨 Sinais de Alerta (Red Flags)</div>
+
+        <div class="resumo-box" style="border-color:#D32F2F;">
+            <div class="res-header" style="color:#C62828; border-bottom-color:#FFCDD2;">⚠️ Indicadores de Atraso ou Transtorno</div>
+            <div class="res-content">
+                <p>A presença de qualquer um dos sinais abaixo exige <strong>avaliação neuropsicomotora detalhada</strong> e encaminhamento imediato para estimulação precoce.</p>
+
+                <div class="alert-box">
+                    <div class="alert-title">🚩 Sinal Crítico e Universal</div>
+                    <strong>Perda de qualquer marco já adquirido</strong> em qualquer idade (regressão do desenvolvimento). Pode indicar doenças neurometabólicas, neurológicas ou TEA.
+                </div>
+
+                <ul class="check-list" style="margin-top:15px; font-size:0.9rem;">
+                    <li style="color:#D32F2F;"><strong style="color:#444;">Assimetria de movimento:</strong> Usa um lado do corpo muito mais que o outro (suspeita de paralisia cerebral).</li>
+                    <li style="color:#D32F2F;"><strong style="color:#444;">Aos 3 meses:</strong> Não sorri para as pessoas; não acompanha objetos com os olhos; mãos sempre fechadas.</li>
+                    <li style="color:#D32F2F;"><strong style="color:#444;">Aos 4-5 meses:</strong> Cabeça ainda tomba para trás (falta de controle cefálico); não leva as mãos à linha média.</li>
+                    <li style="color:#D32F2F;"><strong style="color:#444;">Aos 9 meses:</strong> Não senta sem apoio; ausência de balbucio ("dada", "mama").</li>
+                    <li style="color:#D32F2F;"><strong style="color:#444;">Aos 12 meses:</strong> Não aponta; não responde ao próprio nome; não brinca de esconde-esconde.</li>
+                    <li style="color:#D32F2F;"><strong style="color:#444;">Aos 18 meses:</strong> Não anda de forma independente; não fala nenhuma palavra com sentido.</li>
+                    <li style="color:#D32F2F;"><strong style="color:#444;">Aos 2 anos:</strong> Não junta 2 palavras; não corre; não entende comandos verbais simples.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="ref-section">
+            <strong>Referências Bibliográficas:</strong><br>
+            • CDC’s Developmental Milestones (Centers for Disease Control and Prevention) - Atualização 2022.<br>
+            • Manual de Avaliação do Desenvolvimento Neuropsicomotor - Departamento Científico de Desenvolvimento e Comportamento (Sociedade Brasileira de Pediatria - SBP).<br>
+            • Caderneta da Criança - Ministério da Saúde do Brasil.
+        </div>
+
+    </div>
+
+    <footer class="footer-cred">
+        Cérebro de Atila (R) 2026. Direitos reservados.<br>
+        Código-fonte criado por Atila Paixão.
+    </footer>
+
+</body>
+</html>

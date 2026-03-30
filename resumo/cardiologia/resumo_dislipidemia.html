@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dislipidemia (SBC & PCDT SUS)</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* TEMA ÂMBAR (DISLIPIDEMIA / ATEROSCLEROSE) */
+        :root { --theme-lipid: #F57C00; } 
+        
+        .resumo-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--theme-lipid);
+        }
+
+        .res-header { 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #E65100; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #FFE0B2;
+            padding-bottom: 10px;
+        }
+
+        .res-content { font-size: 0.95rem; color: #444; line-height: 1.6; }
+        
+        /* Tabelas Gerais */
+        .table-custom { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 0.85rem; }
+        .table-custom th { background-color: #FFF3E0; color: #E65100; padding: 8px; text-align: left; border: 1px solid #FFCC80; }
+        .table-custom td { padding: 8px; border: 1px solid #eee; }
+        .table-custom tr:nth-child(even) { background-color: #FAFAFA; }
+
+        /* Drugs */
+        .drug-table { width: 100%; font-size: 0.85rem; margin-bottom: 20px; border-collapse: collapse; }
+        .drug-table th { background: #ECEFF1; color: #37474F; text-align: left; padding: 8px; border-bottom: 2px solid #CFD8DC; }
+        .drug-table td { border-bottom: 1px solid #eee; padding: 8px; vertical-align: top; }
+        .drug-name { font-weight: 700; color: #F57C00; display: block; font-size: 0.9rem; }
+        .drug-class-info { background: #FFFDE7; color: #F57F17; padding: 10px; font-size: 0.85rem; border-left: 4px solid #FBC02D; margin-bottom: 10px; border-radius: 0 8px 8px 0; }
+        
+        /* TAG SUS BA */
+        .tag-sus { background-color: #2E7D32; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; margin-left: 5px; vertical-align: middle; display: inline-block; }
+        .tag-sus-esp { background-color: #1565C0; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; margin-left: 5px; vertical-align: middle; display: inline-block; }
+
+        /* Tabela Estatinas (3 Colunas) */
+        .table-statins { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 15px; }
+        .table-statins th { padding: 10px; text-align: center; border: 1px solid #ddd; }
+        .table-statins td { padding: 12px; border: 1px solid #ddd; vertical-align: top; background: #FAFAFA; }
+        .statin-item { margin-bottom: 8px; line-height: 1.4; }
+
+        /* Boxes de Destaque */
+        .alert-prevent { background: #E3F2FD; border: 1px solid #BBDEFB; color: #0D47A1; padding: 12px; border-radius: 8px; margin-top: 15px; font-size: 0.9rem; }
+        .step-box { background: #FAFAFA; padding: 12px; border-radius: 8px; margin-bottom: 10px; border-left: 4px solid #555; }
+        .step-num { display: inline-block; background: #333; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-bottom: 5px; }
+
+        /* Section Dividers */
+        .section-title { 
+            background: var(--theme-lipid); color: white; 
+            padding: 10px 15px; border-radius: 8px; 
+            font-weight: bold; margin: 30px 0 15px 0; 
+            text-align: center; text-transform: uppercase;
+            box-shadow: 0 4px 6px rgba(245, 124, 0, 0.2);
+        }
+
+        /* Check lists */
+        .check-list li { margin-bottom: 6px; }
+        .check-list li::before { content: "• "; color: var(--theme-lipid); font-weight: bold; }
+
+        .ref-section { margin-top: 40px; font-size: 0.75rem; color: #777; border-top: 1px solid #ddd; padding-top: 20px; text-align: justify; }
+        .footer-cred { text-align: center; padding: 20px; color: #888; font-size: 0.8rem; border-top: 1px solid #eee; margin-top: 40px; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <button class="back-btn" onclick="window.location.href='../clinica_medica.html'">⬅</button>
+        <div class="app-title">Dislipidemia (SBC/SUS)</div>
+    </header>
+
+    <div class="container">
+
+        <div class="section-title">🩸 Diagnóstico e Valores de Referência</div>
+
+        <div class="resumo-box">
+            <div class="res-header">📊 Perfil Lipídico e Marcadores Avançados</div>
+            <div class="res-content">
+                <p>A coleta do perfil lipídico <strong>não exige jejum</strong> como regra geral (SBC). O jejum de 12h só é obrigatório se os Triglicerídeos (TG) na amostra sem jejum vierem <strong>> 440 mg/dL</strong>.</p>
+                
+                <h4 style="color:#E65100; margin-bottom:5px;">Valores de Referência Desejáveis (Adultos)</h4>
+                <table class="table-custom">
+                    <tr><th>Fração Lipídica</th><th>Com Jejum</th><th>Sem Jejum</th></tr>
+                    <tr><td><strong>Colesterol Total (CT)</strong></td><td>< 190 mg/dL</td><td>< 190 mg/dL</td></tr>
+                    <tr><td><strong>HDL-c</strong></td><td>> 40 mg/dL</td><td>> 40 mg/dL</td></tr>
+                    <tr><td><strong>Triglicerídeos (TG)</strong></td><td>< 150 mg/dL</td><td>< 175 mg/dL</td></tr>
+                </table>
+                <p style="font-size:0.8rem; color:#555;"><em>Nota: O LDL-c não possui valor "normal", ele possui "meta" baseada no risco cardiovascular do paciente. A fórmula de Martin/Hopkins substitui a de Friedewald para cálculo do LDL-c.</em></p>
+                
+                <h4 style="color:#E65100; margin-top:20px; margin-bottom:5px;">ApoB e Lipoproteína (a)</h4>
+                <ul class="check-list">
+                    <li><strong>Apolipoproteína B (ApoB):</strong> É a principal proteína estrutural de todas as lipoproteínas aterogênicas (LDL, VLDL, IDL). Sua dosagem reflete diretamente o número total de partículas aterogênicas circulantes. É superior ao LDL-c para avaliar o risco, especialmente em pacientes com diabetes, obesidade ou hipertrigliceridemia.</li>
+                    <li><strong>Lipoproteína (a) - Lp(a):</strong> A SBC recomenda dosar universalmente <strong>pelo menos uma vez na vida</strong> em todos os adultos. Trata-se de uma lipoproteína altamente aterogênica e pró-trombótica, cujos níveis são determinados geneticamente. Valores <strong>&ge; 50 mg/dL</strong> indicam risco cardiovascular genético elevado.</li>
+                </ul>
+
+                <div style="margin-top: 15px;">
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title">⚖️ Estratificação de Risco CV</div>
+
+        <div class="resumo-box">
+            <div class="res-header">🔍 Algoritmo de Estratificação de Risco</div>
+            <div class="res-content">
+                <p>A estratificação é feita seguindo uma sequência hierárquica baseada no histórico, doenças pré-existentes, cálculo do Escore de Risco Global (ERG) e presença de fatores agravantes.</p>
+                <table class="table-custom">
+                    <tr>
+                        <th style="width: 25%;">Categoria de Risco</th>
+                        <th style="width: 75%;">Critérios Clínicos e Escore</th>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #D32F2F;">Muito Alto</strong></td>
+                        <td>Doença Aterosclerótica Significativa (Coronariana, Cerebrovascular ou Obstrutiva Periférica).</td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #F57C00;">Alto</strong></td>
+                        <td>
+                            Presença de <strong>pelo menos um</strong> dos seguintes:<br>
+                            • Aterosclerose Subclínica documentada<br>
+                            • Aneurisma de Aorta Abdominal<br>
+                            • DRC (ClCr &lt; 60 e não dialítico)<br>
+                            • LDL-c &ge; 190 mg/dL<br>
+                            • Diabetes Mellitus (Tipos 1 ou 2) com: ERG alto, microalbuminúria (30-300), hipertrofia ventricular E., retinopatia, tempo &ge; 10 anos ou um Fator de Risco<br>
+                            • <strong>Cálculo do ERG:</strong> Homens &ge; 20% ou Mulheres &ge; 10%<br>
+                            • Paciente classificado como Intermediário pelo ERG, mas <strong>COM Fatores Agravantes</strong>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #FBC02D;">Intermediário</strong></td>
+                        <td>
+                            Cálculo do ERG: Homens 5% a 20% ou Mulheres 5% a 10%.<br>
+                            <em>(Sem a presença de fatores agravantes)</em>.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong style="color: #388E3C;">Baixo</strong></td>
+                        <td>
+                            Cálculo do ERG: Homens &lt; 5% e Mulheres &lt; 5%.
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="alert-prevent" style="background-color: #FFFDE7; border-color: #FBC02D; color: #F57F17; margin-top: 15px;">
+                    <strong>Fatores Agravantes (Reclassificam paciente Intermediário para Alto Risco):</strong><br>
+                    <ul class="check-list" style="margin-top: 5px;">
+                        <li>História familiar de DAC prematura</li>
+                        <li>Síndrome Metabólica</li>
+                        <li>Hipertrofia Ventricular Esquerda</li>
+                        <li>Proteína C reativa ultrassensível (hs-CRP) > 2,0 mg/L</li>
+                        <li>Escore de Cálcio Coronariano (CAC) > 100 ou > 75º percentil</li>
+                        <li>Índice Tornozelo-Braquial (ITB) < 0,9</li>
+                        <li>Lp(a) > 50 mg/dL</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">🎯 Metas Terapêuticas (SBC)</div>
+            <div class="res-content">
+                <table class="table-custom">
+                    <tr>
+                        <th width="25%">Categoria de Risco</th>
+                        <th>Meta LDL-c</th>
+                        <th>Meta Não-HDL-c</th>
+                        <th>Meta ApoB</th>
+                    </tr>
+                    <tr><td><strong>Baixo</strong></td><td>< 115 mg/dL</td><td>< 145 mg/dL</td><td>< 100 mg/dL</td></tr>
+                    <tr><td><strong>Intermediário</strong></td><td>< 100 mg/dL</td><td>< 130 mg/dL</td><td>< 90 mg/dL</td></tr>
+                    <tr><td><strong>Alto</strong></td><td>< 70 mg/dL</td><td>< 100 mg/dL</td><td>< 70 mg/dL</td></tr>
+                    <tr><td><strong>Muito Alto</strong></td><td>< 50 mg/dL</td><td>< 80 mg/dL</td><td>< 55 mg/dL</td></tr>
+                    <tr><td style="color:#D32F2F; font-weight:bold;"><strong>Extremo</strong></td><td style="color:#D32F2F; font-weight:bold;">< 40 mg/dL</td><td style="color:#D32F2F; font-weight:bold;">< 70 mg/dL</td><td style="color:#D32F2F; font-weight:bold;">< 45 mg/dL</td></tr>
+                </table>
+                <p style="font-size:0.8rem; margin-top:8px;"><em>*Regra de Ouro: Buscar a meta em valores absolutos E garantir uma redução de 30% a 50% do LDL-c basal.</em></p>
+            </div>
+        </div>
+
+        <div class="section-title">💊 Tratamento Farmacológico</div>
+
+        <div class="resumo-box">
+            <div class="res-header">🥇 1ª Linha: Estatinas</div>
+            <div class="res-content">
+                <div class="drug-class-info">
+                    <strong>Mecanismo de Ação:</strong> Inibidores competitivos da HMG-CoA redutase. Reduzem a síntese hepática de colesterol, forçando o fígado a expressar mais receptores de LDL na superfície, retirando o LDL da circulação. Possuem efeito pleiotrópico (estabilizam placa, anti-inflamatório).<br>
+                    
+                </div>
+                
+                <h4 style="color:#37474F; margin-top:20px; margin-bottom:5px;">Tabela de Potência das Estatinas</h4>
+                <table class="table-statins">
+                    <thead>
+                        <tr>
+                            <th style="background:#FFEBEE; color:#D32F2F;">Alta Potência<br><small>(Redução &ge; 50%)</small></th>
+                            <th style="background:#FFF3E0; color:#F57C00;">Moderada Potência<br><small>(Redução 30 a < 50%)</small></th>
+                            <th style="background:#E8F5E9; color:#2E7D32;">Baixa Potência<br><small>(Redução < 30%)</small></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="statin-item"><strong>Atorvastatina</strong> 40-80 mg <span class="tag-sus-esp">SUS-Especializado</span></div>
+                                <div class="statin-item"><strong>Rosuvastatina</strong> 20-40 mg</div>
+                            </td>
+                            <td>
+                                <div class="statin-item"><strong>Atorvastatina</strong> 10-20 mg <span class="tag-sus-esp">SUS-Especializado</span></div>
+                                <div class="statin-item"><strong>Rosuvastatina</strong> 5-10 mg</div>
+                                <div class="statin-item"><strong>Sinvastatina</strong> 20-40 mg <span class="tag-sus">SUS-Básico</span></div>
+                                <div class="statin-item"><strong>Pravastatina</strong> 40-80 mg</div>
+                                <div class="statin-item"><strong>Lovastatina</strong> 40 mg</div>
+                                <div class="statin-item"><strong>Fluvastatina XL</strong> 80 mg</div>
+                                <div class="statin-item"><strong>Pitavastatina</strong> 2-4 mg</div>
+                            </td>
+                            <td>
+                                <div class="statin-item"><strong>Sinvastatina</strong> 10 mg <span class="tag-sus">SUS-Básico</span></div>
+                                <div class="statin-item"><strong>Pravastatina</strong> 10-20 mg</div>
+                                <div class="statin-item"><strong>Lovastatina</strong> 20 mg</div>
+                                <div class="statin-item"><strong>Fluvastatina</strong> 20-40 mg</div>
+                                <div class="statin-item"><strong>Pitavastatina</strong> 1 mg</div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="font-size:0.8rem; color:#555; margin-top:10px;"><em>A Atorvastatina possui meia-vida longa e pode ser administrada em qualquer horário. Já a Sinvastatina possui meia-vida mais curta e deve ser preferencialmente administrada à noite.</em></p>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">⚠️ Efeitos Adversos das Estatinas e Manejo</div>
+            <div class="res-content">
+                <table class="table-custom">
+                    <tr>
+                        <th style="width: 25%;">Efeito Adverso</th>
+                        <th style="width: 75%;">Apresentação e Conduta (Manejo)</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Sintomas Musculares (SMAE)</strong></td>
+                        <td>
+                            Manifesta-se como mialgia (dor muscular sem elevação de CK), fraqueza ou miopatia (dor com CK elevada).<br>
+                            • <em>Sintomas toleráveis e CK &lt; 4x o limite normal (LSN):</em> Continuar e reavaliar.<br>
+                            • <em>Sintomas intoleráveis ou CK &gt; 4x LSN:</em> Suspender estatina até melhora (2 a 4 semanas). Reintroduzir em dose menor, esquema de dias alternados ou trocar por estatina de metabolismo diferente (ex: Rosuvastatina ou Pitavastatina).<br>
+                            • <em>Intolerância a &ge; 2 estatinas:</em> Considerar associação com Ezetimiba ou terapia com Inibidores de PCSK9.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rabdomiólise (Raro)</strong></td>
+                        <td>
+                            Elevação de CK &gt; 10x LSN associada à lesão renal aguda.<br>
+                            <strong>Manejo:</strong> Suspensão imediata e permanente da estatina, hidratação e suporte renal.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hepatotoxicidade</strong></td>
+                        <td>
+                            Elevação assintomática das transaminases (ALT e AST).<br>
+                            <strong>Manejo:</strong> Se &gt; 3x LSN, suspender temporariamente a estatina e investigar outras causas hepáticas. A monitoração de rotina não é estritamente necessária após o início, exceto se houver sintomas.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Risco de Diabetes</strong></td>
+                        <td>
+                            Risco levemente aumentado para DM de início recente em pacientes predispostos (obesidade, pré-diabetes). O benefício cardiovascular supera amplamente este risco (não suspender a estatina).
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">🥈 2ª e 3ª Linha (Redutores de LDL)</div>
+            <div class="res-content">
+                
+                <div class="drug-class-info" style="border-left-color: #1976D2; color: #1565C0; background: #E3F2FD;">
+                    <strong>Inibidores de Absorção (Ezetimiba):</strong> Inibe o transportador NPC1L1 na borda em escova do enterócito, reduzindo a absorção intestinal de colesterol biliar e alimentar.
+                </div>
+                <table class="drug-table">
+                    <tr><th>Fármaco</th><th>Posologia</th><th>Obs / Indicação</th></tr>
+                    <tr>
+                        <td><span class="drug-name">Ezetimiba</span></td>
+                        <td>10 mg/dia</td>
+                        <td>2ª Linha. Adicionar à estatina se a meta não for atingida (reduz + 15 a 20% do LDL).</td>
+                    </tr>
+                </table>
+
+                <div class="drug-class-info" style="border-left-color: #7B1FA2; color: #6A1B9A; background: #F3E5F5;">
+                    <strong>Inibidores da PCSK9:</strong> Anticorpos monoclonais. Impedem a proteína PCSK9 de destruir os receptores de LDL no fígado, prolongando a meia-vida desses receptores e limpando massivamente o LDL do sangue.
+                </div>
+                <table class="drug-table">
+                    <tr><th>Fármaco</th><th>Posologia</th><th>Obs / Indicação</th></tr>
+                    <tr>
+                        <td><span class="drug-name">Evolocumabe / Alirocumabe</span></td>
+                        <td>SC a cada 14 ou 30 dias</td>
+                        <td>3ª Linha. Risco Muito Alto/Extremo fora da meta ou Hipercolesterolemia Familiar (HF). Altíssimo custo. Reduzem LDL em > 60%.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">🍔 Fibratos (Foco em Triglicerídeos)</div>
+            <div class="res-content">
+                <div class="drug-class-info" style="border-left-color: #388E3C; color: #2E7D32; background: #E8F5E9;">
+                    <strong>Mecanismo de Ação:</strong> Agonistas dos receptores nucleares PPAR-alfa. Aumentam a síntese da lipase lipoproteica (LPL) e reduzem a produção de VLDL pelo fígado. Foco exclusivo em reduzir Triglicerídeos.
+                </div>
+                <div class="alert-prevent" style="border-color:#FFCDD2; background:#FFEBEE; color:#C62828;">
+                    <strong>⚠️ ATENÇÃO:</strong> Fibratos <strong>NÃO</strong> previnem risco cardiovascular na população geral. Sua principal indicação é para <strong>Triglicerídeos > 500 mg/dL</strong> (ou > 499) com o objetivo exclusivo de <strong>Prevenir Pancreatite Aguda</strong>.
+                </div>
+                <table class="drug-table">
+                    <tr><th>Fármaco</th><th>Posologia</th><th>Obs / SUS-BA</th></tr>
+                    <tr>
+                        <td><span class="drug-name">Bezafibrato <span class="tag-sus-esp">SUS-Especializado</span></span></td>
+                        <td>400 mg/dia (ou 200mg 2x/dia)</td>
+                        <td>Disponível no componente especializado da Bahia.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="drug-name">Fenofibrato <span class="tag-sus-esp">SUS-Especializado</span></span></td>
+                        <td>200 mg/dia</td>
+                        <td>Disponível no componente especializado da Bahia. Fibrato mais seguro para associar com estatinas (menor risco de miopatia).</td>
+                    </tr>
+                    <tr>
+                        <td><span class="drug-name">Ciprofibrato</span></td>
+                        <td>100 mg/dia</td>
+                        <td>Bem tolerado, pode ser associado a estatinas (com monitoramento de CPK).</td>
+                    </tr>
+                    <tr>
+                        <td><span class="drug-name">Genfibrozila</span></td>
+                        <td>600 mg (2x/dia)</td>
+                        <td><strong>Contraindicado</strong> associar com estatinas (alto risco de rabdomiólise e hepatotoxicidade).</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header">📈 Fluxograma Terapêutico (Colesterol)</div>
+            <div class="res-content">
+                <div class="step-box">
+                    <span class="step-num">PASSO 1</span> <strong>Estatina de Alta Potência</strong>
+                    <p style="margin:5px 0 0 0; font-size:0.9rem;">
+                        Iniciar estatina na dose máxima tolerada. Reavaliar perfil lipídico em 4 a 12 semanas. No SUS: Iniciar Sinvastatina 40mg (se risco moderado/baixo) ou Atorvastatina via protocolo especializado (se alto risco).
+                    </p>
+                </div>
+
+                <div class="step-box">
+                    <span class="step-num">PASSO 2</span> <strong>Terapia Dupla (Associação)</strong>
+                    <p style="margin:5px 0 0 0; font-size:0.9rem;">
+                        Se a meta de LDL não for atingida com a estatina otimizada.<br>
+                        <strong>Adicionar:</strong> Ezetimiba 10mg/dia.<br>
+                        <em>Nota SBC: Em pacientes de Risco Muito Alto / Extremo, pode-se iniciar o Passo 1 e 2 simultaneamente (Estatina + Ezetimiba) para garantir o alvo rapidamente.</em>
+                    </p>
+                </div>
+
+                <div class="step-box">
+                    <span class="step-num">PASSO 3</span> <strong>Terapia Tripla Avançada</strong>
+                    <p style="margin:5px 0 0 0; font-size:0.9rem;">
+                        Meta não atingida no Passo 2 (especialmente em prevenção secundária ou HF).<br>
+                        <strong>Adicionar:</strong> Inibidor de PCSK9 ou Ácido Bempedoico.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="ref-section">
+            <strong>Referências Bibliográficas:</strong><br>
+            • Atualização da Diretriz Brasileira de Dislipidemias e Prevenção da Aterosclerose – 2025 (Sociedade Brasileira de Cardiologia).<br>
+            • Protocolo Clínico e Diretrizes Terapêuticas (PCDT) de Dislipidemia: Prevenção de Eventos Cardiovasculares e Pancreatite (Ministério da Saúde / CONITEC).
+        </div>
+
+    </div>
+
+    <footer class="footer-cred">
+        Cérebro de Atila (R) 2026. Direitos reservados.<br>
+        Código-fonte criado por Átila Paixão.
+    </footer>
+
+</body>
+</html>
