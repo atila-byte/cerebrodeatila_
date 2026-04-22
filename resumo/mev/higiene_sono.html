@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perturbações do Sono</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* TEMA ÍNDIGO/NOTURNO (SONO) */
+        :root { --theme-sono: #3F51B5; } 
+        
+        .resumo-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--theme-sono);
+        }
+
+        .res-header { 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #283593; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #C5CAE9;
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            color: #1A237E;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .table-responsive { overflow-x: auto; margin-bottom: 15px; }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 600px;
+        }
+        .table-custom th {
+            background-color: #E8EAF6;
+            color: #1A237E;
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #C5CAE9;
+        }
+        .table-custom td {
+            padding: 10px;
+            border: 1px solid #eee;
+            color: #444;
+            vertical-align: top;
+        }
+        .table-custom td:first-child { font-weight: bold; background-color: #FAFAFA; }
+
+        .flux-box { 
+            background: #FAFAFA; 
+            border: 1px solid #E0E0E0; 
+            border-radius: 8px; 
+            padding: 15px; 
+            margin-bottom: 15px; 
+            border-left: 4px solid #3F51B5; 
+        }
+
+        .tag-sus { background-color: #2E7D32; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; vertical-align: middle; display: inline-block; margin-left: 5px; }
+        .drug-name { font-weight: 800; color: #3F51B5; font-size: 0.95rem; display: block;}
+
+        .btn-print {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 400px;
+            margin: 30px auto 20px auto;
+            padding: 15px 20px;
+            background-color: var(--theme-sono);
+            color: white;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        .btn-print:hover {
+            background-color: #283593;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+        }
+
+        .decision-tree-container {
+            text-align: center;
+            margin-top: 15px;
+        }
+        .decision-tree-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="../mev.html" class="back-btn" style="text-decoration: none;">⬅</a>
+        <div class="app-title">Perturbações do Sono 🌙</div>
+    </header>
+
+    <div class="container">
+        
+        <div class="resumo-box">
+            <div class="res-header"><span>1️⃣ Abordagem e Classificação Clínica</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                O diagnóstico das perturbações do sono é fundamentalmente clínico, focado na história do padrão de vigília-sono e no impacto funcional diário.
+            </p>
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <tr><th>Categoria</th><th>Patologias e Características</th></tr>
+                    <tr>
+                        <td><strong>Insônias</strong></td>
+                        <td>
+                            • <strong>De Ajuste (Aguda):</strong> Associada a estressor identificável; duração curta.<br>
+                            • <strong>Psicofisiológica:</strong> Ansiedade antecipatória e condicionamento negativo para o sono.<br>
+                            • <strong>Paradoxal (Pseudo-insônia):</strong> Relato de insônia grave sem evidência fisiológica.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hipersonias</strong></td>
+                        <td>
+                            • <strong>Narcolepsia:</strong> Sonolência excessiva, cataplexia, paralisia do sono e alucinações.<br>
+                            • <strong>Síndrome Kleine-Levin:</strong> Episódios recorrentes com hiperfagia e hipersexualidade.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ritmo Circadiano</strong></td>
+                        <td>
+                            • <strong>Atraso de Fase:</strong> Sono tardio (comum em jovens).<br>
+                            • <strong>Avanço de Fase:</strong> Sono muito precoce (comum em idosos).<br>
+                            • <strong>Trabalho por Turnos / Jet Lag:</strong> Desajuste ambiental-biológico.
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Parassonias</strong></td>
+                        <td>
+                            • <strong>NREM:</strong> Sonambulismo e terrores noturnos (início da noite; amnésia).<br>
+                            • <strong>REM:</strong> Pesadelos vívidos e transtorno comportamental (fim da noite).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><strong>Movimento</strong></td>
+                        <td><strong>Pernas Inquietas (SPI):</strong> Desejo de mover as pernas, piora no repouso e à noite.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>2️⃣ Guia de Higiene do Sono</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                As medidas de higiene do sono são a primeira linha de intervenção e visam estabilizar o marcapasso circadiano.
+            </p>
+            <div class="flux-box">
+                <strong style="color: #283593;">Principais Orientações:</strong>
+                <ul style="margin-top: 5px; font-size: 0.9rem; color: #444; padding-left: 20px;">
+                    <li><strong>Ambiente:</strong> Quarto escuro, silencioso e fresco. A luz brilhante à noite inibe a melatonina.</li>
+                    <li><strong>Regra da Cama:</strong> Usar a cama apenas para sono e sexo; evitar ler, comer ou ver TV no local.</li>
+                    <li><strong>Estímulos:</strong> Evitar cafeína, nicotina e álcool (fragmentador do sono) após as 14h-16h.</li>
+                    <li><strong>Regularidade:</strong> Horário fixo para acordar, inclusive aos fins de semana.</li>
+                    <li><strong>Inércia:</strong> Se não adormecer em 20 minutos, sair da cama e realizar atividade monótona sob luz baixa.</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>3️⃣ Manejo Farmacológico</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                A farmacoterapia deve ser limitada ao curto prazo (2-4 semanas) para evitar tolerância e dependência.
+            </p>
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <tr>
+                        <th>Classe</th>
+                        <th>Medicação</th>
+                        <th>Dose Sugerida</th>
+                        <th>Indicação / Esquema</th>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>Benzodiazepínicos</strong></td>
+                        <td><span class="drug-name">Diazepam <span class="tag-sus">SUS</span></span></td>
+                        <td>5 - 10 mg (Noite)</td>
+                        <td>Insônia aguda/situacional com ansiedade.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="drug-name">Clonazepam <span class="tag-sus">SUS</span></span></td>
+                        <td>0,5 - 2 mg (Noite)</td>
+                        <td>Eficaz em parassonias e pernas inquietas.</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>Hipnóticos (Z)</strong></td>
+                        <td><span class="drug-name">Zolpidem</span></td>
+                        <td>5 - 10 mg (Imediato)</td>
+                        <td>Indutor de sono; tomar já deitado na cama.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="drug-name">Zopiclona</span></td>
+                        <td>7,5 mg (Noite)</td>
+                        <td>Melhor para manutenção (meia-vida mais longa).</td>
+                    </tr>
+                    <tr>
+                        <td rowspan="2"><strong>Antidepressivos</strong></td>
+                        <td><span class="drug-name">Amitriptilina <span class="tag-sus">SUS</span></span></td>
+                        <td>12,5 - 25 mg (Noite)</td>
+                        <td>Doses baixas para insônia crônica com dor.</td>
+                    </tr>
+                    <tr>
+                        <td><span class="drug-name">Trazodona</span></td>
+                        <td>50 - 100 mg (Noite)</td>
+                        <td>Perfil sedativo seguro para idosos.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hormonal</strong></td>
+                        <td><span class="drug-name">Melatonina</span></td>
+                        <td>2 - 5 mg (2h antes)</td>
+                        <td>Jet lag e distúrbios de ritmo circadiano.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>4️⃣ Contraindicações e Alertas</span></div>
+            <ul style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                <li><strong>Apneia Obstrutiva do Sono:</strong> Sedativos e BZD são contraindicados pelo risco de agravamento da hipoxemia e depressão respiratória.</li>
+                <li><strong>Idosos:</strong> Alto risco de confusão mental, quedas e fraturas com o uso de benzodiazepínicos.</li>
+                <li><strong>Mecanismos:</strong> Evitar medicamentos com longa meia-vida se houver necessidade de alerta matinal (ex: condução de veículos).</li>
+            </ul>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>5️⃣ Algoritmo de Decisão Clínica</span></div>
+            <div class="decision-tree-container">
+                <img src="decisão_sono.png" alt="Árvore de Decisão: Manejo do Sono" class="decision-tree-img">
+            </div>
+        </div>
+
+        <a href="orientacoes_sono.pdf" target="_blank" class="btn-print">
+            📄 Imprimir orientações sobre Higiene do Sono <br> (em construção)
+        </a>
+
+        <div class="ref-section" style="font-size: 0.8rem; color: #777; border-top: 1px solid #eee; padding-top: 10px;">
+            <strong>Referências Bibliográficas:</strong><br>
+            • Carvalho F, Silva RG, Queiroz V. Perturbações do sono.<br>
+            • De Pasquale C, et al. Sleep hygiene - What do we mean? A bibliographic review (2024).
+        </div>
+
+    </div>
+
+    <footer class="footer-cred" style="text-align: center; padding: 20px; color: #888; font-size: 0.8rem;">
+        Cérebro de Átila © 2026. Direitos reservados.
+    </footer>
+</body>
+</html>

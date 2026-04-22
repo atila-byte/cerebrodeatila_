@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prescrição de Atividade Física</title>
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        /* TEMA VERDE VITALIDADE (ATIVIDADE FÍSICA) */
+        :root { --theme-atividade: #00c187; } 
+        
+        .resumo-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--theme-atividade);
+        }
+
+        .res-header { 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #00c187; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #C8E6C9;
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            color: #1B5E20;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .table-responsive { overflow-x: auto; margin-bottom: 15px; }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 600px;
+        }
+        .table-custom th {
+            background-color: #E8F5E9;
+            color: #1B5E20;
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #C8E6C9;
+        }
+        .table-custom td {
+            padding: 10px;
+            border: 1px solid #eee;
+            color: #444;
+            vertical-align: top;
+        }
+        .table-custom td:first-child { font-weight: bold; background-color: #FAFAFA; }
+
+        .flux-box { 
+            background: #FAFAFA; 
+            border: 1px solid #E0E0E0; 
+            border-radius: 8px; 
+            padding: 15px; 
+            margin-bottom: 15px; 
+            border-left: 4px solid #4CAF50; 
+        }
+
+        .benefit-tag {
+            display: inline-block;
+            background: #E8F5E9;
+            color: #2E7D32;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        .myth-truth {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .myth-box { background: #FFEBEE; padding: 15px; border-radius: 8px; border-left: 4px solid #D32F2F; font-size: 0.85rem; }
+        .truth-box { background: #E8F5E9; padding: 15px; border-radius: 8px; border-left: 4px solid #2E7D32; font-size: 0.85rem; }
+        /* ESTILO DO BOTÃO DE IMPRESSÃO */
+        .btn-print {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            max-width: 450px;
+            margin: 30px auto 20px auto;
+            padding: 15px 20px;
+            background-color: var(--theme-atividade);
+            color: white;
+            text-decoration: none;
+            font-size: 1.05rem;
+            font-weight: bold;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-print:hover {
+            background-color: #1B5E20;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 10px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="../mev.html" class="back-btn" style="text-decoration: none;">⬅</a>
+        <div class="app-title">Prescrição de Atividade Física 🏃‍♂️</div>
+    </header>
+
+    <div class="container">
+        
+        <div class="resumo-box">
+            <div class="res-header"><span>1️⃣ Impacto Sistêmico e Benefícios Comprovados</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                A prescrição de atividade física é uma intervenção terapêutica estratégica e uma prioridade de saúde pública. Estima-se que entre 4 e 5 milhões de mortes anuais poderiam ser evitadas se a população mundial fosse minimamente mais ativa.
+            </p>
+            <div style="margin-top: 10px;">
+                <span class="benefit-tag">📉 Mortalidade Reduzida </span>
+                <span class="benefit-tag">🧠 Prevenção de Demência </span>
+                <span class="benefit-tag">🛡️ Controle Glicêmico </span>
+                <span class="benefit-tag">🎗️ Prevenção Oncológica </span>
+            </div>
+            <ul style="font-size: 0.85rem; color: #444; margin-top: 15px; line-height: 1.6;">
+                <li><strong>Saúde Oncológica:</strong> Redução significativa do risco de cânceres em sítios específicos como mama, cólon, bexiga, endométrio e estômago.</li>
+                <li><strong>Saúde Mental e Cognitiva:</strong> Melhora a memória, o sono, a função executiva e reduz sintomas de ansiedade e depressão.</li>
+            </ul>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>2️⃣ Definições Clínicas Essenciais</span></div>
+            <div class="flux-box">
+                <strong style="color: #1B5E20;">O Paradoxo do Indivíduo Ativo, porém Sedentário:</strong>
+                <p style="margin-top: 5px; font-size: 0.9rem; color: #444;">
+                    Inatividade e comportamento sedentário são fatores de risco independentes. Um paciente pode cumprir a meta semanal de exercícios (fisicamente ativo) e ainda ter alto risco metabólico por manter 10 horas de comportamento sedentário diário no escritório.
+                </p>
+            </div>
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <tr><th>Nível de Esforço (Intensidade)</th><th>Definição Prática (Regra da Fala)</th></tr>
+                    <tr>
+                        <td><strong>Moderada (3 a 6 METs)</strong></td>
+                        <td>Esforço 3 a 6 vezes maior que o repouso. <strong>Clínica:</strong> Nota 5-6 de 10. O paciente consegue falar, mas não consegue cantar.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vigorosa (> 6 METs)</strong></td>
+                        <td>Esforço mais de 6 vezes superior ao repouso. <strong>Clínica:</strong> Nota 7-8 de 10. A fala torna-se fragmentada pela respiração rápida.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>3️⃣ Diretrizes de Prescrição por Ciclo de Vida</span></div>
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <tr><th>Grupo e Faixa Etária</th><th>Volume de Tempo Recomendado</th><th>Tipo de Atividade e Orientações</th></tr>
+                    <tr>
+                        <td><strong>Crianças e Adolescentes (5-17 anos)</strong></td>
+                        <td>Média de <strong>60 min/dia</strong> (Moderada a Vigorosa) .</td>
+                        <td>Predominantemente aeróbica. Fortalecimento muscular e ósseo pelo menos <strong>3x/semana</strong>. Focar na ludicidade.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Adultos (18-64 anos)</strong></td>
+                        <td><strong>150-300 min/semana</strong> (Moderada) OU <strong>75-150 min/semana</strong> (Vigorosa).</td>
+                        <td>Aeróbica + Fortalecimento muscular de grandes grupos <strong>&ge; 2 dias/semana</strong>.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Idosos (65+ anos)</strong></td>
+                        <td>Igual à recomendação para adultos.</td>
+                        <td>Adicionar atividades <strong>multicomponentes</strong> (equilíbrio e força) <strong>&ge; 3 dias/semana</strong> para prevenir quedas.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Gestantes e Pós-parto</strong></td>
+                        <td>Pelo menos <strong>150 min/semana</strong> (Moderada).</td>
+                        <td>Segurança crítica: <strong>Evitar posição supina</strong> após o 1º trimestre. Hidratação rigorosa.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Condições Crônicas (PCD)</strong></td>
+                        <td>Conforme tolerância e funcionalidade.</td>
+                        <td>Essencial no manejo de Hipertensão, DM2, HIV, AVC e Parkinson. Melhora função sem agravar patologias de base.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>4️⃣ Mitos e Verdades na Prática Clínica</span></div>
+            <div class="myth-truth">
+                <div class="myth-box"><strong>Mito:</strong> Exercício físico só traz benefício se durar pelo menos 10 minutos ininterruptos.</div>
+                <div class="truth-box"><strong>Verdade:</strong> A nova diretriz removeu a barreira clínica dos surtos de 10 minutos. Todo movimento conta, independentemente da duração do bloco de atividade.</div>
+            </div>
+            <div class="myth-truth">
+                <div class="myth-box"><strong>Mito:</strong> O foco da prescrição de exercícios deve ser a redução direta do peso corporal e queima de gordura.</div>
+                <div class="truth-box"><strong>Verdade:</strong> A redução direta da adiposidade possui certeza clínica inferior (baixa/moderada) comparada à melhoria sistêmica. A redução do peso é um benefício secundário à melhora da saúde metabólica.</div>
+            </div>
+            <div class="myth-truth">
+                <div class="myth-box"><strong>Mito:</strong> Pacientes inativos crônicos devem exigir liberação médica complexa antes de iniciar caminhadas.</div>
+                <div class="truth-box"><strong>Verdade:</strong> A liberação prévia é geralmente desnecessária para atividades de intensidade leve a moderada em indivíduos assintomáticos. O risco da inatividade é infinitamente superior ao risco de lesão por atividade moderada.</div>
+            </div>
+        </div>
+
+        <a href="orientacao_atividade.pdf" target="_blank" class="btn-print">
+            🏃‍♂️ Imprimir Orientações de Atividade Física
+            <br> (em construção)
+        </a>
+
+        <div class="ref-section" style="font-size: 0.8rem; color: #777; margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px;">
+            <strong>Referência Bibliográfica:</strong><br>
+            • Guia Clínico de Atividade Física: Prescrição e Orientação Baseada em Evidências.
+        </div>
+
+    </div>
+
+    <footer class="footer-cred" style="text-align: center; padding: 20px; color: #888; font-size: 0.8rem;">
+        Cérebro de Átila © 2026. Prescrevendo movimento em cada consulta.
+    </footer>
+</body>
+</html>
