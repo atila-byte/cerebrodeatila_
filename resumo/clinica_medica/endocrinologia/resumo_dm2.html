@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Mellitus Tipo 2 (SBD 2024-2025)</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <style>
+        /* TEMA AZUL (ENDOCRINOLOGIA - DIABETES) */
+        :root { --theme-dm: #1565C0; } 
+        
+        .resumo-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--theme-dm);
+        }
+
+        .res-header { 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #0D47A1; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #E3F2FD;
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            color: #0D47A1;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 600px;
+        }
+        .table-custom th {
+            background-color: #E3F2FD;
+            color: #0D47A1;
+            text-align: center;
+            padding: 10px;
+            border: 1px solid #BBDEFB;
+        }
+        .table-custom td {
+            padding: 10px;
+            border: 1px solid #eee;
+            color: #444;
+            vertical-align: middle;
+            text-align: center;
+        }
+        .table-custom td:first-child {
+            text-align: left;
+            font-weight: 700;
+            background-color: #FAFAFA;
+        }
+        
+        .table-drugs {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        .table-drugs th {
+            background-color: #E3F2FD;
+            color: #0D47A1;
+            text-align: left;
+            padding: 10px;
+            border-radius: 6px;
+        }
+        .table-drugs td {
+            padding: 12px 10px;
+            border-bottom: 1px solid #eee;
+            color: #444;
+            vertical-align: top;
+            text-align: left;
+        }
+        
+        .drug-name { font-weight: 800; color: #1565C0; display: inline-block; margin-bottom: 4px; font-size: 1rem; }
+        .tag-sus { background: #4CAF50; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; margin-left: 5px; }
+        
+        .flux-box { background: #FAFAFA; border: 1px solid #E0E0E0; border-radius: 8px; padding: 15px; margin-bottom: 15px; border-left: 4px solid #1976D2; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="../../clinica_medica.html" class="back-btn" style="text-decoration: none;">⬅</a>
+        <div class="app-title">Diabetes Mellitus Tipo 2 🍬</div>
+    </header>
+
+    <div class="container">
+        
+        <div class="resumo-box">
+            <div class="res-header"><span>1️⃣ Apresentação Clínica e Resistência Insulínica</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                Frequentemente, o DM2 é <strong>assintomático</strong> em suas fases iniciais. Quando sintomático, apresenta os sinais clássicos de hiperglicemia.
+            </p>
+            <ul style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                <li><strong>Sintomas Clássicos:</strong> Poliúria, polidipsia, polifagia e perda de peso inexplicada.</li>
+                <li><strong>Sinais Clínicos de Resistência à Insulina:</strong> Acantose nigricans e obesidade severa (indicadores fundamentais para iniciar o rastreamento em adultos assintomáticos com IMC > 25 kg/m²). Síndrome dos Ovários Policísticos (SOP) e Hipertensão também estão frequentemente associadas.</li>
+            </ul>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>2️⃣ Critérios Diagnósticos (SBD 2024-2025)</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                Na ausência de sintomas clássicos inequívocos, o diagnóstico de DM <strong>deve ser confirmado com dois exames alterados</strong> (o mesmo exame repetido em dia diferente ou dois diferentes na mesma amostra).
+            </p>
+            <div class="table-responsive">
+                <table class="table-custom" style="min-width: auto;">
+                    <tr>
+                        <th>Exame</th>
+                        <th style="background-color: #E8F5E9; color: #2E7D32;">Normal</th>
+                        <th style="background-color: #FFF3E0; color: #E65100;">Pré-Diabetes</th>
+                        <th style="background-color: #FFEBEE; color: #C62828;">Diabetes</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Glicemia de Jejum (GJ)</strong></td>
+                        <td>< 100 mg/dL</td>
+                        <td>100 a 125 mg/dL</td>
+                        <td><strong>&ge; 126 mg/dL</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Glicemia 1 hora no TTGO</strong><br><small>(75g de glicose)</small></td>
+                        <td>< 155 mg/dL</td>
+                        <td>155 a 208 mg/dL</td>
+                        <td><strong>&ge; 209 mg/dL</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Glicemia 2 horas no TTGO</strong><br><small>(75g de glicose)</small></td>
+                        <td>< 140 mg/dL</td>
+                        <td>140 a 199 mg/dL</td>
+                        <td><strong>&ge; 200 mg/dL</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hemoglobina Glicada (HbA1c)</strong></td>
+                        <td>< 5,7%</td>
+                        <td>5,7 a 6,4%</td>
+                        <td><strong>&ge; 6,5%</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Glicemia ao Acaso</strong></td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td><strong>&ge; 200 mg/dL</strong><br><small>Apenas se houver sintomas clássicos</small></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>3️⃣ Estratificação de Risco Cardiovascular (SBD)</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                Todos os adultos devem ser avaliados quanto ao risco cardiovascular, função renal (DRC) e insuficiência cardíaca (IC) antes da escolha farmacológica.
+            </p>
+            <div class="table-responsive">
+                <table class="table-custom" style="min-width: auto;">
+                    <tr><th>Risco</th><th>Critérios (Fatores, Doença Subclínica e Eventos)</th></tr>
+                    <tr>
+                        <td style="color: #4CAF50;"><strong>Baixo</strong></td>
+                        <td style="text-align: left;">Homens < 50 anos / Mulheres < 56 anos. Sem fatores de risco ou doença subclínica.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #FFC107;"><strong>Intermediário</strong></td>
+                        <td style="text-align: left;">Pacientes que não preenchem critérios de baixo risco, mas ainda não possuem os critérios para Alto Risco.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #FF9800;"><strong>Alto</strong></td>
+                        <td style="text-align: left;">
+                            <strong>1 a 2 Fatores:</strong> Duração DM2 > 10a, SM, HAS, Tabagismo, LDL > 190, HF de DAC prematura.<br>
+                            <strong>OU Lesão Subclínica:</strong> TFG 30-59, Albuminúria 30-300, Retinopatia não-proliferativa, Placa carótida > 1,5mm. (Sem eventos estabelecidos).
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="color: #F44336;"><strong>Muito Alto</strong></td>
+                        <td style="text-align: left;">
+                            <strong>&ge; 3 Fatores</strong> ou HFamiliar.<br>
+                            <strong>OU Lesão Grave:</strong> Albuminúria > 300, Retinopatia proliferativa, Estenose > 50%.<br>
+                            <strong>OU Eventos Estabelecidos:</strong> IAM, Angina, AVC, AIT, DAP, Amputação, Revascularização.
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>4️⃣ Tratamento e Fluxograma (SBD 2024-2025)</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5; margin-bottom: 15px;">
+                A diretriz atual estratifica a escolha inicial com base no <strong>Risco Cardiovascular/Renal</strong> e na presença de <strong>Sobrepeso/Obesidade</strong>.
+            </p>
+
+            <div class="flux-box">
+                <strong style="color: #4CAF50;">Risco Baixo ou Intermediário</strong>
+                <ul style="margin-top: 5px; font-size: 0.9rem; color: #444; padding-left: 20px;">
+                    <li style="margin-bottom: 8px;"><strong>SEM Sobrepeso/Obesidade:</strong> Iniciar com <strong>Metformina</strong> em monoterapia (se HbA1c < 7,5%). Se HbA1c &ge; 7,5%, terapia dupla (Metformina + iSGLT2 ou outro AD).</li>
+                    <li><strong>COM Sobrepeso/Obesidade:</strong> Iniciar preferencialmente com fármaco redutor de peso <strong>(AR GLP-1 ou Tirzepatida)</strong> em monoterapia. Alternativa: iSGLT2 ou Metformina. Se HbA1c &ge; 7,5%, terapia dupla associando esses agentes.</li>
+                </ul>
+            </div>
+
+            <div class="flux-box">
+                <strong style="color: #F44336;">Risco Alto ou Muito Alto (DCV, IC ou DRC)</strong>
+                <ul style="margin-top: 5px; font-size: 0.9rem; color: #444; padding-left: 20px;">
+                    <li style="margin-bottom: 8px;"><strong>SEM Sobrepeso/Obesidade:</strong> O <strong>iSGLT2</strong> é o preferencial em monoterapia (se HbA1c < 7,5%). Se &ge; 7,5%, terapia dupla (iSGLT2 + Metformina).</li>
+                    <li><strong>COM Sobrepeso/Obesidade:</strong> O <strong>AR GLP-1</strong> é o preferencial em monoterapia, com duplo benefício (redução de risco CV e peso). Se &ge; 7,5%, usar AR GLP-1 + Metformina.</li>
+                    <li style="margin-top: 8px;"><em>Nota: Em IC com fração de ejeção reduzida ou DRC, o iSGLT2 possui benefício primordial independente do peso.</em></li>
+                </ul>
+            </div>
+
+            <div class="section-title">Fármacos Antidiabéticos (Apresentações, Posologia e Observações)</div>
+            <table class="table-drugs">
+                <tr>
+                    <th style="width: 45%;">Classe e Posologia</th>
+                    <th style="width: 55%;">Observações (Efeitos Adversos e Contraindicações)</th>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="drug-name">Biguanidas</span><span class="tag-sus">SUS</span><br>
+                        <strong>Metformina (Imediata):</strong> 500/850 mg, 2 a 3x/dia (Máx: 2550 mg/dia).<br>
+                        <strong>Metformina XR:</strong> 500/750/1000 mg, 1 a 3x/dia (Máx: 2250 mg/dia).
+                    </td>
+                    <td>
+                        <strong>Efeitos:</strong> Diarreia, náuseas, deficiência de vitamina B12 e risco raro de acidose lática.<br>
+                        <strong>Contraindicações:</strong> TFG < 30 mL/min/1,73m² (Reduzir dose se TFG 30-45), insuficiência cardíaca congestiva aguda, hepatopatia e lactação.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="drug-name">Sulfonilureias</span><span class="tag-sus">SUS</span><br>
+                        <strong>Gliclazida MR:</strong> 30/60 mg, 1x/dia (Máx: 120 mg/dia).<br>
+                        <strong>Glimepirida:</strong> 1/2/4 mg, 1 a 2x/dia (Máx: 8 mg/dia).<br>
+                        <strong>Glibenclamida:</strong> 5 mg, 1 a 2x/dia (Máx: 20 mg/dia).
+                    </td>
+                    <td>
+                        <strong>Efeitos:</strong> Alto risco de hipoglicemia e ganho de peso.<br>
+                        <strong>Contraindicações:</strong> TFG < 30 mL/min/1,73m² e insuficiência hepática.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="drug-name">Inibidores de SGLT2 (iSGLT2)</span><span class="tag-sus">SUS*</span><br>
+                        <strong>Dapagliflozina:</strong> 10 mg, 1x/dia.<br>
+                        <strong>Empagliflozina:</strong> 10/25 mg, 1x/dia.<br>
+                        <strong>Canagliflozina:</strong> 100/300 mg, 1x/dia.
+                    </td>
+                    <td>
+                        <strong>Efeitos:</strong> Propensão à infecção do trato geniturinário e baixo risco de cetoacidose euglicêmica.<br>
+                        <strong>Limites de TFG para iniciar:</strong> Dapagliflozina (>25), Canagliflozina (>45) e Empagliflozina (>20).<br>
+                        <em>*No SUS: Incorporado para DM2 + IC (FE < 40%) ou pacientes com DCV/DRC (conforme protocolo).</em>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="drug-name">Análogos de GLP-1 (aGLP-1)</span><br>
+                        <strong>Liraglutida:</strong> 0.6 / 1.2 / 1.8 mg/dia.<br>
+                        <strong>Dulaglutida:</strong> 0.75 / 1.5 mg, 1x/semana.<br>
+                        <strong>Semaglutida SC:</strong> 0.25 / 0.5 / 1 mg, 1x/semana.<br>
+                        <strong>Semaglutida Oral:</strong> 3 / 7 / 14 mg, 1x/dia.
+                    </td>
+                    <td>
+                        <strong>Efeitos:</strong> Náusea, vômitos, diarreia e pancreatite aguda (rara). Redução de eventos cardiovasculares maiores.<br>
+                        <strong>Contraindicações:</strong> Carcinoma medular de tireoide, pancreatite e TFG < 15.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="drug-name">Coagonista GLP-1/GIP</span><br>
+                        <strong>Tirzepatida:</strong> 2.5 a 15 mg, 1x/semana (Dose Máx: 15 mg/semana).
+                    </td>
+                    <td>
+                        <strong>Efeitos:</strong> Náusea, diarreia, fadiga e aumento da frequência cardíaca. Promove redução acentuada de peso.<br>
+                        <strong>Contraindicações:</strong> História pessoal ou familiar de carcinoma medular de tireoide ou NEM2.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="drug-name">Inibidores da DPP-4 (iDPP-4)</span><br>
+                        <strong>Sitagliptina:</strong> 50/100 mg, 1 a 2x/dia (Máx: 100 mg/dia).<br>
+                        <strong>Vildagliptina:</strong> 50 mg, 2x/dia.<br>
+                        <strong>Linagliptina / Evogliptina:</strong> 5 mg, 1x/dia.
+                    </td>
+                    <td>
+                        <strong>Efeitos:</strong> Angioedema, urticária e probabilidade de pancreatite aguda. A saxagliptina aumenta as hospitalizações por IC.<br>
+                        <strong>Observações:</strong> Necessidade de ajuste na dose conforme TFG, exceto para evogliptina e linagliptina.
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span class="drug-name">Pioglitazona</span><br>
+                        <strong>Pioglitazona:</strong> 15 / 30 / 45 mg, 1x/dia.
+                    </td>
+                    <td>
+                        <strong>Efeitos:</strong> Ganho de peso, retenção hídrica, risco de fraturas em idosos e risco de IC em pacientes propensos.<br>
+                        <strong>Contraindicações:</strong> Insuficiência cardíaca sintomática (III/IV) e insuficiência hepática.
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>5️⃣ Insulinoterapia no DM2 (Protocolo e SUS)</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                O início da insulinoterapia no DM2 deve seguir critérios clínicos rigorosos e metas laboratoriais.
+            </p>
+            <ul style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                <li style="margin-bottom: 8px;"><strong>Quando iniciar:</strong> No diagnóstico (se HbA1c > 9% ou glicemia de jejum &ge; 300 mg/dL com sintomas clássicos de catabolismo como perda de peso, poliúria e polidipsia), ou em casos de falha terapêutica com antidiabéticos orais.</li>
+                
+                <li style="margin-bottom: 8px;"><strong>Insulinas e Insumos no SUS:</strong> O SUS fornece a insulina <strong>NPH</strong> (Basal) e a <strong>Regular</strong> (Prandial). As canetas de aplicação são disponibilizadas conforme pactuação para grupos prioritários. Para o uso seguro, orienta-se a disponibilização de 1 seringa/agulha por dia para NPH e 1 para Regular, sendo o reuso pelo próprio paciente contabilizado (comumente limitado a cerca de 8 utilizações até ocorrer aumento de sensibilidade).</li>
+                
+                <li style="margin-bottom: 8px;"><strong>Como Iniciar (Titulação da Basal):</strong> O tratamento de escolha inicial é o uso de insulina Basal (NPH à noite).
+                    <ul style="margin-top: 4px; margin-bottom: 4px;">
+                        <li><em>Dose inicial:</em> <strong>10 UI ou 0,1 a 0,2 UI/kg</strong> ao deitar.</li>
+                        <li><em>Ajuste (a cada 3 dias):</em> Aumentar <strong>2 UI</strong> até que a glicemia de jejum atinja a meta.</li>
+                        <li><em>Manejo de Hipoglicemia (< 70 mg/dL):</em> Diminuir a dose diária imediatamente em <strong>4 UI ou 10% a 20%</strong>.</li>
+                    </ul>
+                </li>
+
+                <li style="margin-bottom: 8px;"><strong>Fracionamento da NPH:</strong> Se a glicemia de jejum for controlada (70 a 130 mg/dL), mas a HbA1c continuar acima da meta, deve-se considerar dividir a dose diária da NPH, sendo aplicada pela manhã e ao dormir.</li>
+
+                <li style="margin-bottom: 8px;"><strong>Introdução e Titulação da Insulina Regular:</strong> Se, após o fracionamento da NPH, o paciente não atingir o controle glicêmico, inicia-se a <strong>insulina Regular (prandial)</strong>.
+                    <ul style="margin-top: 4px; margin-bottom: 4px;">
+                        <li><em>Dose e Ajuste:</em> Adicionar <strong>1 UI a 2 UI (ou 10% a 15% da dose)</strong> duas vezes por semana, baseando-se nos valores das glicemias 2 horas pós-prandiais (após café, almoço ou jantar). Caso a meta não seja atingida, recomenda-se o encaminhamento para o endocrinologista.</li>
+                    </ul>
+                </li>
+
+                <li style="margin-bottom: 8px;"><strong>Manutenção de Fármacos Orais:</strong> Durante o uso da insulina basal, recomenda-se manter a terapia oral associada (como metformina, iSGLT2 e inibidores de DPP-4) para minimizar o ganho de peso e o risco de hipoglicemia, mas as sulfonilureias devem ter suas doses avaliadas/reduzidas ou suspensas em esquemas basal-bolus completos.</li>
+            </ul>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>6️⃣ Metas Terapêuticas (SBD)</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5; margin-bottom: 15px;">
+                O controle glicêmico deve ser estritamente individualizado de acordo com a situação clínica, idade e fragilidade do paciente.
+            </p>
+            
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <tr>
+                        <th>Parâmetro</th>
+                        <th>Adultos (DM1 ou DM2)</th>
+                        <th>Idoso Saudável</th>
+                        <th>Idoso Frágil / Comprometido</th>
+                        <th>Idoso Muito Comprometido</th>
+                        <th>Criança e Adolescente</th>
+                    </tr>
+                    <tr>
+                        <td><strong>HbA1c (%)</strong></td>
+                        <td><strong>< 7,0</strong></td>
+                        <td><strong>< 7,5</strong></td>
+                        <td><strong>< 8,0</strong></td>
+                        <td>Evitar sintomas de hiper ou hipoglicemia</td>
+                        <td><strong>< 7,0</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Jejum e Pré-Prandial</strong> (mg/dL)</td>
+                        <td>80 a 130</td>
+                        <td>80 a 130</td>
+                        <td>90 a 150</td>
+                        <td>100 a 180</td>
+                        <td>70 a 130</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2h Pós-Prandial</strong> (mg/dL)</td>
+                        <td>< 180</td>
+                        <td>< 180</td>
+                        <td>< 180</td>
+                        <td>110 a 200</td>
+                        <td>< 180</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Ao Deitar</strong> (mg/dL)</td>
+                        <td>90 a 150</td>
+                        <td>90 a 150</td>
+                        <td>100 a 180</td>
+                        <td>110 a 200</td>
+                        <td>90 a 150</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Tempo no Alvo (TIR)</strong><br><small>70 a 180 mg/dL</small></td>
+                        <td><strong>> 70%</strong></td>
+                        <td><strong>> 70%</strong></td>
+                        <td><strong>> 50%</strong></td>
+                        <td>-</td>
+                        <td><strong>> 70%</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hipoglicemia Nível 1</strong><br><small>< 70 mg/dL</small></td>
+                        <td>< 4%</td>
+                        <td>< 4%</td>
+                        <td>< 1%</td>
+                        <td>0%</td>
+                        <td>< 4%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Hipoglicemia Nível 2</strong><br><small>< 54 mg/dL</small></td>
+                        <td>< 1%</td>
+                        <td>< 1%</td>
+                        <td>0%</td>
+                        <td>0%</td>
+                        <td>< 1%</td>
+                    </tr>
+                </table>
+            </div>
+            <p style="font-size: 0.85rem; color: #777; margin-top: 10px;">
+                <em>*Idoso Muito Comprometido: Doença terminal, comprometimento funcional ou cognitivo grave. O objetivo central é o conforto e evitar complicações agudas.</em>
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>
