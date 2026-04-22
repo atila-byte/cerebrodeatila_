@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>AtiQuestion | Home</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <h1>AtiQuestion</h1>
+        <div class="nav-links" style="display: flex; align-items: center;">
+            <a href="../index.html">Voltar ao Cérebro de Átila🧠</a>
+            <a href="atiquestion.html">Página Inicial</a>
+            <a href="banco.html">Banco de Questões</a>
+            <a href="simulado.html">Simulador</a>
+            
+            <label class="theme-toggle-btn" style="margin-left: 20px;">
+                <input type="checkbox" id="dark-mode-checkbox" onchange="toggleTheme()">
+                <span class="theme-toggle-content" id="texto-botao-tema">🌙 Modo Escuro</span>
+            </label>
+        </div>
+    </nav>
+    <div class="container" style="text-align: center; margin-top: 10vh;">
+        <h2 style="color: var(--primary); font-size: 2.5rem;">Bem-vindo ao AtiQuestion</h2>
+        <p style="color: var(--secondary); font-size: 1.2rem; margin-bottom: 0.5rem;">Sua plataforma inteligente de estudos e revisões.</p>
+        <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 2rem; font-style: italic;">Site criado por Átila Paixão com apoio de inteligência artificial Gemini 3.1 Pro . Versão estável 3.0</p>
+        
+        <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+            <a href="simulado.html"><button style="width: auto;">Criar Simulado</button></a>
+            <a href="banco.html"><button style="width: auto; background: var(--secondary);">Explorar Questões</button></a>
+        </div>
+    </div>
+    <div class="container" style="text-align: center; margin-top: 3rem;">
+        <h3 style="color: var(--secondary); margin-bottom: 20px;">Raio-X de Desempenho por Especialidade</h3>
+        <div id="stats-container" style="display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 20px;">
+            </div>
+        <button onclick="limparMemoria()" style="margin-top: 30px; background: #e74c3c; font-size: 0.8rem; padding: 8px 15px; width: auto;">Limpar Histórico de Erros</button>
+    </div>
+
+    <script src="questoes_1.js"></script>
+    
+    <script src="app.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (typeof atualizarDashboard === 'function') {
+                atualizarDashboard();
+            }
+        });
+    </script>
+</body>
+</html>
