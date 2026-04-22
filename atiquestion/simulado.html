@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>AtiQuestion | Simulador</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="questoes_1.js"></script> 
+</head>
+<body>
+    <nav class="navbar">
+        <h1>AtiQuestion</h1>
+        <div class="nav-links" style="display: flex; align-items: center;">
+            <a href="../index.html">Voltar ao Cérebro de Átila🧠</a>
+            <a href="atiquestion.html">Página Inicial</a>
+            <a href="banco.html">Banco de Questões</a>
+            <a href="simulado.html">Simulador</a>
+            
+            <label class="theme-toggle-btn" style="margin-left: 20px;">
+                <input type="checkbox" id="dark-mode-checkbox" onchange="toggleTheme()">
+                <span class="theme-toggle-content" id="texto-botao-tema">🌙 Modo Escuro</span>
+            </label>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="card" id="setup-simulado">
+            <h2>Configurar Simulado</h2>
+            <div class="form-group">
+                <label>Número de Questões (Obrigatório)</label>
+                <input type="number" id="num-questoes" min="1" placeholder="Ex: 10">
+            </div>
+            <div class="form-group">
+                <label>Tempo Máximo (minutos - Opcional)</label>
+                <input type="number" id="tempo" min="1" placeholder="Ex: 60">
+            </div>
+            <div class="form-group">
+                <label style="display: flex; align-items: center; gap: 10px; font-weight: normal; cursor:pointer;">
+                    <input type="checkbox" id="auto-encerra">
+                    Quero que a prova encerre sozinha após o tempo
+                </label>
+            </div>
+            <button onclick="iniciarSimulado()">Criar Simulado</button>
+        </div>
+
+        <div id="simulado-area"></div>
+    </div>
+
+    <footer style="text-align: center; margin-top: 40px; padding: 20px; color: var(--text-muted); font-size: 0.85rem; border-top: 1px solid var(--border-color);">
+        Site criado por Átila Paixão com apoio de inteligência artificial Gemini 3.1 Pro . Versão estável 3.0
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

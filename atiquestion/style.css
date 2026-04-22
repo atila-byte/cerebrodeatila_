@@ -1,0 +1,793 @@
+/* Importando uma fonte moderna e limpa (Inter) */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+    --primary: #5c8d89; 
+    --primary-hover: #4a7572; 
+    --primary-light: #e8f4f2; 
+    --secondary: #7494b4; 
+    --secondary-hover: #5d7a96;
+    --bg-color: #f8fafc; 
+    --surface: #ffffff;
+    --text-main: #2c3e50;
+    --text-muted: #64748b;
+    --border-color: #e2e8f0;
+    --correct: #10b981;
+    --wrong: #ef4444;
+    --radius: 16px; 
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 10px 25px -3px rgba(0, 0, 0, 0.05);
+    --shadow-btn: 0 4px 14px 0 rgba(92, 141, 137, 0.39);
+}
+
+/* ==========================================
+   TEMA ESCURO (DARK MODE) - FORÇA MÁXIMA
+   ========================================== */
+body[data-theme="dark"] {
+    --bg-color: #0f172a !important;       
+    --surface: #1e293b !important;        
+    --text-main: #f8fafc !important;      
+    --text-muted: #94a3b8 !important;     
+    --border-color: #334155 !important;   
+}
+
+body[data-theme="dark"] input,
+body[data-theme="dark"] select,
+body[data-theme="dark"] button:not(.btn-icon):not([style*="background"]) {
+    background-color: #0f172a !important;
+    color: var(--text-main) !important;
+    border-color: var(--border-color) !important;
+}
+
+body[data-theme="dark"] .navbar {
+    background-color: rgba(30, 41, 59, 0.9) !important; 
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+body[data-theme="dark"] .nav-links a {
+    color: var(--text-main) !important;
+}
+
+* { 
+    box-sizing: border-box; 
+    margin: 0; 
+    padding: 0; 
+    font-family: 'Inter', sans-serif; 
+}
+
+body { 
+    background-color: var(--bg-color); 
+    color: var(--text-main); 
+    line-height: 1.6; 
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Suaviza a transição de cor */
+}
+
+/* =========================================
+   Navegação (Efeito Vidro Fosco / Glassmorphism)
+   ========================================= */
+.navbar {
+    background-color: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px); 
+    -webkit-backdrop-filter: blur(12px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid rgba(255,255,255,0.3);
+    transition: background-color 0.3s ease;
+}
+
+.navbar h1 { 
+    color: var(--primary); 
+    font-size: 1.5rem; 
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.nav-links a { 
+    text-decoration: none; 
+    color: var(--text-muted); 
+    margin-left: 24px; 
+    font-weight: 500; 
+    transition: color 0.3s; 
+}
+
+/* =========================================
+   Cards e Containers (Adaptáveis ao Dark Mode)
+   ========================================= */
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.card {
+    background-color: var(--surface); /* ← Isso garante que o card fique escuro! */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-md);
+    padding: 25px;
+    margin-bottom: 25px;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.questao-card {
+    background-color: var(--surface); /* ← Garante que a questão também fique escura! */
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    padding: 20px;
+    margin-bottom: 20px;
+    border: 1px solid var(--border-color);
+    transition: background-color 0.3s ease;
+}
+
+/* ... MANTENHA O RESTANTE DO SEU CÓDIGO DAQUI PARA BAIXO (Botões, Inputs, etc) ... */
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* =========================================
+   Filtros, Inputs e Menus Suspensos (Select)
+   ========================================= */
+.form-group { margin-bottom: 1.5rem; }
+
+label { 
+    display: block; 
+    font-weight: 600; 
+    margin-bottom: 0.5rem; 
+    color: var(--text-main);
+    font-size: 0.95rem;
+}
+
+/* Reset visual padrão dos Selects */
+select, input[type="number"], input[type="text"] { 
+    width: 100%; 
+    padding: 0.85rem 1rem; 
+    border: 1px solid var(--border-color); 
+    border-radius: 10px; 
+    font-size: 1rem; 
+    background-color: var(--surface); 
+    color: var(--text-main);
+    transition: all 0.3s ease;
+    outline: none;
+    font-weight: 500;
+}
+
+/* Setinha customizada para o menu suspenso */
+select {
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 1em;
+    padding-right: 2.5rem;
+    cursor: pointer;
+}
+
+select:hover, input[type="number"]:hover {
+    border-color: var(--secondary);
+}
+
+select:focus, input[type="number"]:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 4px var(--primary-light); /* Anel de foco bonito */
+}
+
+/* =========================================
+   Botões Premium
+   ========================================= */
+button { 
+    background-color: var(--primary); 
+    color: var(--white); 
+    border: none; 
+    padding: 0.85rem 1.5rem; 
+    border-radius: 10px; 
+    font-size: 1rem; 
+    cursor: pointer; 
+    font-weight: 600; 
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
+    width: 100%; 
+    box-shadow: var(--shadow-btn);
+}
+
+button:hover { 
+    background-color: var(--primary-hover); 
+    transform: translateY(-2px); /* Flutua levemente ao passar o mouse */
+    box-shadow: 0 6px 20px 0 rgba(92, 141, 137, 0.45);
+}
+
+button:active {
+    transform: translateY(0); /* Efeito de clique */
+}
+
+/* =========================================
+   Questões e Alternativas
+   ========================================= */
+.questao-header { 
+    font-size: 0.85rem; 
+    color: var(--secondary); 
+    font-weight: 700; 
+    margin-bottom: 1.2rem; 
+    text-transform: uppercase; 
+    letter-spacing: 0.5px;
+}
+
+.enunciado { 
+    font-size: 1.1rem; 
+    margin-bottom: 1.5rem; 
+    color: var(--text-main);
+    font-weight: 400;
+    text-align: justify;
+}
+
+.alternativas { list-style: none; }
+
+.alternativa-item { 
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 1rem; 
+    background: #f4f6f8; 
+    padding: 1rem 1.2rem; 
+    border-radius: 12px; 
+    transition: all 0.2s ease; 
+    position: relative;
+    border: 1px solid transparent;
+    text-align: justify;
+}
+
+.alternativa-item:not(.alt-correta):not(.alt-errada):hover {
+    background: #eef2f6;
+}
+
+.alternativa-item.tachado {
+    background: #f8fafc;
+    border: 1px dashed var(--border-color);
+}
+
+.alternativa-item.tachado .alt-texto { 
+    text-decoration: line-through; 
+    color: var(--text-muted);
+    opacity: 0.6; 
+}
+
+/* Estilizando as Bolinhas do Radio (Ficou muito legal!) */
+input[type="radio"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--secondary);
+    border-radius: 50%;
+    margin-right: 12px;
+    cursor: pointer;
+    position: relative;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+input[type="radio"]:checked {
+    border-color: var(--primary);
+    background-color: var(--primary-light);
+}
+
+input[type="radio"]:checked::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background-color: var(--primary);
+    border-radius: 50%;
+}
+
+/* Botão Riscar (Tesoura) */
+.btn-riscar { 
+    background: var(--surface); 
+    border: 1px solid var(--border-color); 
+    color: var(--secondary); 
+    padding: 0.4rem; 
+    border-radius: 8px; 
+    font-size: 1.1rem; 
+    cursor: pointer; 
+    margin-right: 15px; 
+    width: 36px; 
+    height: 36px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-sm);
+    flex-shrink: 0;
+}
+
+.btn-riscar:hover { 
+    background: #f1f5f9; 
+    color: var(--text-main); 
+    border-color: #cbd5e1;
+    transform: scale(1.05);
+}
+
+/* =========================================
+   Resoluções e Cores de Feedback
+   ========================================= */
+.resolucao-container { 
+    display: none; 
+    margin-top: 2rem; 
+    padding-top: 1.5rem; 
+    border-top: 1px solid var(--border-color); 
+    animation: fadeIn 0.4s ease-out;
+}
+
+.resolucao-container.ativa { display: block; }
+
+.resolucao-geral { 
+    background-color: #f8fafc; 
+    padding: 1.5rem; 
+    border-left: 4px solid var(--primary); 
+    border-radius: 0 12px 12px 0; 
+    margin-top: 1rem; 
+    color: var(--text-main);
+}
+
+.resolucao-alt { 
+    font-size: 0.9rem; 
+    color: var(--text-muted); 
+    margin-top: 0.8rem; 
+    display: block; 
+    background: rgba(255,255,255,0.6);
+    padding: 0.8rem;
+    border-radius: 8px;
+}
+
+/* Feedback Cores */
+.alt-correta { 
+    border: 1px solid var(--correct); 
+    background-color: #ecfdf5; 
+}
+.alt-correta input[type="radio"] { border-color: var(--correct); }
+.alt-correta input[type="radio"]:checked::after { background-color: var(--correct); }
+
+.alt-errada { 
+    border: 1px solid var(--wrong); 
+    background-color: #fef2f2; 
+}
+.alt-errada input[type="radio"] { border-color: var(--wrong); }
+.alt-errada input[type="radio"]:checked::after { background-color: var(--wrong); }
+
+/* =========================================
+   Notas Individuais e Temporizador
+   ========================================= */
+.badge-nota { 
+    display: inline-block; 
+    padding: 4px 12px; 
+    border-radius: 20px; 
+    font-weight: 700; 
+    font-size: 0.8rem; 
+    margin-left: 10px;
+    letter-spacing: 0.5px; 
+}
+
+.nota-correta { background-color: #d1fae5; color: #059669; border: 1px solid #10b981; }
+.nota-errada { background-color: #fee2e2; color: #b91c1c; border: 1px solid #ef4444; }
+.nota-neutra { background-color: #f1f5f9; color: #64748b; border: 1px solid #cbd5e1; }
+.nota-aviso { background-color: #fef3c7; color: #d97706; border: 1px solid #f59e0b; }
+
+.timer-fixed { 
+    position: fixed; 
+    bottom: 24px; 
+    right: 24px; 
+    background: var(--surface); 
+    padding: 0.8rem 1.5rem; 
+    border-radius: 30px; 
+    box-shadow: var(--shadow-md); 
+    font-size: 1.2rem; 
+    font-weight: 700; 
+    color: var(--primary); 
+    border: 2px solid var(--primary-light); 
+    z-index: 1000; 
+    backdrop-filter: blur(8px);
+}
+/* Forçar a cor branca nos textos dos botões dentro de links */
+a button {
+    color: #ffffff !important;
+}
+a {
+    text-decoration: none;
+}
+/* =========================================
+   Tags de Filtros Ativos (Pílulas)
+   ========================================= */
+.filter-tag {
+    background-color: var(--primary-light);
+    color: var(--primary);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid var(--primary);
+    box-shadow: var(--shadow-sm);
+    animation: fadeIn 0.3s ease;
+}
+
+.filter-tag span {
+    cursor: pointer;
+    color: var(--wrong);
+    font-weight: bold;
+    font-size: 1rem;
+    transition: transform 0.2s;
+}
+
+.filter-tag span:hover {
+    transform: scale(1.2);
+}
+/* =========================================
+   DARK MODE (Modo Escuro)
+   ========================================= */
+[data-theme="dark"] {
+    --bg-color: #0f172a; /* Fundo principal escuro */
+    --surface: #1e293b; /* Fundo dos cards escuro */
+    --text-main: #f8fafc; /* Texto claro */
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --primary-light: #134e4a; /* Fundo botão verde escuro */
+    --primary: #2dd4bf; /* Verde neon pastel */
+    --secondary: #60a5fa; /* Azul claro */
+}
+
+[data-theme="dark"] .navbar {
+    background-color: rgba(30, 41, 59, 0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .alternativa-item { background: #334155; }
+[data-theme="dark"] .alternativa-item:not(.alt-correta):not(.alt-errada):hover { background: #475569; }
+[data-theme="dark"] .resolucao-geral { background-color: #0f172a; }
+[data-theme="dark"] .resolucao-alt { background-color: rgba(0,0,0,0.3); }
+
+/* Novos Botões Utilitários */
+.btn-icon { 
+    background: none; border: none; font-size: 1.3rem; 
+    cursor: pointer; transition: transform 0.2s; margin-left: 10px;
+}
+.btn-icon:hover { transform: scale(1.2); }
+
+.btn-copy {
+    background: transparent; color: var(--secondary); border: 1px solid var(--secondary);
+    margin-top: 15px; width: auto; font-size: 0.9rem; padding: 0.6rem 1rem;
+    display: inline-flex; align-items: center; gap: 8px; box-shadow: none;
+}
+.btn-copy:hover { background: var(--secondary); color: var(--surface); }
+
+
+/* =========================================
+   Botão Toggle: Caderno de Erros (Coração)
+   ========================================= */
+.toggle-fav-btn {
+    display: inline-block;
+}
+
+/* Esconde o quadradinho padrão do navegador */
+.toggle-fav-btn input[type="checkbox"] {
+    display: none; 
+}
+
+/* Design do botão quando está DESATIVADO */
+.toggle-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    background-color: var(--surface);
+    border: 2px solid var(--border-color);
+    border-radius: 50px; /* Formato de pílula arredondada */
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: var(--shadow-sm);
+    user-select: none; /* Evita que o texto seja selecionado de azul ao clicar rápido */
+}
+
+/* Efeito ao passar o mouse */
+.toggle-content:hover {
+    background-color: #f1f5f9;
+    transform: translateY(-2px);
+}
+
+/* Design do botão quando está ATIVADO (Checked) */
+.toggle-fav-btn input[type="checkbox"]:checked + .toggle-content {
+    background-color: #fef2f2; /* Fundo rosa bem pastel */
+    border-color: #f87171; /* Borda avermelhada suave */
+    color: #b91c1c; /* Texto vermelho escuro para dar contraste */
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.15); /* Sombra avermelhada */
+}
+
+/* =========================================
+   Botão Toggle: Modo Escuro (Navbar)
+   ========================================= */
+.theme-toggle-btn {
+    display: inline-block;
+}
+
+.theme-toggle-btn input[type="checkbox"] {
+    display: none; 
+}
+
+.theme-toggle-content {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 16px;
+    background-color: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: 50px;
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.theme-toggle-content:hover {
+    background-color: #f1f5f9;
+    color: var(--text-main);
+    transform: translateY(-2px);
+}
+
+/* Estilo do botão quando o modo escuro ESTÁ ATIVO */
+[data-theme="dark"] .theme-toggle-content {
+    background-color: #334155;
+    border-color: #475569;
+    color: #f8fafc;
+}
+
+[data-theme="dark"] .theme-toggle-content:hover {
+    background-color: #475569;
+}
+
+/* =========================================
+   DARK MODE (A Mágica das Cores Escuras)
+   ========================================= */
+[data-theme="dark"] {
+    --bg-color: #0f172a; /* Fundo principal escuro */
+    --surface: #1e293b; /* Fundo dos cards escuro */
+    --text-main: #f8fafc; /* Texto claro */
+    --text-muted: #94a3b8;
+    --border-color: #334155;
+    --primary-light: #134e4a; /* Fundo verde bem escuro para contrastes */
+    --primary: #2dd4bf; /* Verde neon pastel */
+    --secondary: #60a5fa; /* Azul claro */
+    --shadow-sm: 0 4px 6px -1px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 10px 25px -3px rgba(0, 0, 0, 0.3);
+    --shadow-btn: 0 4px 14px 0 rgba(45, 212, 191, 0.2);
+}
+
+[data-theme="dark"] .navbar {
+    background-color: rgba(30, 41, 59, 0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+
+[data-theme="dark"] .card { border: 1px solid rgba(255,255,255,0.05); }
+[data-theme="dark"] .alternativa-item { background: #334155; border-color: transparent; }
+[data-theme="dark"] .alternativa-item:not(.alt-correta):not(.alt-errada):hover { background: #475569; }
+[data-theme="dark"] .resolucao-geral { background-color: #0f172a; border-left-color: var(--primary); }
+[data-theme="dark"] .resolucao-alt { background-color: rgba(0,0,0,0.3); color: #cbd5e1; }
+[data-theme="dark"] input[type="radio"]:checked::after { background-color: var(--bg-color); }
+[data-theme="dark"] select, [data-theme="dark"] input[type="number"] { background-color: var(--surface); color: var(--text-main); }
+/* =========================================
+   Botão de Limpar Dados (Danger)
+   ========================================= */
+.btn-danger {
+    background-color: transparent;
+    color: var(--wrong);
+    border: 1px solid var(--wrong);
+    box-shadow: none;
+    width: auto;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+    margin-top: 2rem;
+    transition: all 0.2s ease;
+}
+
+.btn-danger:hover {
+    background-color: #fef2f2;
+    color: #b91c1c;
+    border-color: #b91c1c;
+    transform: scale(1.02);
+}
+
+/* Ajuste do botão no Modo Escuro */
+[data-theme="dark"] .btn-danger:hover {
+    background-color: rgba(239, 68, 68, 0.15);
+    color: #f87171;
+    border-color: #f87171;
+}
+/* =========================================
+   PÁGINA DE RESUMOS E MENU DE ESPECIALIDADES (ACCORDION)
+   ========================================= */
+.specialty-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.specialty-card {
+    background: var(--surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden; /* Essencial para a animação da sanfona */
+    transition: all 0.3s ease;
+}
+
+/* O cabeçalho clicável */
+.specialty-header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    background: var(--surface);
+    transition: background 0.2s;
+}
+
+.specialty-header:hover {
+    background: rgba(0,0,0,0.02);
+}
+
+[data-theme="dark"] .specialty-header:hover {
+    background: rgba(255,255,255,0.03);
+}
+
+.specialty-header h3 {
+    color: var(--primary);
+    font-size: 1.2rem;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+/* Setinha indicadora */
+.chevron {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.specialty-card.open .chevron {
+    transform: rotate(180deg); /* Vira a setinha para cima */
+    color: var(--primary);
+}
+
+/* O conteúdo oculto (Links dos resumos) */
+.specialty-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    padding: 0 20px;
+    background: rgba(0,0,0,0.01);
+}
+
+[data-theme="dark"] .specialty-content {
+    background: rgba(0,0,0,0.1);
+}
+
+.specialty-card.open .specialty-content {
+    max-height: 1000px; /* Abre a sanfona */
+    opacity: 1;
+    padding: 10px 20px 20px 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Links dentro da sanfona */
+.summary-link {
+    display: block;
+    padding: 12px 15px;
+    background: var(--surface);
+    color: var(--text-main);
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    border: 1px solid var(--border-color);
+}
+
+.summary-link:hover {
+    background: var(--primary-light);
+    color: var(--primary);
+    border-color: var(--primary);
+    transform: translateX(5px);
+}
+
+/* =========================================
+   ESTILOS INTERNOS DOS RESUMOS (Ex: HAS)
+   ========================================= */
+:root { --theme-has: #D32F2F; } 
+        
+.resumo-box {
+    background: var(--surface);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 20px;
+    box-shadow: var(--shadow-sm);
+    border-left: 5px solid var(--theme-has);
+    border-top: 1px solid var(--border-color);
+    border-right: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.res-header { 
+    font-size: 1.2rem; 
+    font-weight: 800; 
+    margin-bottom: 20px; 
+    display: flex; 
+    align-items: center; 
+    gap: 10px; 
+    color: var(--theme-has); 
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid rgba(211, 47, 47, 0.1);
+    padding-bottom: 10px;
+}
+
+.res-content { font-size: 0.95rem; color: var(--text-main); line-height: 1.6; }
+
+/* Tabelas Customizadas */
+.table-custom, .drug-table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9rem; }
+.table-custom th, .drug-table th { background-color: rgba(211, 47, 47, 0.05); color: var(--theme-has); padding: 12px; text-align: left; border: 1px solid var(--border-color); }
+.table-custom td, .drug-table td { padding: 12px; border: 1px solid var(--border-color); vertical-align: top;}
+.table-custom tr:nth-child(even) { background-color: rgba(0,0,0,0.02); }
+
+/* Tabela de Risco Cardiovascular */
+.table-risk { width: 100%; border-collapse: collapse; font-size: 0.8rem; text-align: center; margin-top: 15px; border: 1px solid var(--border-color); }
+.table-risk th { background: #424242; color: white; padding: 10px; border: 1px solid #666; font-weight: bold; }
+.table-risk td { padding: 10px 5px; border: 1px solid var(--border-color); font-weight: bold; color: #2c3e50; }
+.risk-row-header { background-color: rgba(0,0,0,0.03); text-align: left; padding-left: 10px; min-width: 150px; color: var(--text-main); }
+
+.risk-low { background-color: #81C784; } 
+.risk-mod { background-color: #FFD54F; } 
+.risk-high { background-color: #EF5350; color: white !important; }
+.risk-very-high { background-color: #880E4F; color: white !important; }
+
+/* Elementos Visuais do Resumo */
+.frcv-list { background: rgba(255, 152, 0, 0.1); padding: 15px; border-radius: 8px; border: 1px solid rgba(255, 152, 0, 0.3); margin-bottom: 15px; }
+.frcv-item { margin-bottom: 5px; display: block; }
+.frcv-item::before { content: "• "; color: var(--theme-has); font-weight: bold; }
+
+.alert-prevent { background: rgba(33, 150, 243, 0.1); border: 1px solid rgba(33, 150, 243, 0.3); color: #0D47A1; padding: 15px; border-radius: 8px; margin-top: 15px; }
+.step-box { background: rgba(0,0,0,0.02); padding: 15px; border-radius: 8px; margin-bottom: 12px; border-left: 4px solid #555; }
+.step-num { display: inline-block; background: #333; color: white; padding: 3px 10px; border-radius: 4px; font-size: 0.8rem; font-weight: bold; margin-bottom: 8px; }
+
+.drug-name { font-weight: 700; color: var(--theme-has); display: block; }
+.drug-class-info { background: rgba(255, 235, 59, 0.1); color: #B78D00; padding: 12px; font-size: 0.9rem; border-left: 4px solid #FBC02D; margin-bottom: 10px; }
+.tag-sus { background-color: #2E7D32; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; margin-left: 5px; display: inline-block; }
+
+/* Adaptações para Dark Mode nos Resumos */
+[data-theme="dark"] .table-risk td { color: #f8fafc; border-color: #475569; }
+[data-theme="dark"] .risk-low { background-color: #2e7d32; } 
+[data-theme="dark"] .risk-mod { background-color: #f57f17; }
+[data-theme="dark"] .risk-high { background-color: #c62828; }
+[data-theme="dark"] .alert-prevent { color: #90caf9; }
+[data-theme="dark"] .drug-class-info { color: #fbc02d; }
