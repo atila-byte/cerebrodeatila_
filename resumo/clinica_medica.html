@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clínica Médica - Resumos</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        .search-box { 
+            width: 100%; padding: 15px 15px 15px 45px; border: 2px solid #abd0e2; 
+            border-radius: 12px; font-size: 1rem; 
+            background: #abd0e2 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>') no-repeat 15px center; 
+            background-size: 20px; 
+            transition: all 0.2s;
+        }
+        .search-box:focus { outline: none; border-color: #5D7293; background-color: #fff; }
+        .no-results { display: none; text-align: center; padding: 40px 20px; color: #78909C; font-size: 1.1rem; }
+        
+        /* Título de cada Especialidade */
+        .spec-title {
+            font-size: 1.15rem;
+            color: #5D7293;
+            font-weight: 800;
+            margin-top: 30px;
+            margin-bottom: 5px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="resumos.html" class="back-btn" style="text-decoration: none;">⬅</a>
+        <div class="app-title">Clínica Médica 🩺</div>
+    </header>
+
+    <div class="search-container">
+        <input type="text" class="search-box" id="disease-search" placeholder="Buscar por doença, protocolo ou termo..." onkeyup="filterDiseases()">
+    </div>
+
+    <div class="container" style="padding-top: 5px;">
+        
+        <div id="disease-list">
+
+            <div class="spec-section">
+                <div class="spec-title">❤️ Cardiologia</div>
+                <div class="uni-grid">
+                    <a href="clinica_medica/cardiologia/resumo_has.html" class="uni-card" style="--card-color: #D32F2F;" data-name="hipertensao arterial has pressao alta cardiologia">
+                        <div class="uni-icon">🩸</div>
+                        <div class="uni-text">
+                            <span class="uni-title">Hipertensão (HAS)</span>
+                            <span class="uni-sub">Diretriz Brasileira 2025</span>
+                        </div>
+                    </a>
+
+                    <a href="clinica_medica/cardiologia/resumo_dislipidemia.html" class="uni-card" style="--card-color: #F57C00;" data-name="dislipidemia colesterol ldl hdl triglicerides estatina risco cardiovascular cardiologia">
+                        <div class="uni-icon">🍔</div>
+                        <div class="uni-text">
+                            <span class="uni-title">Dislipidemia</span>
+                            <span class="uni-sub">Estratificação e Metas (SBC)</span>
+                        </div>
+                    </a>
+
+                    <a href="clinica_medica/cardiologia/resumo_scc.html" class="uni-card" style="--card-color: #F57C00;" data-name="scc sindrome coronariana crônica dac cardiologia">
+                        <div class="uni-icon">🤕</div>
+                        <div class="uni-text">
+                            <span class="uni-title">Síndrome Coronariana Crônica</span>
+                            <span class="uni-sub">Identificação e conduta (SBC)</span>
+                        </div>
+                    </a>
+
+                    </a>
+                </div>
+            </div>
+
+            <div class="spec-section">
+                <div class="spec-title">🩸 Endocrinologia</div>
+                <div class="uni-grid">
+                    <a href="clinica_medica/endocrinologia/resumo_dm2.html" class="uni-card" style="--card-color: #1565C0;" data-name="diabetes mellitus dm glicemia insulina endocrinologia">
+                        <div class="uni-icon">🍬</div>
+                        <div class="uni-text">
+                            <span class="uni-title">Diabetes Mellitus tipo 2</span>
+                            <span class="uni-sub">Diagnóstico e Tratamento</span>
+                        </div>
+                    </a>
+
+                    <a href="clinica_medica/endocrinologia/resumo_dm1.html" class="uni-card" style="--card-color: #1565C0;" data-name="diabetes mellitus dm glicemia insulina endocrinologia">
+                        <div class="uni-icon">💉</div>
+                        <div class="uni-text">
+                            <span class="uni-title">Diabetes Mellitus tipo 1</span>
+                            <span class="uni-sub">Diagnóstico e Tratamento</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="spec-section">
+                <div class="spec-title">🚭 Pneumologia</div>
+                <div class="uni-grid">
+                    <a href="clinica_medica/pneumologia/resumo_asma.html" class="uni-card" style="--card-color: #673AB7;" data-name="asma gina broncodilatador corticoide respiratorio pneumologia">
+                        <div class="uni-icon">🌬️</div>
+                        <div class="uni-text">
+                            <span class="uni-title">Asma Brônquica</span>
+                            <span class="uni-sub">GINA 2025</span>
+                        </div>
+                    </a>
+
+                    <a href="clinica_medica/pneumologia/resumo_dpoc.html" class="uni-card" style="--card-color: #455A64;" data-name="dpoc gold tabagismo enfisema bronquite pneumologia">
+                        <div class="uni-icon">😮‍💨</div>
+                        <div class="uni-text">
+                            <span class="uni-title">DPOC</span>
+                            <span class="uni-sub">GOLD 2026</span>
+                        </div>
+                    </a>
+
+                    <a href="clinica_medica/pneumologia/resumo_pac.html" class="uni-card" style="--card-color: #512DA8;" data-name="pac pneumonia pneumologia pneumococo">
+                        <div class="uni-icon">🤒</div>
+                        <div class="uni-text">
+                            <span class="uni-title">Pneumonia Adquirida na Comunidade</span>
+                            <span class="uni-sub">Diagnóstico e Manejo</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="spec-section">
+                <div class="spec-title">🦠 Infectologia</div>
+                <div class="uni-grid">
+                    <a href="clinica_medica/infectologia/resumo_tb.html" class="uni-card" style="--card-color: #E65100;" data-name="tuberculose tb micobacteria tosse infectologia pulmonar">
+                        <div class="uni-icon">🧫</div>
+                        <div class="uni-text">
+                            <span class="uni-title">Tuberculose</span>
+                            <span class="uni-sub">Protocolo MS/Brasil</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="spec-section">
+                <div class="spec-title">🦋 Reumatologista</div>
+                <div class="uni-grid">
+                    <a href="clinica_medica/reumatologia/resumo_fibromialgia.html" class="uni-card" style="--card-color: #6A1B9A;" data-name="reumatismo reumatologia fibromiangia">
+                        <div class="uni-icon">😣</div>
+                        <div class="uni-text">
+                            <span class="uni-title">Fibromialgia</span>
+                            <span class="uni-sub">SBR/2026</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+            <div class="spec-section">
+                <div class="spec-title">🚑 Medicina de Emergência</div>
+                <div class="uni-grid">
+                    <a href="clinica_medica/emergencia/resumo_tep.html" class="uni-card" style="--card-color: #006064;" data-name="TEP tromboembolismo pulmonar">
+                        <div class="uni-icon">😣</div>
+                        <div class="uni-text">
+                            <span class="uni-title">Tromboembolismo Pulmonar</span>
+                            <span class="uni-sub">AHA/2026</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+
+        </div> <div id="no-results" class="no-results">
+            Nenhum resumo encontrado.
+        </div>
+    </div>
+
+    <script>
+        function filterDiseases() {
+            const input = document.getElementById('disease-search');
+            const filter = input.value.toLowerCase();
+            const sections = document.getElementsByClassName('spec-section');
+            let totalVisible = 0;
+
+            for (let i = 0; i < sections.length; i++) {
+                const cards = sections[i].getElementsByClassName('uni-card');
+                let cardsVisibleInSection = 0;
+
+                for (let j = 0; j < cards.length; j++) {
+                    const keywords = cards[j].getAttribute('data-name');
+                    if (keywords && keywords.includes(filter)) {
+                        cards[j].style.display = "flex";
+                        cardsVisibleInSection++;
+                        totalVisible++;
+                    } else {
+                        cards[j].style.display = "none";
+                    }
+                }
+
+                // Oculta o título da especialidade se nenhum card dela bater com a pesquisa
+                sections[i].style.display = cardsVisibleInSection === 0 ? 'none' : 'block';
+            }
+            document.getElementById('no-results').style.display = totalVisible === 0 ? 'block' : 'none';
+        }
+    </script>
+
+    <footer style="text-align:center; padding:20px; color:#888; font-size:0.8rem; border-top:1px solid #eee; margin-top:40px;">
+        Cérebro de Atila (R) 2026. Direitos reservados.<br>Código-fonte criado por Atila Paixão.
+    </footer>
+
+</body>
+</html>

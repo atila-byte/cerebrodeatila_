@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pediatria - Resumos</title>
+    <link rel="stylesheet" href="../style.css">
+    <style>
+        /* Estilos específicos para a barra de pesquisa mantidos e adaptados */
+        .search-box { 
+            width: 100%; padding: 15px 15px 15px 45px; border: 2px solid #a4f325; 
+            border-radius: 12px; font-size: 1rem; 
+            background: #a4f325 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="%23999" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>') no-repeat 15px center; 
+            background-size: 20px; 
+            transition: all 0.2s;
+        }
+        .search-box:focus { outline: none; border-color: #F8BBD0; background-color: #fff; }
+        .no-results { display: none; text-align: center; padding: 40px 20px; color: #78909C; font-size: 1.1rem; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="resumos.html" class="back-btn" style="text-decoration: none;">⬅</a>
+        <div class="app-title">Medicina do Estilo de Vida 🏃</div>
+    </header>
+
+    <div class="search-container">
+        <input type="text" class="search-box" id="disease-search" placeholder="Buscar resumos de pediatria..." onkeyup="filterDiseases()">
+    </div>
+
+    <div class="container" style="padding-top: 5px;">
+        <div class="uni-grid" id="disease-list">
+            
+            <a href="mev/higiene_sono.html" class="uni-card" style="--card-color: #bbc4f8;" data-name="higiene_sono higiene sono">
+                <div class="uni-icon">😴</div>
+                <div class="uni-text">
+                    <span class="uni-title">Sono</span>
+                    <span class="uni-sub">Orientação baseada em evidência</span>
+                </div>
+            </a>
+
+            <a href="mev/atividadefisica.html" class="uni-card" style="--card-color: #00c187;" data-name="exercicio_fisico atividade_fisica atividade fisica exercicio fisico malhar">
+                <div class="uni-icon">🏋🏿‍♀️</div>
+                <div class="uni-text">
+                    <span class="uni-title">Atividade Física</span>
+                    <span class="uni-sub">Recomendações práticas</span>
+                </div>
+            </a>
+
+            <a href="mev/abuso_alcool.html" class="uni-card" style="--card-color: #795548;" data-name="tua transtorno abuso alcool alcoolismo alcólatra">
+                <div class="uni-icon">🍹</div>
+                <div class="uni-text">
+                    <span class="uni-title">Abuso de Álcool</span>
+                    <span class="uni-sub">Focado na Atenção Primária em Saúde</span>
+                </div>
+            </a>
+
+        </div>
+        
+        <div id="no-results" class="no-results">
+            Nenhum resumo encontrado.
+        </div>
+    </div>
+
+    <script>
+        function filterDiseases() {
+            const input = document.getElementById('disease-search');
+            const filter = input.value.toLowerCase();
+            const list = document.getElementById('disease-list');
+            const cards = list.getElementsByClassName('uni-card');
+            let visibleCount = 0;
+
+            for (let i = 0; i < cards.length; i++) {
+                const keywords = cards[i].getAttribute('data-name');
+                if (keywords && keywords.includes(filter)) {
+                    cards[i].style.display = "flex"; // uni-card usa flexbox
+                    visibleCount++;
+                } else {
+                    cards[i].style.display = "none";
+                }
+            }
+            document.getElementById('no-results').style.display = visibleCount === 0 ? 'block' : 'none';
+        }
+    </script>
+
+    <footer style="text-align:center; padding:20px; color:#888; font-size:0.8rem; border-top:1px solid #eee; margin-top:40px;">
+        Cérebro de Átila (R) 2026. Direitos reservados.<br>
+        Código-fonte criado por Átila Paixão.
+    </footer>
+
+</body>
+</html>
