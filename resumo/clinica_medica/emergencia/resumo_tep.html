@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tromboembolismo Pulmonar (TEP 2026)</title>
+    <link rel="stylesheet" href="../../../style.css">
+    <style>
+        /* TEMA CIANO ESCURO / VASCULAR */
+        :root { --theme-vascular: #006064; } 
+        
+        .resumo-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+            border-left: 5px solid var(--theme-vascular);
+        }
+
+        .res-header { 
+            font-size: 1.1rem; 
+            font-weight: 800; 
+            margin-bottom: 15px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            color: #004D40; 
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 1px solid #B2DFDB;
+            padding-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 1.05rem;
+            color: #004D40;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 800;
+        }
+
+        .table-responsive {
+            overflow-x: auto;
+            margin-bottom: 15px;
+        }
+
+        .table-custom {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            min-width: 600px;
+        }
+        .table-custom th {
+            background-color: #E0F2F1;
+            color: #004D40;
+            text-align: left;
+            padding: 10px;
+            border: 1px solid #B2DFDB;
+        }
+        .table-custom td {
+            padding: 10px;
+            border: 1px solid #eee;
+            color: #444;
+            vertical-align: top;
+        }
+        .table-custom td:first-child {
+            background-color: #FAFAFA;
+            font-weight: bold;
+        }
+        
+        .flux-box { background: #FAFAFA; border: 1px solid #E0E0E0; border-radius: 8px; padding: 15px; margin-bottom: 15px; border-left: 4px solid #00897B; }
+        .tag-class { background: #B2DFDB; color: #004D40; padding: 2px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; text-transform: uppercase; margin-bottom: 4px; display: inline-block;}
+        .drug-name { font-weight: 800; color: #006064; font-size: 0.95rem; display: inline-block; margin-top: 2px;}
+        
+        /* TAG SUS */
+        .tag-sus { background-color: #2E7D32; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; margin-left: 5px; vertical-align: middle; display: inline-block; }
+        .tag-sus-esp { background-color: #1565C0; color: white; padding: 2px 6px; border-radius: 4px; font-size: 0.65rem; font-weight: bold; margin-left: 5px; vertical-align: middle; display: inline-block; }
+        
+        .hemo-effect { background-color: #E0F7FA; border-left: 3px solid #00BCD4; padding: 6px; font-size: 0.8rem; margin-top: 8px; border-radius: 4px; color: #006064; }
+    </style>
+</head>
+<body>
+
+    <header class="app-header">
+        <a href="../../clinica_medica.html" class="back-btn" style="text-decoration: none;">⬅</a>
+        <div class="app-title">Tromboembolismo Pulmonar (TEP)</div>
+    </header>
+
+    <div class="container">
+        
+        <div class="resumo-box">
+            <div class="res-header"><span>1️⃣ Suspeita Clínica: Anamnese e Exame Físico</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                O TEP é frequentemente o "grande simulador". A suspeita deve ser alta em pacientes com dispneia súbita inexplicada.
+            </p>
+            
+            <div class="flux-box">
+                <strong style="color: #006064;">Sinais e Sintomas mais frequentes:</strong>
+                <ul style="margin-top: 5px; font-size: 0.9rem; color: #444; padding-left: 20px;">
+                    <li style="margin-bottom: 5px;"><strong>Dispneia:</strong> Sintoma mais comum (repouso ou esforço).</li>
+                    <li style="margin-bottom: 5px;"><strong>Dor Torácica:</strong> Geralmente pleurítica (piora com a inspiração).</li>
+                    <li style="margin-bottom: 5px;"><strong>Tosse e Hemoptise:</strong> Sugerem infarto pulmonar periférico.</li>
+                    <li><strong>Síncope:</strong> Pode indicar TEP maciço com falência aguda de Ventrículo Direito (VD).</li>
+                </ul>
+            </div>
+
+            <div class="flux-box">
+                <strong style="color: #006064;">Achados de Exame Físico:</strong>
+                <ul style="margin-top: 5px; font-size: 0.9rem; color: #444; padding-left: 20px;">
+                    <li>Taquipneia (FR > 20) e Taquicardia (FC > 100).</li>
+                    <li>Sinais de TVP (edema assimétrico, dor à palpação da panturrilha).</li>
+                    <li>B2 hiperfonética em foco pulmonar (indica hipertensão pulmonar aguda).</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>2️⃣ Diagnóstico e Exames Complementares</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                O diagnóstico segue a lógica de: Probabilidade Clínica &rarr; Dímero-D &rarr; Imagem.
+            </p>
+            
+            <div class="section-title">Escore de Wells (Simplificado)</div>
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <tr><th>Variável</th><th>Pontos</th></tr>
+                    <tr><td>Sinais/Sintomas clínicos de TVP</td><td>3,0</td></tr>
+                    <tr><td>Outros diagnósticos menos prováveis que TEP</td><td>3,0</td></tr>
+                    <tr><td>Frequência Cardíaca > 100 bpm</td><td>1,5</td></tr>
+                    <tr><td>Imobilização ou Cirurgia nos últimos 30 dias</td><td>1,5</td></tr>
+                    <tr><td>TEP ou TVP prévios</td><td>1,5</td></tr>
+                    <tr><td>Hemoptise</td><td>1,0</td></tr>
+                    <tr><td>Malignidade (Câncer)</td><td>1,0</td></tr>
+                </table>
+            </div>
+            <p style="font-size: 0.85rem; color: #555;"><strong>Interpretação:</strong> 0-1 (Baixo); 2-6 (Intermediário); &ge; 7 (Alto). Ou <strong>Improvável (0-4)</strong> vs <strong>Provável (> 4)</strong>.</p>
+
+            <div class="section-title">Exames de Imagem e Laboratório</div>
+            <ul style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                <li><strong>Dímero-D:</strong> Alta sensibilidade, mas baixa especificidade. Usar apenas para <strong>excluir</strong> TEP em pacientes com probabilidade baixa ou intermediária. Utilizar o ajuste pela idade (Idade x 10 em > 50 anos).</li>
+                <li><strong>Angio-TC de Tórax (Protocolo TEP):</strong> Exame padrão-ouro. Obrigatório se probabilidade clínica alta ou Dímero-D positivo.</li>
+                <li><strong>Cintilografia de Ventilação/Perfusão (V/Q):</strong> Alternativa se houver contraindicação à TC (ex: Insuficiência Renal grave ou alergia ao contraste).</li>
+                <li><strong>POCUS (Eco à beira-leito):</strong> Crucial em pacientes instáveis (choque) para ver sinais de sobrecarga de VD (McConnell's sign) e guiar trombólise imediata.</li>
+            </ul>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>3️⃣ Estratificação de Risco Cardiovascular</span></div>
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <tr><th>Risco</th><th>Definição</th><th>Conduta</th></tr>
+                    <tr>
+                        <td style="color: #D32F2F;"><strong>Alto Risco (Maciço)</strong></td>
+                        <td>Instabilidade Hemodinâmica (PAS < 90 mmHg ou choque).</td>
+                        <td>Trombólise ou Embolectomia de emergência.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #FF9800;"><strong>Risco Intermediário</strong></td>
+                        <td>Estável, mas com disfunção de VD (Eco/TC) ou Troponina elevada.</td>
+                        <td>Internação e monitorização rigorosa.</td>
+                    </tr>
+                    <tr>
+                        <td style="color: #2E7D32;"><strong>Baixo Risco</strong></td>
+                        <td>Estável, sem disfunção de VD e Troponina normal.</td>
+                        <td>Alta precoce ou tratamento domiciliar.</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>4️⃣ Tratamento Farmacológico e Efeitos no Coração</span></div>
+            <p style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                O objetivo primário é prevenir a recorrência do trombo e reduzir a sobrecarga de VD.
+            </p>
+
+            <div class="section-title">A) Anticoagulação (Reduz Mortalidade e Recorrência)</div>
+            <div class="table-responsive">
+                <table class="table-custom">
+                    <tr>
+                        <th style="width: 25%;">Classe e Fármaco</th>
+                        <th style="width: 20%;">Dose e Posologia</th>
+                        <th style="width: 55%;">Observações e Efeito Hemodinâmico</th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="tag-class">DOACs (Preferencial)</span><br>
+                            <span class="drug-name">Rivaroxabana</span> <span class="tag-sus-esp">SUS-Especializado</span><br>
+                            <span class="drug-name">Apixabana</span>
+                        </td>
+                        <td>
+                            <strong>Riva:</strong> 15mg 12/12h (21 dias), após 20mg/dia.<br>
+                            <strong>Apixa:</strong> 10mg 12/12h (7 dias), após 5mg 12/12h.
+                        </td>
+                        <td>
+                            Primeira linha para pacientes estáveis. Não exige monitorização de RNI.
+                            <div class="hemo-effect"><strong>Efeito:</strong> Inibe o fator Xa. Reduz a progressão do coágulo, permitindo que o sistema fibrinolítico endógeno atue. <strong>Reduz a pós-carga do VD</strong> ao longo do tempo.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="tag-class">Heparinas</span><br>
+                            <span class="drug-name">Enoxaparina</span> <span class="tag-sus">SUS-Básico</span><br>
+                            <span class="drug-name">HNF</span> <span class="tag-sus">SUS-Básico</span>
+                        </td>
+                        <td>
+                            <strong>Enoxa:</strong> 1mg/kg 12/12h SC.<br>
+                            <strong>HNF:</strong> Bolus 80 UI/kg + infusão contínua.
+                        </td>
+                        <td>
+                            HNF é preferencial se houver instabilidade hemodinâmica ou ClCr < 15 ml/min.
+                            <div class="hemo-effect"><strong>Efeito:</strong> Anticoagulação imediata. Cronotropismo/Inotropismo neutros.</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><span class="tag-class">Antag. Vit. K</span><br><span class="drug-name">Varfarina</span> <span class="tag-sus">SUS-Básico</span></td>
+                        <td>Dose ajustada pelo RNI (Alvo 2,0-3,0)</td>
+                        <td>
+                            Alternativa se DOACs forem contraindicados ou inacessíveis. Exige "ponte" com heparina por no mínimo 5 dias.
+                            <div class="hemo-effect"><strong>Efeito:</strong> Reduz síntese de fatores dependentes de vit. K. Reduz recorrência a longo prazo.</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="section-title">B) Terapia Fibrinolítica (Para Alto Risco)</div>
+            <ul style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                <li><span class="drug-name">Alteplase (rtPA):</span> 100 mg EV em 2 horas.</li>
+                <li><strong>Indicação:</strong> TEP de alto risco com choque obstrutivo ou hipotensão severa.</li>
+                <div class="hemo-effect"><strong>Efeito Cardíaco:</strong> Lise rápida do trombo. <strong>Reduz agudamente a pressão na artéria pulmonar</strong> e a dilatação do VD, melhorando o inotropismo cardíaco global por restaurar o débito sistólico.</div>
+            </ul>
+        </div>
+
+        <div class="resumo-box">
+            <div class="res-header"><span>5️⃣ Informações Adicionais e Prevenção</span></div>
+            <ul style="font-size: 0.9rem; color: #555; line-height: 1.5;">
+                <li><strong>Duração do Tratamento:</strong> Mínimo de 3 meses para TEP provocado por fator de risco transitório (cirurgia). Se TEP idiopático ou fator persistente (câncer), considerar anticoagulação por tempo indefinido.</li>
+                <li><strong>Filtro de Veia Cava:</strong> Indicado apenas se houver contraindicação absoluta à anticoagulação em paciente com TVP/TEP agudo.</li>
+            </ul>
+        </div>
+
+        <div class="ref-section" style="font-size: 0.8rem; color: #777; margin-top: 20px; border-top: 1px solid #eee; padding-top: 10px;">
+            <strong>Referências Bibliográficas:</strong><br>
+            • 2026 AHA/ACC/ACCP/ACEP/CHEST/SCAI/SHM/SIR/SVM/SVN Guideline for the Evaluation and Management of Acute Pulmonary Embolism in Adults. Circulation. 2026.
+        </div>
+
+    </div>
+</body>
+</html>
